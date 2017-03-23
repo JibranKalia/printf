@@ -6,8 +6,14 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:38:22 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/23 14:39:31 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/23 15:01:31 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <libftprintf.h>
+
 int		ft_printf(const char *fmt, ...)
+{
+	ft_putstr(fmt);
+	return (0);
+}
