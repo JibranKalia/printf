@@ -1,22 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/23 14:07:51 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/23 14:42:27 by jkalia           ###   ########.fr       */
+/*   Created: 2017/03/23 14:38:22 by jkalia            #+#    #+#             */
+/*   Updated: 2017/03/23 14:39:31 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_PRINTF_H
-# define LIBFT_PRINTF_H
-# include <stdarg.h>
-# include <stdlib.h>
-# include <limits.h>
-# include <stdint.h>
-
-int	ft_printf(const char *fmt, ...);
-
-#endif
+int		ft_printf(const char *fmt, ...)
