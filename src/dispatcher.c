@@ -21,9 +21,9 @@ int		ft_printf_d(char **ret, const char **fmt, va_list clone)
 
 	org = va_arg(clone, int);
 	nbr = ft_itoa(org);
-	ft_strcat(*ret, nbr);
-	fmt++; // Incrementing the pointer by one. Completed d && i;
-	return (ft_strlen(nbr));
+	ft_strcat(*ret, nbr); // pehaps use strjoin??
+	fmt++; // Incrementing the pointer by one. Completed d;
+	return (ft_strlen(nbr)); // need to free nbr, allocated by itoa
 }
 
 static int	choosetype(char **ret, const char **fmt, va_list clone)
@@ -33,6 +33,7 @@ static int	choosetype(char **ret, const char **fmt, va_list clone)
 	printf("String %s\n", *fmt);
 	if (ft_strstr(*fmt, "%d") != NULL)
 		return (ft_printf_d(ret, fmt, clone));
+	// add if statement for i
 	//if (*fmt == '%')
 	return (0); //Doesn't Match any of the types ????
 }
@@ -44,7 +45,7 @@ static int	dispatch(char **ret, const char *fmt, va_list clone)
 	int		len;	//Number of bytes copied???
 
 	*ret = ft_strnew(ft_strlen(fmt) * 100); // Probably not a good place to malloc. Will need a resizable array anyway.
-	len = 0;
+	len = 0; //                             this guy https://brennan.io/2015/01/16/write-a-shell-in-c/ has a good way of handling this issue. read the code.
 	while (*fmt)
 	{
 		i = 0;
@@ -82,3 +83,8 @@ int		ft_vasprintf(char **ret, const char *fmt, va_list ap)
 	va_end(clone);
 	return (len);
 }
+// there is another way to do it, parse the whole fmt string and va_arg to calculate the size of the malloc.
+// or simply go through the fmt string checking for errors, then printing as you go along using write().
+// the issue with the first option is its hard.
+// the issue with the second option is that the function is alot less useful. with the malloced one you can do a whole bunch
+// of stuff, but with the second one you can only print to the screen.
