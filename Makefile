@@ -6,7 +6,7 @@
 #    By: jkalia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/23 14:12:11 by jkalia            #+#    #+#              #
-#*   Updated: 2017/03/23 15:21:13 by jkalia           ###   ########.fr       *#
+#*   Updated: 2017/03/23 23:38:58 by jkalia           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ CFLAGS			+= -I includes/
 TEST			:= test.c
 
 SRC_FILES		:= ft_printf.c \
+				dispatcher.c \
 
 LIBFT_FILES		:= ft_putchar.c \
 			  ft_putchar_fd.c \
