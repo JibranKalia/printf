@@ -6,7 +6,7 @@
 #    By: jkalia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/23 14:12:11 by jkalia            #+#    #+#              #
-#*   Updated: 2017/03/23 23:38:58 by jkalia           ###   ########.fr       *#
+#*   Updated: 2017/03/24 14:26:58 by jkalia           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,7 @@ LIBFT_FILES		:= ft_putchar.c \
 			  ft_strsub.c \
 			  ft_strmap.c \
 			  ft_strjoin.c \
+			  ft_strnjoinf.c \
 			  ft_strtrim.c \
 			  ft_strmapi.c \
 			  ft_atoi.c \

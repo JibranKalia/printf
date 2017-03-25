@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/24 00:15:58 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/24 19:23:17 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,16 @@ int		main(void)
 	int		ret[2];
 
 	i = 5;
-	ret[0] = printf("Libc: %d\n", i);
+	ret[0] = printf("Libc:\n");
+	printf("++++++++++++++++++++++++++++++\n");
+	ret[0] = printf("Number: %d      \n", i);
+	printf("++++++++++++++++++++++++++++++\n");
 	printf("ret[0] = %d\n", ret[0]);
-
-	ret[1] = ft_printf("Mine %d aa", 5);
+	printf("\n\n");
+	ret[0] = printf("Mine:\n");
+	printf("++++++++++++++++++++++++++++++\n");
+	ret[1] = ft_printf("Number: %d   \n", i);
+	printf("++++++++++++++++++++++++++++++\n");
 	printf("ret[1] = %d\n", ret[0]);
-//	ft_printf("Mine : %d", i);
+	return (0);
 }

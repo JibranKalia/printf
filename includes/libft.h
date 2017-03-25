@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 16:58:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/23 14:59:47 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/24 14:27:47 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ char				*ft_strmap(char const *src, char (*f)(char));
 char				*ft_strmapi(char const *src, char (*f)(unsigned int, char));
 char				*ft_strsub(char const *src, unsigned int start, size_t len);
 char				*ft_strjoin(char const *src1, char const *src2);
+char				*ft_strnjoinf(char *src1, size_t len1, char const *src2, size_t len2);
 char				*ft_strtrim(char const *src);
 char				**ft_strsplit(const char *src, char c);
 
