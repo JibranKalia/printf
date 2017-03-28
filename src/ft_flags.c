@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/27 21:09:48 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/27 22:05:46 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,22 @@ int		ft_printf_flags(const char **fmt, t_printf *x)
 		++x->extra.len;
 	}
 	return (x->extra.len);
+}
+
+int		ft_printf_width(const char **fmt, t_printf *x)
+{
+	size_t	i;
+	char	tmp[20];
+
+	i = 0;
+	ft_bzero(tmp, 20);
+	while (ISDIGIT(**fmt))
+	{
+		tmp[i] = **fmt;
+		++i;
+		++*fmt;
+	}
+	x->width = (size_t)ft_atoi(tmp);
+	return (0);
 }
 
