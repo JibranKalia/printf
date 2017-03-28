@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/27 17:37:33 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/27 20:47:56 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ int		main(void)
 	i = 5;
 	printf("Libc:\n");
 	printf("++++++++++++++++++++++++++++++\n");
-	ret[0] = printf("[Number: %d]", i);
+	ret[0] = printf("[Number: %+d]\n", i);
 	printf("\n++++++++++++++++++++++++++++++\n");
 	printf("ret[0] = %d\n", ret[0]);
 	printf("\n\n");
 
 	printf("Mine:\n");
 	printf("++++++++++++++++++++++++++++++\n");
-	ret[1] = ft_printf("[Number: %d]", i);
+	ret[1] = ft_printf("[Number: %+d]\n", i);
 	printf("\n++++++++++++++++++++++++++++++\n");
 	printf("ret[1] = %d\n", ret[1]);
 	return (0);

@@ -6,9 +6,11 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:01:25 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/27 20:02:11 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/27 21:00:14 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <libftprintf.h>
 
 int8_t	ft_arr_init(t_arr *src, size_t cap)
 {
@@ -17,6 +19,7 @@ int8_t	ft_arr_init(t_arr *src, size_t cap)
 	ft_bzero(src, sizeof(t_arr));
 	CHK((src->ptr = ft_memalloc(cap)) == NULL, -1);
 	src->cap = cap;
+	src->len = 0;
 	return (0);
 }
 
@@ -24,12 +27,15 @@ int8_t	ft_arr_resize(t_arr *ret, size_t sze)
 {
 	size_t	malloc_sze;
 	void	*tmp;
-
-	malloc_sze = ret->cap + 1;		//In case ret cap is a 0
+	
+	if (ret->ptr == 0)			//Empty t_arr has to initialized
+		ft_arr_init(ret, sze);
+	malloc_sze = ret->cap;		//In case ret cap is a 0
 	while (malloc_sze < sze)		//Keeping increasing Malloc size
 		malloc_sze *= 2;
 	CHK((tmp = ft_memalloc(malloc_sze)) == 0, -1);
-	ft_memcpy(tmp, ret->ptr, ret->len);
+	if (ret->len != 0)
+		ft_memcpy(tmp, ret->ptr, ret->len);
 	free(ret->ptr);
 	ret->ptr = tmp;
 	ret->cap = malloc_sze;
