@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:07:51 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/28 13:10:06 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/28 13:16:44 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,14 @@ typedef struct		s_printf
 	unsigned int 	space:1;         /* Space flag.  */
 	unsigned int 	zero:1;          /* Zero flag.  */
 	unsigned int 	alt:1;           /* # flag.  */
-	unsigned int 	is_long_double:1;/* L flag.  */
+	unsigned int 	is_long_double:1;/* L ll flag.  */
 	unsigned int 	is_short:1;      /* h flag.  */
 	unsigned int 	is_long:1;       /* l flag.  */
 	unsigned int 	is_char:1;       /* hh flag.  */
-	unsigned int 	is_intmax:1      /* j flag.  */
+	unsigned int 	is_intmax:1;      /* j flag.  */
 	unsigned int 	is_sizet:1;      /* z flag.  */
 	wchar_t 		pad;             /* Padding character.  The value is '0' if the ‘0’ flag was specified, and ' ' otherwise.*/
 
-	//Padding. Conversion Specifier
 }					t_printf;
 
 int		ft_printf(const char *in, ...);

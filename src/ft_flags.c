@@ -6,13 +6,13 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/28 13:09:47 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/28 13:21:48 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-int		ft_printf_flags(const char **fmt, t_printf *x)
+int		ft_printf_flags(const char **fmt, t_printf *x)			//What should this be returning?
 {
 	while (*fmt && (**fmt == '-' || **fmt == '+' || **fmt == ' ' || **fmt == '#' || **fmt == '0'))
 	{
@@ -49,7 +49,7 @@ int		ft_printf_flags(const char **fmt, t_printf *x)
 	return (x->extra.len);
 }
 
-int		ft_printf_width(const char **fmt, t_printf *x)
+int8_t	ft_printf_width(const char **fmt, t_printf *x)			//What should this be returning?
 {
 	size_t	i;
 	char	tmp[20];
@@ -66,7 +66,7 @@ int		ft_printf_width(const char **fmt, t_printf *x)
 	return (0);
 }
 
-int		ft_printf_dot(const char **fmt, t_printf *x)
+int8_t	ft_printf_dot(const char **fmt, t_printf *x)
 {
 	size_t	i;
 	char	tmp[20];
@@ -85,4 +85,43 @@ int		ft_printf_dot(const char **fmt, t_printf *x)
 	}
 	x->prec = ft_atoi(tmp);
 	return (0);
+}
+
+int8_t	ft_printf_conversion(const char **fmt, t_printf *x)
+{
+	if (ft_strnstr(*fmt, "hh", 2) != NULL)
+	{
+		printf("hh Flag \n");
+		x->is_char = 1;
+	}
+	if (ft_strnstr(*fmt, "h", 1) != NULL)
+	{
+		printf("h Flag\n");
+		x->is_short = 1;
+	}
+	if (ft_strnstr(*fmt, "ll", 2) != NULL)
+	{
+		printf("ll Flag\n");
+		x->is_long_double = 1;
+	}
+	if (ft_strnstr(*fmt, "L", 1) != NULL)
+	{
+		printf("L Flag\n");
+		x->is_long_double = 1;
+	}
+	if (ft_strnstr(*fmt, "l", 1) != NULL)
+	{
+		printf("l Flag\n");
+		x->is_long = 1;
+	}
+	if (ft_strnstr(*fmt, "j", 2) != NULL)
+	{
+		printf("j Flag\n");
+		x->is_intmax = 1;
+	}
+	if (ft_strnstr(*fmt, "z", 2) != NULL)
+	{
+		printf("z Flag\n");
+		x->is_sizet = 1;
+	}
 }
