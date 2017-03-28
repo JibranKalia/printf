@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/27 21:02:44 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/27 21:26:11 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,18 @@ int8_t		ft_printf_append(t_arr *ret, const char **fmt, t_printf *x)
 	return (0);
 }
 
+int8_t		ft_printf_init(t_printf *x)
+{
+	ft_bzero(x, sizeof(t_printf));
+	x->prec = -1; //Initial value of prec is -1
+	return (0);
+}
+
 int8_t		ft_printf_d(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 {
 	int			org;
 	char		*nbr;
 
-
-	if (x->flags &= ZRO)
-		printf("Success\n");
 	org = va_arg(clone, int);
 	nbr = ft_itoa(org);				//ITOA BASE
 	ft_arr_append_str(&x->extra, nbr);
@@ -60,8 +64,8 @@ int			dispatch(char **final, const char *fmt, va_list clone)
 	t_arr			ret;
 	t_printf		x;
 
-	ft_arr_init(&ret, ft_strlen(fmt) + 10);
-	ft_bzero(&x, sizeof(t_printf));
+	CHK((ft_arr_init(&ret, ft_strlen(fmt) + 10)) == -1, -1);
+	CHK((ft_printf_init(&x)) == -1, -1);
 	while (*fmt)
 	{
 		i = 0;
