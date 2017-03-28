@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/28 13:11:34 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/28 13:26:07 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,28 @@ static int choosetype(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 		ft_printf_width(fmt, x);
 	if (ft_strnstr(*fmt, "9", 1) != NULL)
 		ft_printf_width(fmt, x);
+
+
+	if (ft_strnstr(*fmt, "hh", 2) != NULL)
+		ft_printf_length(fmt, x);
+	if (ft_strnstr(*fmt, "h", 1) != NULL)
+		ft_printf_length(fmt, x);
+	if (ft_strnstr(*fmt, "ll", 2) != NULL)
+		ft_printf_length(fmt, x);
+	if (ft_strnstr(*fmt, "L", 1) != NULL)
+		ft_printf_length(fmt, x);
+	if (ft_strnstr(*fmt, "l", 1) != NULL)
+		ft_printf_length(fmt, x);
+	if (ft_strnstr(*fmt, "j", 1) != NULL)
+		ft_printf_length(fmt, x);
+	if (ft_strnstr(*fmt, "z", 1) != NULL)
+		ft_printf_length(fmt, x);
+
+
 	if (ft_strnstr(*fmt, ".", 1) != NULL)
 		ft_printf_dot(fmt, x);
+
+
 	if (ft_strnstr(*fmt, "d", 1) != NULL)
 		return (ft_printf_d(ret, fmt, x, clone));
 	if (ft_strnstr(*fmt, "i", 1) != NULL)

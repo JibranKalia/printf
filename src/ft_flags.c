@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/28 13:21:48 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/28 13:28:17 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		ft_printf_flags(const char **fmt, t_printf *x)			//What should this be retu
 		{
 			printf("Space Flag\n");
 			x->space = 1;
-			pad = ' ';
+			x->pad = ' ';
 		}
 		else if (**fmt == '#')
 		{
@@ -41,7 +41,7 @@ int		ft_printf_flags(const char **fmt, t_printf *x)			//What should this be retu
 		{
 			printf("Zero Flag\n");
 			x->zero = 1;
-			pad = '0';
+			x->pad = '0';
 		}
 		++*fmt;
 		++x->extra.len;
@@ -87,7 +87,7 @@ int8_t	ft_printf_dot(const char **fmt, t_printf *x)
 	return (0);
 }
 
-int8_t	ft_printf_conversion(const char **fmt, t_printf *x)
+int8_t	ft_printf_length(const char **fmt, t_printf *x)
 {
 	if (ft_strnstr(*fmt, "hh", 2) != NULL)
 	{
@@ -114,14 +114,15 @@ int8_t	ft_printf_conversion(const char **fmt, t_printf *x)
 		printf("l Flag\n");
 		x->is_long = 1;
 	}
-	if (ft_strnstr(*fmt, "j", 2) != NULL)
+	if (ft_strnstr(*fmt, "j", 1) != NULL)
 	{
 		printf("j Flag\n");
 		x->is_intmax = 1;
 	}
-	if (ft_strnstr(*fmt, "z", 2) != NULL)
+	if (ft_strnstr(*fmt, "z", 1) != NULL)
 	{
 		printf("z Flag\n");
 		x->is_sizet = 1;
 	}
+	return (0);
 }
