@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 20:17:03 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/22 21:12:42 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/27 18:21:15 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@
 
 int		main(int ac, char **av)
 {
-/**
+	int		d = 333;
+	printf("%f\n", (double)d);
+	printf("%-10x\n", 333);
+	printf("%-10d\n", -333);
+	/**
 	printf("%a", (double)333);
 	printf("%a", (double)42);
 	printf("%a", (double)-0);
@@ -88,11 +92,7 @@ int		main(int ac, char **av)
 	printf("%%d 0000042 == |%d|\n", 0000042);
 	printf("%%d \t == |%d|\n", '\t');
 	printf("%%d Lydie == |%d|\n", 'L'+'y'+'d'+'i'+'e');
-**/
-
 	printf("%lla\n", (long long) 32);
-
-/**
 	printf("%e", (double)42);
 	printf("Kashim a %e histoires à raconter", (double)1001);
 	printf("Il fait au moins %e\n", (double)-8000);
@@ -296,6 +296,6 @@ int		main(int ac, char **av)
 	printf("%%05i 42 == |%05i|\n", 42);
 	printf("%%0i 42 == |%0i|\n", 42);
 	printf("%%0d 0000042 == |%0d|\n", 0000042);
-**/
 	return (0);
+	**/
 }

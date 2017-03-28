@@ -1,16 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dispatcher.c                                       :+:      :+:    :+:   */
+/*   ft_array.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/27 17:50:07 by jkalia           ###   ########.fr       */
+/*   Created: 2017/03/27 20:01:25 by jkalia            #+#    #+#             */
+/*   Updated: 2017/03/27 20:02:11 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <libftprintf.h>
 
 int8_t	ft_arr_init(t_arr *src, size_t cap)
 {
@@ -86,77 +84,3 @@ char	*ft_arrtostr(t_arr *src)
 	CHK(src->cap == 0, 0);
 	return (src->ptr);
 }
-
-int8_t	ft_printf_append(t_arr *ret, const char **fmt, t_printf *x)
-{
-	CHK2((ft_arr_append_arr(ret, &x->extra)) == -1, ft_arr_del(ret), ft_arr_del(&x->extra), -1);
-	++*fmt;
-	return (0);
-}
-
-int8_t	ft_printf_d(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
-{
-	int			org;
-	char		*nbr;
-
-	org = va_arg(clone, int);
-	nbr = ft_itoa(org);				//ITOA BASE
-	ft_arr_append_str(&x->extra, nbr);
-	free(nbr);
-	return (ft_printf_append(ret, fmt, x));
-}
-
-static int	choosetype(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
-{
-	if (ft_strstr(*fmt, "d") != NULL)
-		return (ft_printf_d(ret, fmt, x, clone));
-	return (0); //Doesn't Match any of the types ????
-}
-
-static int	dispatch(char **final, const char *fmt, va_list clone)
-{
-	size_t			i;
-	t_arr			ret;
-	t_printf		x;
-
-	ft_arr_init(&ret, ft_strlen(fmt) + 10);
-	ft_bzero(&x, sizeof(t_printf));
-	while (*fmt)
-	{
-		i = 0;
-		while (fmt[i] != '%' && fmt[i] != 0)
-			i++;
-		ft_arr_append_strn(&ret, (char*)fmt, i);
-		fmt += i;
-		if (*fmt == '%')
-		{
-			if (*(++fmt) == 0) //Percentage is the last thing in the string. Also increments ahead of percentage.
-				break;
-			choosetype(&ret, &fmt, &x, clone); //Passing the address of fmt so that it can be incremented by other functions.
-		}
-	}
-	//Copying the result of array onto output string.
-	*final = ft_arrtostr(&ret);
-	return (ret.len);
-}
-
-int		ft_vasprintf(char **ret, const char *fmt, va_list ap)
-{
-	int			len;
-	va_list		clone;
-
-	if (fmt == 0 || *fmt == 0 || ret == 0)
-		return (0);
-	*ret = 0;
-	if (ft_strchr(fmt, '%') == NULL) // % Not found. Print as it is.
-	{
-		*ret = ft_strdup(fmt);
-		return (ft_strlen(fmt));
-	}
-	va_copy(clone, ap); //Why clone again?
-	len = dispatch(ret, fmt, clone); // VAS Prints out on to the malloc'd string.
-	va_end(clone);
-	return (len);
-}
-
-// there is another way to do it, parse the whole fmt string and va_arg to calculate the size of the malloc.

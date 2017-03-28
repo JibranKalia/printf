@@ -6,7 +6,7 @@
 #    By: jkalia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/23 14:12:11 by jkalia            #+#    #+#              #
-#*   Updated: 2017/03/24 14:26:58 by jkalia           ###   ########.fr       *#
+#*   Updated: 2017/03/27 19:59:06 by jkalia           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ TEST			:= test.c
 
 SRC_FILES		:= ft_printf.c \
 				dispatcher.c \
+				alloc_wrap.c \
 
 LIBFT_FILES		:= ft_putchar.c \
 			  ft_putchar_fd.c \
