@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:07:51 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/27 22:13:11 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/28 13:10:06 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,21 @@ typedef struct		s_printf
 {
 	t_arr			extra;
 	u_int8_t		flags;
-	int				prec; //This is the precision specified. The value is -1 if no precision was specified.
-	int				width; //This is the minimum field width specified. The value is 0 if no width was specified.
+	int 			prec;            /* Precision.  */
+	int 			width;           /* Width.  */
+	wchar_t 		spec;            /* Format letter.  */ //NOT SURE IF KEEPING
+	unsigned int 	left:1;          /* - flag.  */
+	unsigned int 	showsign:1;      /* + flag.  */
+	unsigned int 	space:1;         /* Space flag.  */
+	unsigned int 	zero:1;          /* Zero flag.  */
+	unsigned int 	alt:1;           /* # flag.  */
+	unsigned int 	is_long_double:1;/* L flag.  */
+	unsigned int 	is_short:1;      /* h flag.  */
+	unsigned int 	is_long:1;       /* l flag.  */
+	unsigned int 	is_char:1;       /* hh flag.  */
+	unsigned int 	is_intmax:1      /* j flag.  */
+	unsigned int 	is_sizet:1;      /* z flag.  */
+	wchar_t 		pad;             /* Padding character.  The value is '0' if the ‘0’ flag was specified, and ' ' otherwise.*/
 
 	//Padding. Conversion Specifier
 }					t_printf;
