@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/27 21:59:55 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/27 22:10:54 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ static int choosetype(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 		ft_printf_width(fmt, x);
 	if (ft_strnstr(*fmt, "9", 1) != NULL)
 		ft_printf_width(fmt, x);
+	if (ft_strnstr(*fmt, ".", 1) != NULL)
+		ft_printf_dot(fmt, x);
 	if (ft_strnstr(*fmt, "d", 1) != NULL)
 		return (ft_printf_d(ret, fmt, x, clone));
 	if (ft_strnstr(*fmt, "i", 1) != NULL)

@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/27 22:05:46 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/27 22:14:21 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,27 @@ int		ft_printf_width(const char **fmt, t_printf *x)
 		++i;
 		++*fmt;
 	}
-	x->width = (size_t)ft_atoi(tmp);
+	x->width = ft_atoi(tmp);
 	return (0);
 }
 
+int		ft_printf_dot(const char **fmt, t_printf *x)
+{
+	size_t	i;
+	char	tmp[20];
+
+	i = 0;
+	if (**fmt != '.')
+		return (-1);		//This error doesn't go anywhere
+	else
+		++*fmt;
+	ft_bzero(tmp, 20);
+	while (ISDIGIT(**fmt))
+	{
+		tmp[i] = **fmt;
+		++i;
+		++*fmt;
+	}
+	x->prec = ft_atoi(tmp);
+	return (0);
+}

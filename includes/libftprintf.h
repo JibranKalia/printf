@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:07:51 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/27 21:58:09 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/27 22:13:11 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,10 @@ int		ft_printf_flags(const char **fmt, t_printf *x);
 
 # define ISWIDTH(a) (a > 48 && a <= 57)
 int		ft_printf_width(const char **fmt, t_printf *x);
+
+/*
+** Precision
+*/
+int		ft_printf_dot(const char **fmt, t_printf *x);
 
 #endif
