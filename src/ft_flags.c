@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/28 13:28:17 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/28 13:41:30 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,18 @@ int		ft_printf_flags(const char **fmt, t_printf *x)			//What should this be retu
 		{
 			printf("Negative Flag\n");
 			x->left = 1;
+			x->zero = 0;	//flag '0' is ignored when flag '-' is present
 		}
 		else if (**fmt == '+')
 		{
 			printf("Positive Flag\n");
 			x->showsign = 1;
+			x->space = 0; //flag ' ' is ignored when flag '+' is present
 		}
 		else if (**fmt == ' ')
 		{
 			printf("Space Flag\n");
 			x->space = 1;
-			x->pad = ' ';
 		}
 		else if (**fmt == '#')
 		{
@@ -41,11 +42,11 @@ int		ft_printf_flags(const char **fmt, t_printf *x)			//What should this be retu
 		{
 			printf("Zero Flag\n");
 			x->zero = 1;
-			x->pad = '0';
 		}
 		++*fmt;
 		++x->extra.len;
 	}
+	x->pad = (x->zero) ? '0' : ' '; //Doing at the end after all the flags are handled
 	return (x->extra.len);
 }
 
