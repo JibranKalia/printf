@@ -6,16 +6,21 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 20:17:03 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/28 13:41:30 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/28 18:47:09 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <limits.h>
 #include <stdint.h>
+#include <wchar.h>
 
 int		main(int ac, char **av)
 {
+
+	printf("%-100c\n", 'a');
+	printf("%-c\n", 'a');
+	/**
 	int		d = 333;
 	printf("%020d\n", d);
 	printf("%020.3d\n", d);
@@ -25,7 +30,6 @@ int		main(int ac, char **av)
 	//printf("%-10x\n", 333);
 	//printf("%f\n", (double)d);
 	//printf("%-10d\n", -333);
-	/**
 	printf("%a", (double)333);
 	printf("%a", (double)42);
 	printf("%a", (double)-0);

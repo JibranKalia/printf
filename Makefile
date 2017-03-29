@@ -6,7 +6,7 @@
 #    By: jkalia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/23 14:12:11 by jkalia            #+#    #+#              #
-#*   Updated: 2017/03/27 20:43:51 by jkalia           ###   ########.fr       *#
+#*   Updated: 2017/03/28 17:27:46 by jkalia           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,8 @@ SRC_FILES		:= ft_printf.c \
 				alloc_wrap.c \
 				ft_array.c \
 				ft_flags.c \
+				ft_printf_c.c \
+				ft_printf_d.c \
 
 LIBFT_FILES		:= ft_putchar.c \
 			  ft_putchar_fd.c \

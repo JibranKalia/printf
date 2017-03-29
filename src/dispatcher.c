@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/28 13:26:07 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/28 19:32:53 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,7 @@ int8_t		ft_printf_init(t_printf *x)
 	return (0);
 }
 
-int8_t		ft_printf_d(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
-{
-	int			org;
-	char		*nbr;
-
-	org = va_arg(clone, int);
-	nbr = ft_itoa(org);				//ITOA BASE
-	ft_arr_append_str(&x->extra, nbr);
-	free(nbr);
-	return (ft_printf_append(ret, fmt, x));
-}
-
-static int choosetype(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
+static int	choosetype(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 {
 	if (ft_strnstr(*fmt, "-", 1) != NULL)
 		ft_printf_flags(fmt, x);
@@ -89,6 +77,8 @@ static int choosetype(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 
 	if (ft_strnstr(*fmt, ".", 1) != NULL)
 		ft_printf_dot(fmt, x);
+	if (ft_strnstr(*fmt, "c", 1) != NULL)
+		return(ft_printf_c(ret, fmt, x, clone));
 
 
 	if (ft_strnstr(*fmt, "d", 1) != NULL)
@@ -120,6 +110,8 @@ int			dispatch(char **final, const char *fmt, va_list clone)
 				break;
 			choosetype(&ret, &fmt, &x, clone); //Passing the address of fmt so that it can be incremented by other functions.
 		}
+		ft_arr_del(&x.extra);
+		CHK((ft_printf_init(&x)) == -1, -1); //Reset this array after every % is dealt with
 	}
 	//Copying the result of array onto output string.
 	*final = ft_arrtostr(&ret);
