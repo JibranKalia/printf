@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 20:17:03 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/28 18:47:09 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/29 13:42:31 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 int		main(int ac, char **av)
 {
 
-	printf("%-100c\n", 'a');
-	printf("%-c\n", 'a');
+	printf("%C\n", 'a');
+//	printf("%-100c\n", 'a');
+//	printf("%-c\n", 'a');
 	/**
 	int		d = 333;
 	printf("%020d\n", d);
