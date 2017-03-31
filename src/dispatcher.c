@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/29 14:03:57 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/30 17:07:40 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int8_t		ft_printf_append(t_arr *ret, const char **fmt, t_printf *x)
 {
+	printf("FMT 1 = %s\n", *fmt);
+	printf("Append = %s\n", x->extra.ptr);
 	CHK2((ft_arr_append_arr(ret, &x->extra)) == -1, ft_arr_del(ret), ft_arr_del(&x->extra), -1);
 	++*fmt;
 	return (0);
@@ -107,7 +109,7 @@ int			dispatch(char **final, const char *fmt, va_list clone)
 		i = 0;
 		while (fmt[i] != '%' && fmt[i] != 0)
 			i++;
-		ft_arr_append_strn(&ret, (char*)fmt, i);
+		ft_arr_appendn(&ret, (char*)fmt, i);
 		fmt += i;
 		if (*fmt == '%')
 		{

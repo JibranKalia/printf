@@ -6,24 +6,25 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:02:19 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/29 13:48:59 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/30 17:05:48 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-int8_t	ft_pad(char **src, t_printf *x, int len) //
+int8_t		ft_width(t_printf *x)
 {
-	int		i;
 	char	*tmp;
+	int		diff;
+	size_t	index;
 
-	CHK(len == 0, -1);
-	tmp = *src;
-	i = 0;
-	while (i < len)
+	diff = x->width - x->extra.len;
+	index = (x->left == 1) ? x->extra.len : 0;
+	if (diff > 0)
 	{
-		tmp[i] = x->pad;
-		i++;
+		CHK((tmp = ft_strnew(diff)) == 0, -1);
+		ft_memset((void *)tmp, (int)x->pad, (size_t)diff);
+		ft_arr_insertn(&x->extra, index, tmp, diff);
 	}
 	return (0);
 }
@@ -34,23 +35,16 @@ int8_t		ft_printf_c(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	char			*tmp;
 	wint_t			tmp1;
 	int				tmp2;
-	int				index;
 
-	CHK((tmp = ft_strnew(x->width)) == NULL, -1);
+
+
+	CHK((tmp = ft_strnew(1)) == NULL, -1);
+	CHK1((ft_arr_init(&x->extra, 5)) == -1, ft_arr_del(ret), -1);
 	(x->is_long == 1) ? (tmp1 = va_arg(clone, wint_t)) : (tmp2 = va_arg(clone, int));
 	org = (x->is_long == 1) ? (unsigned char)tmp1 : (unsigned char)tmp2;
-	if (x->width != 0)
-	{
-		index = (x->left == 1) ? 0 : x->width - 1;
-		CHK(ft_pad(&tmp, x, x->width) == -1, -1);
-		tmp[index] = org;
-	}
-	else
-	{
-		tmp[0] = org;
-		tmp[1] = 0; //Make sure that str is correctly stopped is being copied over.
-	}
-	ft_arr_append_str(&x->extra, tmp);
+	tmp[0] = org;
+	ft_arr_append(&x->extra, tmp);
 	free(tmp);
+	ft_width(x);
 	return (ft_printf_append(ret, fmt, x));
 }

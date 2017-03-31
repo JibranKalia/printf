@@ -6,25 +6,31 @@
 #    By: jkalia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/23 14:12:11 by jkalia            #+#    #+#              #
-#*   Updated: 2017/03/28 17:27:46 by jkalia           ###   ########.fr       *#
+#*   Updated: 2017/03/30 16:52:31 by jkalia           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
 NAME			:= libftprintf.a
 
 CC				:= gcc
-CFLAGS			+= -Wall -Wextra -Werror
+#CFLAGS			+= -Wall -Wextra
+#CFLAGS			+= -Werror
 CFLAGS			+= -I includes/
 
-TEST			:= test.c
+TESTFRAMEWORK	:= test/libmt_framework.a
 
+TEST			:= 73_precision_for_cC.spec.c \
+				main.c \
+				16_conv_c.spec.c \
+				17_conv_C.spec.c \
+	
 SRC_FILES		:= ft_printf.c \
 				dispatcher.c \
-				alloc_wrap.c \
 				ft_array.c \
 				ft_flags.c \
 				ft_printf_c.c \
 				ft_printf_d.c \
+				#alloc_wrap.c \
 
 LIBFT_FILES		:= ft_putchar.c \
 			  ft_putchar_fd.c \
@@ -101,9 +107,11 @@ LIBFT_FILES		:= ft_putchar.c \
 
 SRC				:= $(addprefix src/, $(SRC_FILES))
 LIBFT			:= $(addprefix src/libft/, $(LIBFT_FILES))
+TEST			:= $(addprefix test/, $(TEST))
 
 OBJ				:= $(SRC:.c=.o)
 OBJLIBFT 		:= $(LIBFT:.c=.o)
+OBJTEST			:= $(TEST:.c=.o)
 
 .PHONY = all clean fclean clean re
 
@@ -121,10 +129,17 @@ $(NAME): $(OBJLIBFT) $(OBJ)
 	@echo "\033[32mCreated Library\033[0m"
 
 clean:
-	@rm -rf $(OBJ) $(OBJLIBFT)
+	@rm -rf $(OBJ) $(OBJLIBFT) $(OBJTEST)
 	@echo "\033[32mRemoved Object Files\033[0m"
 
 fclean: clean
 	@rm -rf $(NAME)
 
 re: fclean all
+
+$(OBJTEST): %.o: %.c
+	@$(CC) -I includes -c $< -o $@
+
+test: $(NAME) $(OBJTEST)
+	@$(CC) -I includes $(NAME) $(OBJTEST)
+	./a.out

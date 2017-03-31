@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:07:51 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/29 14:03:19 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/30 13:27:47 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct		s_printf
 	unsigned int 	space:1;         /* Space flag.  */
 	unsigned int 	zero:1;          /* Zero flag.  */
 	unsigned int 	alt:1;           /* # flag.  */
+	uint8_t		len_mod;         /* Change below */
 	unsigned int 	is_long_double:1;/* L ll flag.  */
 	unsigned int 	is_short:1;      /* h flag.  */
 	unsigned int 	is_long:1;       /* l flag.  */
@@ -64,11 +65,14 @@ int		ft_vasprintf(char **ret, const char *fmt, va_list ap);
 */
 
 int8_t	ft_arr_init(t_arr *src, size_t cap);
-int8_t	ft_arr_append_str(t_arr *dst, char *src);
-int8_t	ft_arr_append_strn(t_arr *dst, char *src, size_t n);
+int8_t	ft_arr_append(t_arr *dst, const void *src);
+int8_t	ft_arr_appendn(t_arr *dst, const void *src, size_t n);
 int8_t	ft_arr_append_arr(t_arr *dst, t_arr *src);
-char	*ft_arrtostr(t_arr *src);
+int8_t	ft_arr_resize(t_arr *src, size_t sze);
+int8_t	ft_arr_insert(t_arr *dst, size_t index, const void *src);
+int8_t	ft_arr_insertn(t_arr *dst, size_t index, const void *src, size_t src_len);
 void	ft_arr_del(t_arr *src);
+char	*ft_arrtostr(t_arr *src);
 
 /*
 ** Flags
