@@ -6,7 +6,7 @@
 #    By: jkalia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/23 14:12:11 by jkalia            #+#    #+#              #
-#*   Updated: 2017/03/31 12:38:58 by jkalia           ###   ########.fr       *#
+#*   Updated: 2017/03/31 12:46:47 by jkalia           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -137,7 +137,7 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME)
-	@rm -rf testout main
+	@rm -rf test.out main.out
 
 re: fclean all
 
@@ -145,9 +145,9 @@ $(OBJTEST): %.o: %.c
 	@$(CC) -I includes -c $< -o $@
 
 test: $(NAME) $(OBJTEST)
-	@$(CC) $(CFLAGS) $(OBJTEST) $(LIBFTPRINTF) -o testout
-	./testout
+	@$(CC) $(CFLAGS) $(OBJTEST) $(LIBFTPRINTF) -o test.out
+	./test.out
 
 main: $(NAME)
-	@$(CC) $(CFLAGS) main.c $(LIBFTPRINTF) -o main
-	./main
+	@$(CC) $(CFLAGS) main.c $(LIBFTPRINTF) -o main.out
+	./main.out
