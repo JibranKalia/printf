@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:38:22 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/30 13:27:46 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/31 11:38:55 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,20 @@ int		ft_printf(const char *fmt, ...)
 	return (len);
 }
 
+int		ft_asprintf(char **ret, const char *fmt, ...)
+{
+	va_list		ap;
+	int			len;
+
+	if (fmt == 0 || *fmt == 0)
+		return (0);
+
+	va_start (ap, fmt);
+	len = ft_vasprintf(ret, fmt, ap); // ADD CHK
+	va_end (ap);
+	return (len);
+}
+
 int		ft_vasprintf(char **ret, const char *fmt, va_list ap)
 {
 	int			len;
@@ -47,5 +61,6 @@ int		ft_vasprintf(char **ret, const char *fmt, va_list ap)
 	va_end(clone);
 	return (len);
 }
+//TODO: Need to set pointer to null if return is -1;
 
 // there is another way to do it, parse the whole fmt string and va_arg to calculate the size of the malloc.

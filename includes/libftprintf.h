@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:07:51 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/30 13:27:47 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/03/31 11:32:26 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct		s_printf
 
 int		ft_printf(const char *in, ...);
 int		ft_vasprintf(char **ret, const char *fmt, va_list ap);
+int		ft_asprintf(char **ret, const char *fmt, ...);
 
 
 /*

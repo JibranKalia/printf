@@ -1,28 +1,35 @@
 #include <stdio.h>
 #include <libftprintf.h>
+#include <test.h>
 
-static void test_simple_char()
+static void test_simple(PARAMS)
 {
-	printf("\nExpected\n");
-	printf("%c", 'c');
-	printf("\nMine\n");
-	ft_printf("%c", 'c');
+	++*i;
+	ret1 = asprintf(&s1, "Output = %c\n", 'a');
+	ret2 = ft_asprintf(&s2, "Output = %c\n", 'a');
+	PRINT;
 }
 
-static void test_two_chars()
+static void test_simple_char(PARAMS)
 {
-	// test->debug = 1;
-	printf("\nExpected\n");
-	printf("%c%c", '4', '2');
-	printf("\nMine \n");
-	ft_printf("%c%c", '4', '2');
+	++*i;
+	ret1 = asprintf(&s1, "%c", 'c');
+	ret2 = ft_asprintf(&s2, "%c", 'c');
+	PRINT;
 }
 
-static void test_ascii_printable_chars()
+static void test_two_chars(PARAMS)
 {
-	// test->debug = 1;
-	printf("\nExpected\n");
-	printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c \
+	++*i;
+	ret1 = asprintf(&s1, "%c%c", '4', '2');
+	ret2 = ft_asprintf(&s2, "%c%c", '4', '2');
+	PRINT;
+}
+
+static void test_ascii_printable_chars(PARAMS)
+{
+	++*i;
+	ret1 = asprintf(&s1, "%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c \
 %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\
 %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",
 ' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-',
@@ -32,8 +39,7 @@ static void test_ascii_printable_chars()
 'X', 'Y', 'Z', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
 't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}');
-	printf("\nMine \n");
-	ft_printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c \
+	ret2 = ft_asprintf(&s2, "%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c \
 %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\
 %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",
 ' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-',
@@ -43,21 +49,26 @@ static void test_ascii_printable_chars()
 'X', 'Y', 'Z', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
 't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}');
+	PRINT;
 }
 
-static void test_zero()
+static void test_zero(PARAMS)
 {
-	// test->debug = 1;
-	printf("\nExpected\n");
-	printf("%c", 0);
-	printf("\nMine \n");
-	ft_printf("%c", 0);
+	++*i;
+	ret1 = asprintf(&s1, "%c", 0);
+	ret2 = ft_asprintf(&s2, "%c", 0);
+	PRINT;
 }	
 
-void	suite_16_conv_c()
+void	suite_16_conv_c(int *i)
 {
-	test_simple_char();
-	test_two_chars();
-	test_ascii_printable_chars();
-	test_zero();
+	char *s1;
+	char *s2;
+	int ret1;
+	int ret2;
+
+	test_simple_char(s1, s2, ret1, ret2, i);
+	test_two_chars(s1, s2, ret1, ret2, i);
+	test_ascii_printable_chars(s1, s2, ret1, ret2, i);
+	test_zero(s1, s2, ret1, ret2, i);
 }

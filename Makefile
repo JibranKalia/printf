@@ -6,23 +6,24 @@
 #    By: jkalia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/23 14:12:11 by jkalia            #+#    #+#              #
-#*   Updated: 2017/03/30 16:52:31 by jkalia           ###   ########.fr       *#
+#*   Updated: 2017/03/31 12:38:58 by jkalia           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
 NAME			:= libftprintf.a
 
 CC				:= gcc
-#CFLAGS			+= -Wall -Wextra
-#CFLAGS			+= -Werror
+CFLAGS			+= -Wall -Wextra
+CFLAGS			+= -Werror
 CFLAGS			+= -I includes/
 
-TESTFRAMEWORK	:= test/libmt_framework.a
-
-TEST			:= 73_precision_for_cC.spec.c \
-				main.c \
+TEST			:= unittest.c \
+				test_util.c \
 				16_conv_c.spec.c \
-				17_conv_C.spec.c \
+#				73_precision_for_cC.spec.c \
+#				17_conv_C.spec.c \
+
+LIBFTPRINTF		:= -L. -lftprintf
 	
 SRC_FILES		:= ft_printf.c \
 				dispatcher.c \
@@ -95,6 +96,7 @@ LIBFT_FILES		:= ft_putchar.c \
 			  ft_strmapi.c \
 			  ft_atoi.c \
 			  ft_itoa.c \
+			  ft_nbrlen.c \
 			  ft_abs.c \
 			  ft_lstnew.c \
 			  ft_lstadd.c \
@@ -130,10 +132,12 @@ $(NAME): $(OBJLIBFT) $(OBJ)
 
 clean:
 	@rm -rf $(OBJ) $(OBJLIBFT) $(OBJTEST)
+	@rm -rf main.o
 	@echo "\033[32mRemoved Object Files\033[0m"
 
 fclean: clean
 	@rm -rf $(NAME)
+	@rm -rf testout main
 
 re: fclean all
 
@@ -141,5 +145,9 @@ $(OBJTEST): %.o: %.c
 	@$(CC) -I includes -c $< -o $@
 
 test: $(NAME) $(OBJTEST)
-	@$(CC) -I includes $(NAME) $(OBJTEST)
-	./a.out
+	@$(CC) $(CFLAGS) $(OBJTEST) $(LIBFTPRINTF) -o testout
+	./testout
+
+main: $(NAME)
+	@$(CC) $(CFLAGS) main.c $(LIBFTPRINTF) -o main
+	./main
