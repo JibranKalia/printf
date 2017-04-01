@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 16:58:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/30 20:53:32 by                  ###   ########.fr       */
+/*   Updated: 2017/04/01 09:17:57 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,10 +116,12 @@ void				*ft_realloc(void *src, size_t srcsize, size_t newsize);
 ** Conversion
 */
 
+int					ft_abs(int i);
 int					ft_atoi(const char *str);
 char				*ft_itoa(intmax_t nb);
-int					ft_abs(int i);
+char				*ft_itoa_base(uintmax_t n, int8_t base, const char *spec);
 int8_t				ft_nbrlen(intmax_t src);
+int8_t				ft_nbrlen_base(uintmax_t src, int8_t base);
 
 /*
 ** List
