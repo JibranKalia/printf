@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/03/29 13:40:08 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/01 12:14:42 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,52 +41,50 @@ int		ft_printf_flags(const char **fmt, t_printf *x)			//What should this be retu
 		else if (**fmt == '0')
 		{
 			printf("Zero Flag\n");
-			x->zero = 1;
+			if (x -> left == 0) /** It is ignored if - flag is present.**/
+				x->zero = 1;
 		}
 		++*fmt;
 		++x->extra.len;
 	}
 	x->pad = (x->zero) ? '0' : ' '; //Doing at the end after all the flags are handled
-	return (x->extra.len);
+	return (0);
 }
 
 int8_t	ft_printf_width(const char **fmt, t_printf *x)			//What should this be returning?
 {
-	size_t	i;
-	char	tmp[20];
+	size_t	res;
 
-	i = 0;
-	ft_bzero(tmp, 20);
+	res = 0;
+	if (**fmt == '0')
+		return (ft_printf_flags(fmt, x)); //Starting with zero is a flag);
+
 	while (ISDIGIT(**fmt))
 	{
-		tmp[i] = **fmt;
-		++i;
+		res = res * 10 + (**fmt - '0');
 		++*fmt;
 	}
-	x->width = ft_atoi(tmp);
+	x->width = res;
 	printf("Width = %d\n", x->width);
 	return (0);
 }
 
 int8_t	ft_printf_dot(const char **fmt, t_printf *x)
 {
-	size_t	i;
-	char	tmp[20];
+	size_t	res;
 
-	i = 0;
+	res = 0;
 	if (**fmt != '.')
 		return (-1);		//This error doesn't go anywhere
 	++*fmt;
 	x->is_prec = 1;
-	ft_bzero(tmp, 20);
 	while (ISDIGIT(**fmt))
 	{
-		tmp[i] = **fmt;
-		++i;
+		res = res * 10 + (**fmt - '0');
 		++*fmt;
 	}
-	x->prec = ft_atoi(tmp);
-	//printf("Precision = %d\n", x->prec);
+	x->prec = res;
+	printf("Precision = %d\n", x->prec);
 	return (0);
 }
 
@@ -95,37 +93,40 @@ int8_t	ft_printf_length(const char **fmt, t_printf *x)
 	if (ft_strnstr(*fmt, "hh", 2) != NULL)
 	{
 		printf("hh Flag \n");
-		x->is_char = 1;
+		x->len_mod = 1;
+		++*fmt;
 	}
-	if (ft_strnstr(*fmt, "h", 1) != NULL)
+	else if (ft_strnstr(*fmt, "h", 1) != NULL)
 	{
 		printf("h Flag\n");
-		x->is_short = 1;
+		x->len_mod = 2;
 	}
-	if (ft_strnstr(*fmt, "ll", 2) != NULL)
+	else if (ft_strnstr(*fmt, "ll", 2) != NULL)
 	{
 		printf("ll Flag\n");
-		x->is_long_double = 1;
+		x->len_mod = 4;
+		++*fmt;
 	}
-	if (ft_strnstr(*fmt, "L", 1) != NULL)
-	{
-		printf("L Flag\n");
-		x->is_long_double = 1;
-	}
-	if (ft_strnstr(*fmt, "l", 1) != NULL)
+	else if (ft_strnstr(*fmt, "l", 1) != NULL)
 	{
 		printf("l Flag\n");
-		x->is_long = 1;
+		x->len_mod = 3;
 	}
-	if (ft_strnstr(*fmt, "j", 1) != NULL)
+	else if (ft_strnstr(*fmt, "L", 1) != NULL)
 	{
-		printf("j Flag\n");
-		x->is_intmax = 1;
+		printf("L Flag\n");
+		x->len_mod = 5;
 	}
-	if (ft_strnstr(*fmt, "z", 1) != NULL)
+	else if (ft_strnstr(*fmt, "z", 1) != NULL)
 	{
 		printf("z Flag\n");
-		x->is_sizet = 1;
+		x->len_mod = 6;
 	}
+	else if (ft_strnstr(*fmt, "j", 1) != NULL)
+	{
+		printf("j Flag\n");
+		x->len_mod = 7;
+	}
+	++*fmt;
 	return (0);
 }
