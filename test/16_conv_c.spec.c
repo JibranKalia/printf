@@ -60,6 +60,35 @@ static void test_zero(PARAMS)
 	PRINT;
 }	
 
+static void completed_c1(PARAMS)
+{
+	int n = -1;
+	++*i;
+	while (++n < 127)
+	{
+		ret1 = asprintf(&s1, "%30c %+30c %-30c %030c % 30c", n, n, n, n, n);
+		ret2 = ft_asprintf(&s2, "%30c %+30c %-30c %030c % 30c", n, n, n, n, n);
+		if (strcmp(s1, s2))
+			break;
+	}
+	PRINT;
+
+}
+
+static void completed_c2(PARAMS)
+{
+	int n = -1;
+	++*i;
+	while (++n < 127)
+	{
+		ret1 = asprintf(&s1, "% -30c %+-30c %0-30c %-030c %0 -30c %0000-30c", 65, 65, 65, 65, 65, 65);
+		ret2 = ft_asprintf(&s2, "% -30c %+-30c %0-30c %-030c %0 -30c %0000-30c", 65, 65, 65, 65, 65, 65);
+		if (strcmp(s1, s2))
+			break;
+	}
+	PRINT;
+}
+
 void	suite_16_conv_c(int *i)
 {
 	char *s1;
@@ -71,4 +100,6 @@ void	suite_16_conv_c(int *i)
 	test_two_chars(s1, s2, ret1, ret2, i);
 	test_ascii_printable_chars(s1, s2, ret1, ret2, i);
 	test_zero(s1, s2, ret1, ret2, i);
+	completed_c1(s1, s2, ret1, ret2, i);
+	completed_c2(s1, s2, ret1, ret2, i);
 }
