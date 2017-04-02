@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:00:15 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/01 19:17:41 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/01 20:00:43 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static intmax_t		ft_printf_d_len(t_printf *x, va_list clone)
 		return (va_arg(clone, intmax_t));
 	if (x->len_mod == 6)
 		return (va_arg(clone, ssize_t));
+	return (0);
 }
 
 static int8_t		ft_printf_d_dot(t_printf *x)
@@ -57,15 +58,19 @@ int8_t				ft_printf_d(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	intmax_t	org;
 	char		*nbr;
 
-	if (x->len_mod == 7)     // L doesn't work with d.
+	if (x->len_mod == 7)                                           // L doesn't work with d.
 		return (-1);
-	if (x->is_prec == 1)   // for integer numbers it is ignored if the precision is explicitly specified.
+	if (x->is_prec == 1)                                          // for integer numbers it is ignored if the precision is explicitly specified.
 		x->zero = 0;
 	CHK1((ft_arr_init(&x->extra, 5)) == -1, ft_arr_del(ret), -1);
 	org = ft_printf_d_len(x, clone);
-	nbr = ft_itoa(org);				//ITOA BASE
+	if (x->prec == 0 && x->is_prec == 1 && org == 0)               //if both the converted value and the precision are 0 the conversion results in no characters.
+		return (ft_printf_append(ret, fmt, x));
+	nbr = ft_itoa(org);
 	ft_arr_appendn(&x->extra, nbr, ft_strlen(nbr));
 	ft_printf_d_dot(x);
+	if (org > 0 && x->showsign == 1)
+		ft_arr_insert(&x->extra, 0, "+");
 	free(nbr);
 	ft_width(x);
 	return (ft_printf_append(ret, fmt, x));

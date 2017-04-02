@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/01 18:13:57 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/01 19:50:37 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ int		ft_printf_flags(const char **fmt, t_printf *x)			//What should this be retu
 		}
 		else if (**fmt == ' ')
 		{
+			if (x->showsign == 0)  //flag ' ' is ignored when flag '+' is present
+				x->space = 1;
 			printf("Space Flag\n");
-			x->space = 1;
 		}
 		else if (**fmt == '#')
 		{
@@ -41,7 +42,7 @@ int		ft_printf_flags(const char **fmt, t_printf *x)			//What should this be retu
 		else if (**fmt == '0')
 		{
 			printf("Zero Flag\n");
-			if (x -> left == 0) /** It is ignored if - flag is present.**/
+			if (x -> left == 0) /** flag '0' is ignored if - flag is present.**/
 				x->zero = 1;
 		}
 		++*fmt;
