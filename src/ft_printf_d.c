@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:00:15 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/01 20:00:43 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/01 20:11:40 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int8_t				ft_printf_d(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	intmax_t	org;
 	char		*nbr;
 
-	if (x->len_mod == 7)                                           // L doesn't work with d.
-		return (-1);
+	//if (x->len_mod == 7)                                           // L doesn't work with d.
+	//	return (-1);
 	if (x->is_prec == 1)                                          // for integer numbers it is ignored if the precision is explicitly specified.
 		x->zero = 0;
 	CHK1((ft_arr_init(&x->extra, 5)) == -1, ft_arr_del(ret), -1);

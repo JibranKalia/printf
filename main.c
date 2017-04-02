@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/01 20:00:50 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/01 20:14:44 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ int		main(void)
 	i = x;
 	printf("Libc:\n");
 	printf("++++++++++++++++++++++++++++++\n");
-	ret[0] = printf("[Char: %.0d %.10d]\n", 0, i, i);
+	ret[0] = printf("[Char: %10.15d %-.15lld]\n", i, i);
 	printf("++++++++++++++++++++++++++++++\n");
 	printf("ret[0] = %d\n", ret[0]);
 	printf("\n\n");
 
 	printf("Mine:\n");
 	printf("++++++++++++++++++++++++++++++\n");
-	ret[1] = ft_printf("[Char: %.0d %.10d]\n", 0, i, i);
+	ret[1] = ft_printf("[Char: %10.15d %.15lld]\n", i, i);
 	printf("++++++++++++++++++++++++++++++\n");
 	printf("ret[1] = %d\n", ret[1]);
 	return (0);

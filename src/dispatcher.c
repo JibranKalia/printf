@@ -6,29 +6,52 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/01 12:01:27 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/01 21:07:17 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-int8_t		ft_printf_append(t_arr *ret, const char **fmt, t_printf *x)
+#define LEN1 26
+#define LEN2 3
+typedef int8_t FUNC(t_arr *, const char **, t_printf *, va_list);
+
+static char g_tbl[LEN1][LEN2] =
 {
-//	printf("FMT 1 = %s\n", *fmt);
-//	printf("Append = %s\n", x->extra.ptr);
-	CHK2((ft_arr_append_arr(ret, &x->extra)) == -1, ft_arr_del(ret), ft_arr_del(&x->extra), -1);
-	++*fmt;
-	return (0);
+	{"-"}, {"+"}, {" "}, {"#"}, {"0"},
+	{"1"}, {"2"}, {"3"}, {"4"}, {"5"},
+	{"6"}, {"7"}, {"8"}, {"9"}, {"."},
+	{"hh"}, {"h"}, {"ll"}, {"L"}, {"l"},
+	{"j"}, {"z"}, {"c"}, {"C"}, {"d"},
+	{"i"}
+};
+
+FUNC *g_func[LEN1] =
+{
+	ft_printf_flags, ft_printf_flags, ft_printf_flags, ft_printf_flags, ft_printf_flags,
+	ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width, 
+	ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_dot,
+	ft_printf_length, ft_printf_length, ft_printf_length, ft_printf_length, ft_printf_length,
+	ft_printf_length, ft_printf_length, ft_printf_c, ft_printf_c, ft_printf_d, ft_printf_d
+};
+
+//static int	choosetype(
+static int	choosetype(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
+{
+	int i;
+
+	while (i < LEN1)
+	{
+		if (ft_strnstr(*fmt, g_tbl[i], 1) != NULL)
+		{
+			g_func[i];
+			break;
+		}
+		i++;
+	}
 }
 
-int8_t		ft_printf_init(t_printf *x)
-{
-	ft_bzero(x, sizeof(t_printf));
-	x->prec = -1; //Initial value of prec is -1
-	x->pad = ' '; //Initial value of pad is ' '
-	return (0);
-}
-
+/**
 static int	choosetype(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 {
 	if (ft_strnstr(*fmt, "-", 1) != NULL)
@@ -59,8 +82,8 @@ static int	choosetype(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 		ft_printf_width(fmt, x);
 	if (ft_strnstr(*fmt, "9", 1) != NULL)
 		ft_printf_width(fmt, x);
-
-
+	if (ft_strnstr(*fmt, ".", 1) != NULL)
+		ft_printf_dot(fmt, x);
 	if (ft_strnstr(*fmt, "hh", 2) != NULL)
 		ft_printf_length(fmt, x);
 	if (ft_strnstr(*fmt, "h", 1) != NULL)
@@ -77,8 +100,6 @@ static int	choosetype(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 		ft_printf_length(fmt, x);
 
 
-	if (ft_strnstr(*fmt, ".", 1) != NULL)
-		ft_printf_dot(fmt, x);
 	if (ft_strnstr(*fmt, "c", 1) != NULL)
 		return(ft_printf_c(ret, fmt, x, clone));
 	if (ft_strnstr(*fmt, "C", 1) != NULL)
@@ -95,7 +116,7 @@ static int	choosetype(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 
 	return (0); //Doesn't Match any of the types ????
 }
-
+**/
 int			dispatch(char **final, const char *fmt, va_list clone)
 {
 	size_t			i;
@@ -124,4 +145,3 @@ int			dispatch(char **final, const char *fmt, va_list clone)
 	*final = ft_arrtostr(&ret);
 	return (ret.len);
 }
-

@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:01:25 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/01 19:40:18 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/01 20:19:24 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,3 +126,19 @@ char	*ft_arrtostr(t_arr *src)
 	CHK(src->cap == 0, 0);
 	return (src->ptr);
 }
+
+int8_t		ft_printf_append(t_arr *ret, const char **fmt, t_printf *x)
+{
+	CHK2((ft_arr_append_arr(ret, &x->extra)) == -1, ft_arr_del(ret), ft_arr_del(&x->extra), -1);
+	++*fmt;
+	return (0);
+}
+
+int8_t		ft_printf_init(t_printf *x)
+{
+	ft_bzero(x, sizeof(t_printf));
+	x->prec = -1; //Initial value of prec is -1
+	x->pad = ' '; //Initial value of pad is ' '
+	return (0);
+}
+

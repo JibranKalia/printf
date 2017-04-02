@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/01 19:50:37 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/01 20:15:28 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@ int8_t	ft_printf_dot(const char **fmt, t_printf *x)
 	size_t	res;
 
 	res = 0;
-	if (**fmt != '.')
-		return (-1);		//This error doesn't go anywhere
 	++*fmt;
 	x->is_prec = 1;
 	while (ISDIGIT(**fmt))
