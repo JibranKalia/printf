@@ -6,7 +6,7 @@
 #    By: jkalia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/23 14:12:11 by jkalia            #+#    #+#              #
-#*   Updated: 2017/04/01 12:03:13 by jkalia           ###   ########.fr       *#
+#*   Updated: 2017/04/01 18:49:03 by jkalia           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ CFLAGS			+= -I includes/
 
 TEST			:= unittest.c \
 				test_util.c \
+				03_conv_d.spec.c \
 				16_conv_c.spec.c \
 				17_conv_C.spec.c \
 				73_precision_for_cC.spec.c \

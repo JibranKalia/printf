@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 11:19:09 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/01 11:56:34 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/01 18:54:51 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ void	test_c(char *s1, char *s2, int ret1, int ret2, int *i)
 //	suite_73_precision_for_cC(i);
 }
 
+void	test_d(char *s1, char *s2, int ret1, int ret2, int *i)
+{
+	SUITEINFO(3);
+	suite_03_conv_d(i);
+}
 
 int		main(void)
 {
@@ -41,6 +46,6 @@ int		main(void)
 	int		ret2;
 	int		i;
 
-	i = 0;
-	test_c(s1, s2, ret1, ret2, &i);
+//	test_c(s1, s2, ret1, ret2, &i);
+	test_d(s1, s2, ret1, ret2, &i);
 }

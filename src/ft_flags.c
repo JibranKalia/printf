@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/01 12:14:42 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/01 18:13:57 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,9 @@ int8_t	ft_printf_length(const char **fmt, t_printf *x)
 		printf("l Flag\n");
 		x->len_mod = 3;
 	}
-	else if (ft_strnstr(*fmt, "L", 1) != NULL)
+	else if (ft_strnstr(*fmt, "j", 1) != NULL)
 	{
-		printf("L Flag\n");
+		printf("j Flag\n");
 		x->len_mod = 5;
 	}
 	else if (ft_strnstr(*fmt, "z", 1) != NULL)
@@ -122,9 +122,9 @@ int8_t	ft_printf_length(const char **fmt, t_printf *x)
 		printf("z Flag\n");
 		x->len_mod = 6;
 	}
-	else if (ft_strnstr(*fmt, "j", 1) != NULL)
+	else if (ft_strnstr(*fmt, "L", 1) != NULL)
 	{
-		printf("j Flag\n");
+		printf("L Flag\n");
 		x->len_mod = 7;
 	}
 	++*fmt;

@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <test.h>
 
-#define PARAMS2 s1, s2, ret1,ret2, i
-
 static void test_simple_char(PARAMS)
 {
 	++*i;

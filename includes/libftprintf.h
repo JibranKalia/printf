@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:07:51 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/01 11:35:53 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/01 19:07:51 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@
 # include <limits.h>
 # include <stdint.h>
 # include <wchar.h> //needed for wchar_t in %c
-
-
-
 # include <stdio.h>  //Don't Forget to Remove!!!!
 
 # include "libft.h"
@@ -38,9 +35,9 @@ typedef struct		s_arr
 **					2 h;
 **					3 l;
 **					4 ll;
-**					5 L;
+**					5 j;
 **					6 z;
-**					7 j;
+**					7 L;
 */
 
 typedef struct		s_printf
