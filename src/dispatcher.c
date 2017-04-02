@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/01 21:07:17 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/01 21:22:04 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 #define LEN1 26
 #define LEN2 3
-typedef int8_t FUNC(t_arr *, const char **, t_printf *, va_list);
 
 static char g_tbl[LEN1][LEN2] =
 {
-	{"-"}, {"+"}, {" "}, {"#"}, {"0"},
+	{"-", 
+	}, {"+"}, {" "}, {"#"}, {"0"},
 	{"1"}, {"2"}, {"3"}, {"4"}, {"5"},
 	{"6"}, {"7"}, {"8"}, {"9"}, {"."},
 	{"hh"}, {"h"}, {"ll"}, {"L"}, {"l"},
@@ -39,13 +39,17 @@ FUNC *g_func[LEN1] =
 static int	choosetype(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 {
 	int i;
+	int r;
 
+	i = 0;
 	while (i < LEN1)
 	{
 		if (ft_strnstr(*fmt, g_tbl[i], 1) != NULL)
 		{
-			g_func[i];
-			break;
+			printf("Here \n");
+			r = g_func[i];
+			if (r != 0)
+				return (0);
 		}
 		i++;
 	}

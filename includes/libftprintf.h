@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:07:51 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/01 21:07:15 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/01 21:22:51 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <stdio.h>  //Don't Forget to Remove!!!!
 
 # include "libft.h"
+# include "test.h"
 
 typedef struct		s_arr
 {
@@ -56,6 +57,8 @@ typedef struct		s_printf
 	char	 		pad;             /* Padding character.  The value is '0' if the ‘0’ flag was specified, and ' ' otherwise.*/
 
 }					t_printf;
+
+typedef int8_t FUNC(t_arr *, const char **, t_printf *, va_list);
 
 int					ft_printf(const char *in, ...);
 int					ft_vasprintf(char **ret, const char *fmt, va_list ap);
