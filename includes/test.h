@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 11:59:53 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/02 21:23:29 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/03 00:01:37 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@
 
 void	printout(char **src1, char **src2, int ret1, int ret2, int count);
 
-void	suite_73_precision_for_cC(int *i);
+void	suite_03_conv_d(int *i);
+void	suite_14_conv_x(int *i);
 void	suite_16_conv_c(int *i);
 void	suite_17_conv_C(int *i);
-void	suite_03_conv_d(int *i);
+void	suite_73_precision_for_cC(int *i);
 
 #endif

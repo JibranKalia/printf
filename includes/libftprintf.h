@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:07:51 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/02 20:15:06 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/02 23:00:38 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,6 @@ typedef struct		s_arr
 	size_t			len;
 	size_t			cap;
 }					t_arr;
-
-/*
-**					1 hh;
-**					2 h;
-**					3 l;
-**					4 ll;
-**					5 j;
-**					6 z;
-**					7 L;
-*/
 
 typedef struct		s_printf
 {
@@ -82,13 +72,6 @@ char				*ft_arrtostr(t_arr *src);
 ** Flags
 */
 
-# define MASK 0x80
-# define NGV 0x1
-# define PSV 0x2
-# define SPC 0x4
-# define HSH 0x8
-# define ZRO 0x10
-
 int8_t				ft_printf_flags(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
 int8_t				ft_handlewidth(t_printf *x);
 
@@ -115,9 +98,12 @@ int8_t				ft_printf_length(t_arr *ret, const char **fmt, t_printf *x, va_list cl
 ** Functions
 */
 
+uintmax_t			ft_printf_uox_len(t_printf *x, va_list clone);
 int8_t				ft_printf_init(t_printf *x);
 int8_t				ft_printf_d(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
+int8_t				ft_printf_X(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
 int8_t				ft_printf_c(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
+int8_t				ft_printf_C(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
 int8_t				ft_printf_append(t_arr *ret, const char **fmt, t_printf *x);
 int					dispatch(char **final, const char *fmt, va_list clone);
 
