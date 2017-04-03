@@ -51,6 +51,15 @@ static void test_uint_max(PARAMS)
 	PRINT;
 }
 
+static void jibran_test1(PARAMS)
+{
+	int x = 65;
+	++*i;
+	ret1 = asprintf(&s1, "[%X] [%#x] [%5-.15x] [%10.5x] [%10.15X] [%10.#15x] [%10#.15x]\n", x, x, x, x, x, x, x);
+	ret2 = ft_asprintf(&s2, "[%X] [%#x] [%5-.15x] [%10.5x] [%10.15X] [%10.#15x] [%10#.15x]\n", x, x, x, x, x, x, x);
+	PRINT;
+}
+
 void	suite_14_conv_x(int *i)
 {
 	char *s1;
@@ -63,4 +72,5 @@ void	suite_14_conv_x(int *i)
 	test_many_hexs(PARAMS2);
 	test_many_hexs_with_strings(PARAMS2);
 	test_uint_max(PARAMS2);
+	jibran_test1(PARAMS2);
 }

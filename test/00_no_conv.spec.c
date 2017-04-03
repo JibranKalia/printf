@@ -25,6 +25,7 @@ static void empty_string(PARAMS)
 
 	++*i;
 	ret1 = asprintf(&s1, "");
+	printf("Seg Here?\n");
 	ret2 = ft_asprintf(&s2, "");
 	PRINT;
 }

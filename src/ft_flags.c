@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/02 23:31:15 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/03 12:31:03 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int8_t				ft_printf_width(t_arr *ret, const char **fmt, t_printf *x, va_list clo
 		++*fmt;
 	}
 	x->width = res;
-	printf("Width = %d\n", x->width);
+//	printf("Width = %d\n", x->width);
 	return (0);
 }
 
@@ -102,7 +102,7 @@ int8_t	ft_printf_dot(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 		++*fmt;
 	}
 	x->prec = res;
-	printf("Precision = %d\n", x->prec);
+//	printf("Precision = %d\n", x->prec);
 	return (0);
 }
 
@@ -140,7 +140,7 @@ int8_t	ft_printf_length(t_arr *ret, const char **fmt, t_printf *x, va_list clone
 		}
 		x->len_mod = (index > x->len_mod) ? index : x->len_mod;
 		++*fmt;
-		printf("Len Mod = %d\n", x->len_mod);
+//		printf("Len Mod = %d\n", x->len_mod);
 	}
 	return (0);
 }
