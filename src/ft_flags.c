@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/02 21:10:22 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/02 21:17:25 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,20 +111,13 @@ int8_t	ft_printf_length(t_arr *ret, const char **fmt, t_printf *x, va_list clone
 		if (index == 1)
 		{
 			if (*(*fmt + 1) == 'h')
-			{
-				index = 1;
 				++*fmt;
-			}
 			else
 				index = 2;
 		}
 		if (index == 3)
 		{
-			if (*(*fmt + 1) == 'l')
-			{
-				++index;
-				++*fmt;
-			}
+			index = ((*(*fmt + 1)) == 'l') ? index + 1 : index;   //If it is 'll' index is incremented to 4
 		}
 		x->len_mod = (index > x->len_mod) ? index : x->len_mod;
 		++*fmt;

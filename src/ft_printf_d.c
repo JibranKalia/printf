@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:00:15 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/02 19:57:41 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/02 21:25:36 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static intmax_t		ft_printf_d_len(t_printf *x, va_list clone)
 {
-	if (x->len_mod == 0)
+	if (x->len_mod == 0 || x->len_mod == 7)
 		return (va_arg(clone, int));
 	if (x->len_mod == 1)
 		return ((signed char)va_arg(clone, int));
