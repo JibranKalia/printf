@@ -6,14 +6,15 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/02 23:22:37 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/03 12:44:25 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-#define LEN1 35
+#define LEN1 29
 #define LEN2 2
+#define TYPEFIELD 22
 
 typedef int8_t FUNC(t_arr *, const char **, t_printf *, va_list);
 
@@ -56,7 +57,8 @@ static int	choosetype(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 			if ((check(fmt, i)) == 1)
 			{
 				CHK(g_func[i](ret, fmt, x, clone) == -1, -1);
-				i = -1;                            //Reset to test from beginning
+				if (i < TYPEFIELD)
+					i = -1;                            //Reset counter to beginnning only if type field is not reached
 			}
 		}
 	}
