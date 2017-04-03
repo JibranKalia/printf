@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:00:15 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/02 22:34:49 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/03 12:54:00 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ static int8_t		ft_printf_d_dot(t_printf *x)
 	char	*tmp;
 	int		diff;
 
-	if (x->is_prec == 0)
+	if (x->is_prec == 0 && x->prec == 0)                 //Precision is set to zero
 		return (0);
-	if (x->prec == 0)                 //Not sure what to do in this case
-		return (0);
+	if (x->is_prec == 0)                                  //If no precision is set. Default is 1
+		x->prec = 0;
 	if (x->prec < x->extra.len)      //Nbr len is more than precession.
 		return (0);
 	diff = x->prec - x->extra.len;

@@ -6,13 +6,13 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/03 12:44:25 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/03 13:19:06 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-#define LEN1 29
+#define LEN1 31
 #define LEN2 2
 #define TYPEFIELD 22
 
@@ -25,7 +25,8 @@ static char g_tbl[LEN1][LEN2] =
 	{"6"}, {"7"}, {"8"}, {"9"}, {"."},
 	{"hh"}, {"h"}, {"ll"}, {"L"}, {"l"},
 	{"j"}, {"z"}, {"c"}, {"C"}, {"d"},
-	{"D"}, {"i"}, {"x"}, {"X"}};
+	{"D"}, {"i"}, {"x"}, {"X"}, {"o"},
+	{"O"}};
 
 FUNC  *g_func[LEN1] = {
 	ft_printf_flags, ft_printf_flags, ft_printf_flags, ft_printf_flags, ft_printf_flags,
@@ -33,7 +34,8 @@ FUNC  *g_func[LEN1] = {
 	ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_dot,
 	ft_printf_length, ft_printf_length, ft_printf_length, ft_printf_length, ft_printf_length,
 	ft_printf_length, ft_printf_length, ft_printf_c, ft_printf_C, ft_printf_d,
-	ft_printf_d, ft_printf_d, ft_printf_X, ft_printf_X};
+	ft_printf_d, ft_printf_d, ft_printf_X, ft_printf_X, ft_printf_o,
+	ft_printf_o};
 
 static int8_t	check(const char **fmt, int i)
 {

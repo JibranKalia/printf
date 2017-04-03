@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/03 12:38:58 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/03 13:24:03 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int		main(void)
 	char	*s2;
 	char	*tmp;
 
-	ret1 = asprintf(&s1, "[Char: %10.15d %.15llhhd]\n", x, x);
-	ret2 = ft_asprintf(&s2, "[Char: %10.15d %.15llhhd]\n", x, x);
+	ret1 = asprintf(&s1, "[Char: [%o] [%.0o] [%#.0o] [%#o] [%#o] [%10.15o] [%.15llhhO]\n", 0, 0, 0, 0, x, x, x);
+	ret2 = ft_asprintf(&s2, "[Char: [%o] [%.0o] [%#.0o] [%#o] [%#o] [%10.15o] [%.15llhhO]\n", 0, 0, 0, 0, x, x, x);
 
 	if (strcmp(s1, s2) || ret1 != ret2)
 	{

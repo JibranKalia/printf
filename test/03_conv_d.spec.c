@@ -133,8 +133,8 @@ static void basic_conversion2(PARAMS)
 
 	x = 65;
 	++*i;
-	ret1 = asprintf(&s1, "[Char: %10.15d %.15llhhd]\n", x, x);
-	ret2 = ft_asprintf(&s2, "[Char: %10.15d %.15llhhd]\n", x, x);
+	ret1 = asprintf(&s1, "[Char: %d %.0d %10.15d %.15llhhd]\n", 0, 0, x, x);
+	ret2 = ft_asprintf(&s2, "[Char: %d %.0d %10.15d %.15llhhd]\n", 0, 0, x, x);
 	PRINT;
 }
 

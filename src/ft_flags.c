@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/03 12:31:03 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/03 12:55:12 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int8_t		ft_handlewidth(t_printf *x)
 	int		diff;
 	size_t	index;
 
-	if (x->is_prec == 1) //Make sure pad is space if precision exists not zero.
+	if (x->is_prec == 1)                     //Make sure pad is space if precision is set. (This doesn't include default precision);
 		x->pad = ' ';
 	diff = x->width - x->extra.len;
 	index = (x->left == 1) ? x->extra.len : 0;
@@ -85,7 +85,7 @@ int8_t				ft_printf_width(t_arr *ret, const char **fmt, t_printf *x, va_list clo
 		++*fmt;
 	}
 	x->width = res;
-//	printf("Width = %d\n", x->width);
+	printf("Width = %d\n", x->width);
 	return (0);
 }
 
@@ -102,7 +102,7 @@ int8_t	ft_printf_dot(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 		++*fmt;
 	}
 	x->prec = res;
-//	printf("Precision = %d\n", x->prec);
+	printf("Precision = %d\n", x->prec);
 	return (0);
 }
 

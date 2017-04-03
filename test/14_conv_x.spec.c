@@ -46,8 +46,10 @@ static void test_uint_max(PARAMS)
 {
 
 	++*i;
-	ret1 = asprintf(&s1, "%x, %x", 0, UINT_MAX);
-	ret2 = ft_asprintf(&s2, "%x, %x", 0, UINT_MAX);
+	ret1 = asprintf(&s1, "%x, %.0x, %x", 0, 0, UINT_MAX);
+	printf( "%x, %.0x, %x\n", 0, 0, UINT_MAX);
+	ft_printf( "%x, %.0x, %x\n", 0, 0, UINT_MAX);
+	ret2 = ft_asprintf(&s2, "%x, %.0x, %x", 0, 0, UINT_MAX);
 	PRINT;
 }
 
