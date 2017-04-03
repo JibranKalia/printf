@@ -81,6 +81,41 @@ static void basic_conversion(PARAMS)
 		PRINT;
 }
 
+static void basic_conversion0(PARAMS)
+{
+	++*i;
+	intmax_t x;
+	x = 10;
+	while (x < UINTMAX_MAX && x != 0)
+	{
+		x *= 10;
+		ret1 = asprintf(&s1, "%hhhdldjdzd", x, x, x, x, x, x);
+		ret2 = ft_asprintf(&s2, "%hhhdldjdzd", x, x, x, x, x, x);
+		if (strcmp(s1, s2) != 0)
+			break;
+		if (ret1 != ret2)
+			break;
+	}
+		PRINT;
+}
+
+static void basic_conversion01(PARAMS)
+{
+	++*i;
+	intmax_t x;
+	x = 10;
+	while (x < UINTMAX_MAX && x != 0)
+	{
+		x *= 10;
+		ret1 = asprintf(&s1, "%hhjhzdlddd", x, x, x, x, x, x);
+		ret2 = ft_asprintf(&s2, "%hhjhzdlddd", x, x, x, x, x, x);
+		if (strcmp(s1, s2) != 0)
+			break;
+		if (ret1 != ret2)
+			break;
+	}
+		PRINT;
+}
 static void basic_conversion1(PARAMS)
 {
 	int x;
@@ -91,6 +126,18 @@ static void basic_conversion1(PARAMS)
 	ret2 = ft_asprintf(&s2, "[Char: %-010.5d %-10.15d %010.45d %10.45d]\n", x, x, x, x);
 	PRINT;
 }
+
+static void basic_conversion2(PARAMS)
+{
+	int x;
+
+	x = 65;
+	++*i;
+	ret1 = asprintf(&s1, "[Char: %10.15d %.15llhhd]\n", x, x);
+	ret2 = ft_asprintf(&s2, "[Char: %10.15d %.15llhhd]\n", x, x);
+	PRINT;
+}
+
 void	suite_03_conv_d(int *i)
 {
 	char *s1;
@@ -106,5 +153,8 @@ void	suite_03_conv_d(int *i)
 	test_int_max(PARAMS2);
 	test_int_min(PARAMS2);
 	basic_conversion(PARAMS2);
+	basic_conversion0(PARAMS2);
+	basic_conversion01(PARAMS2);
 	basic_conversion1(PARAMS2);
+	basic_conversion2(PARAMS2);
 }

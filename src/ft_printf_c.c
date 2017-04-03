@@ -6,13 +6,13 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:02:19 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/01 12:23:50 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/02 19:58:16 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-int8_t		ft_width(t_printf *x)
+int8_t		ft_handlewidth(t_printf *x)
 {
 	char	*tmp;
 	int		diff;
@@ -48,6 +48,6 @@ int8_t		ft_printf_c(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	tmp[0] = org;
 	ft_arr_append(&x->extra, tmp);
 	free(tmp);
-	ft_width(x);
+	ft_handlewidth(x);
 	return (ft_printf_append(ret, fmt, x));
 }

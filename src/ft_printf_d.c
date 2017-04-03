@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:00:15 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/01 20:11:40 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/02 19:57:41 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ int8_t				ft_printf_d(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	if (org > 0 && x->showsign == 1)
 		ft_arr_insert(&x->extra, 0, "+");
 	free(nbr);
-	ft_width(x);
+	ft_handlewidth(x);
 	return (ft_printf_append(ret, fmt, x));
 }

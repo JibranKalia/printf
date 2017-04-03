@@ -6,14 +6,16 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/02 18:32:11 by                  ###   ########.fr       */
+/*   Updated: 2017/04/02 21:02:32 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
 #define LEN1 26
-#define LEN2 3
+#define LEN2 2
+
+typedef int8_t FUNC(t_arr *, const char **, t_printf *, va_list);
 
 static char g_tbl[LEN1][LEN2] =
 {
@@ -24,7 +26,7 @@ static char g_tbl[LEN1][LEN2] =
 	{"j"}, {"z"}, {"c"}, {"C"}, {"d"},
 	{"i"}};
 
-int8_t  (*g_func[LEN1])(t_arr *ret, const char **fmt, t_printf *x, va_list clone) = {
+FUNC  *g_func[LEN1] = {
 	ft_printf_flags, ft_printf_flags, ft_printf_flags, ft_printf_flags, ft_printf_flags,
 	ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width,
 	ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_dot,
@@ -33,10 +35,9 @@ int8_t  (*g_func[LEN1])(t_arr *ret, const char **fmt, t_printf *x, va_list clone
 
 static int8_t	check(const char **fmt, int i)
 {
-	if (ft_strnstr(*fmt, g_tbl[i], ft_strlen(g_tbl[i])) == NULL)
-		return (0);
-	else
+	if (ft_strnstr(*fmt, g_tbl[i], LEN2) != NULL)
 		return (1);
+	return (0);
 }
 
 
@@ -51,63 +52,60 @@ static int	choosetype(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	{
 		if (**fmt == g_tbl[i][0])
 		{
-			printf("fmt = %s\n", *fmt);
-			printf("i = %d\n", i);
 			if ((r = check(fmt, i)) == 1)
-				g_func[i];
-			printf("r = %d\n");
+				g_func[i](ret, fmt, x, clone);
 		}
 		i++;
 	}
+	return (0);
 }
 
-/**
-static int	choosetype(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
+static int	choosetype1(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 {
 	if (ft_strnstr(*fmt, "-", 1) != NULL)
-		ft_printf_flags(fmt, x);
+		ft_printf_flags(ret, fmt, x, clone);
 	if (ft_strnstr(*fmt, "+", 1) != NULL)
-		ft_printf_flags(fmt, x);
+		ft_printf_flags(ret, fmt, x, clone);
 	if (ft_strnstr(*fmt, " ", 1) != NULL)
-		ft_printf_flags(fmt, x);
+		ft_printf_flags(ret, fmt, x, clone);
 	if (ft_strnstr(*fmt, "#", 1) != NULL)
-		ft_printf_flags(fmt, x);
+		ft_printf_flags(ret, fmt, x, clone);
 	if (ft_strnstr(*fmt, "0", 1) != NULL)
-		ft_printf_flags(fmt, x);
+		ft_printf_flags(ret, fmt, x, clone);
 	if (ft_strnstr(*fmt, "1", 1) != NULL)
-		ft_printf_width(fmt, x);
+		ft_printf_width(ret, fmt, x, clone);
 	if (ft_strnstr(*fmt, "2", 1) != NULL)
-		ft_printf_width(fmt, x);
+		ft_printf_width(ret, fmt, x, clone);
 	if (ft_strnstr(*fmt, "3", 1) != NULL)
-		ft_printf_width(fmt, x);
+		ft_printf_width(ret, fmt, x, clone);
 	if (ft_strnstr(*fmt, "4", 1) != NULL)
-		ft_printf_width(fmt, x);
+		ft_printf_width(ret, fmt, x, clone);
 	if (ft_strnstr(*fmt, "5", 1) != NULL)
-		ft_printf_width(fmt, x);
+		ft_printf_width(ret, fmt, x, clone);
 	if (ft_strnstr(*fmt, "6", 1) != NULL)
-		ft_printf_width(fmt, x);
+		ft_printf_width(ret, fmt, x, clone);
 	if (ft_strnstr(*fmt, "7", 1) != NULL)
-		ft_printf_width(fmt, x);
+		ft_printf_width(ret, fmt, x, clone);
 	if (ft_strnstr(*fmt, "8", 1) != NULL)
-		ft_printf_width(fmt, x);
+		ft_printf_width(ret, fmt, x, clone);
 	if (ft_strnstr(*fmt, "9", 1) != NULL)
-		ft_printf_width(fmt, x);
+		ft_printf_width(ret, fmt, x, clone);
 	if (ft_strnstr(*fmt, ".", 1) != NULL)
-		ft_printf_dot(fmt, x);
+		ft_printf_dot(ret, fmt, x, clone);
 	if (ft_strnstr(*fmt, "hh", 2) != NULL)
-		ft_printf_length(fmt, x);
+		ft_printf_length(ret, fmt, x, clone);
 	if (ft_strnstr(*fmt, "h", 1) != NULL)
-		ft_printf_length(fmt, x);
+		ft_printf_length(ret, fmt, x, clone);
 	if (ft_strnstr(*fmt, "ll", 2) != NULL)
-		ft_printf_length(fmt, x);
+		ft_printf_length(ret, fmt, x, clone);
 	if (ft_strnstr(*fmt, "L", 1) != NULL)
-		ft_printf_length(fmt, x);
+		ft_printf_length(ret, fmt, x, clone);
 	if (ft_strnstr(*fmt, "l", 1) != NULL)
-		ft_printf_length(fmt, x);
+		ft_printf_length(ret, fmt, x, clone);
 	if (ft_strnstr(*fmt, "j", 1) != NULL)
-		ft_printf_length(fmt, x);
+		ft_printf_length(ret, fmt, x, clone);
 	if (ft_strnstr(*fmt, "z", 1) != NULL)
-		ft_printf_length(fmt, x);
+		ft_printf_length(ret, fmt, x, clone);
 
 
 	if (ft_strnstr(*fmt, "c", 1) != NULL)
@@ -118,7 +116,6 @@ static int	choosetype(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 		return(ft_printf_c(ret, fmt, x, clone));
 	}
 
-
 	if (ft_strnstr(*fmt, "d", 1) != NULL)
 		return (ft_printf_d(ret, fmt, x, clone));
 	if (ft_strnstr(*fmt, "i", 1) != NULL)
@@ -126,7 +123,7 @@ static int	choosetype(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 
 	return (0); //Doesn't Match any of the types ????
 }
-**/
+
 int			dispatch(char **final, const char *fmt, va_list clone)
 {
 	size_t			i;

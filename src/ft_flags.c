@@ -6,13 +6,13 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/02 18:36:27 by                  ###   ########.fr       */
+/*   Updated: 2017/04/02 21:10:22 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-int		ft_printf_flags(const char **fmt, t_printf *x)			//What should this be returning?
+int8_t	ft_printf_flags(t_arr *ret, const char **fmt, t_printf *x, va_list clone)			//What should this be returning?
 {
 	while (*fmt && (**fmt == '-' || **fmt == '+' || **fmt == ' ' || **fmt == '#' || **fmt == '0'))
 	{
@@ -52,15 +52,13 @@ int		ft_printf_flags(const char **fmt, t_printf *x)			//What should this be retu
 	return (0);
 }
 
-//int8_t	ft_printf_width(const char **fmt, t_printf *x)			//What should this be returning?
 int8_t				ft_printf_width(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 {
 	size_t	res;
 
 	res = 0;
-	printf("Hello\n");
 	if (**fmt == '0')
-		return (ft_printf_flags(fmt, x)); //Starting with zero is a flag);
+		return (ft_printf_flags(ret, fmt, x, clone)); //Starting with zero is a flag);
 
 	while (ISDIGIT(**fmt))
 	{
@@ -72,7 +70,7 @@ int8_t				ft_printf_width(t_arr *ret, const char **fmt, t_printf *x, va_list clo
 	return (0);
 }
 
-int8_t	ft_printf_dot(const char **fmt, t_printf *x)
+int8_t	ft_printf_dot(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 {
 	size_t	res;
 
@@ -89,45 +87,48 @@ int8_t	ft_printf_dot(const char **fmt, t_printf *x)
 	return (0);
 }
 
-int8_t	ft_printf_length(const char **fmt, t_printf *x)
+/*
+**					1 hh;
+**					2 h;
+**					3 l;
+**					4 ll;
+**					5 j;
+**					6 z;
+**					7 L;
+*/
+
+char	g_length_spec[7] = {"hhlljzL"};
+
+#define ISLENSPEC(a) ((a == 'h') || (a == 'l') || (a == 'j') || (a == 'z') || (a == 'L'))
+
+int8_t	ft_printf_length(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 {
-	if (ft_strnstr(*fmt, "hh", 2) != NULL)
+	int		index;
+
+	while (ISLENSPEC(**fmt))
 	{
-		printf("hh Flag \n");
-		x->len_mod = 1;
+		index = ft_strchr(g_length_spec, **fmt) - g_length_spec + 1;
+		if (index == 1)
+		{
+			if (*(*fmt + 1) == 'h')
+			{
+				index = 1;
+				++*fmt;
+			}
+			else
+				index = 2;
+		}
+		if (index == 3)
+		{
+			if (*(*fmt + 1) == 'l')
+			{
+				++index;
+				++*fmt;
+			}
+		}
+		x->len_mod = (index > x->len_mod) ? index : x->len_mod;
 		++*fmt;
+		printf("Len Mod = %d\n", x->len_mod);
 	}
-	else if (ft_strnstr(*fmt, "h", 1) != NULL)
-	{
-		printf("h Flag\n");
-		x->len_mod = 2;
-	}
-	else if (ft_strnstr(*fmt, "ll", 2) != NULL)
-	{
-		printf("ll Flag\n");
-		x->len_mod = 4;
-		++*fmt;
-	}
-	else if (ft_strnstr(*fmt, "l", 1) != NULL)
-	{
-		printf("l Flag\n");
-		x->len_mod = 3;
-	}
-	else if (ft_strnstr(*fmt, "j", 1) != NULL)
-	{
-		printf("j Flag\n");
-		x->len_mod = 5;
-	}
-	else if (ft_strnstr(*fmt, "z", 1) != NULL)
-	{
-		printf("z Flag\n");
-		x->len_mod = 6;
-	}
-	else if (ft_strnstr(*fmt, "L", 1) != NULL)
-	{
-		printf("L Flag\n");
-		x->len_mod = 7;
-	}
-	++*fmt;
 	return (0);
 }
