@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/03 12:55:12 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/03 13:50:15 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,17 @@ int8_t				ft_printf_width(t_arr *ret, const char **fmt, t_printf *x, va_list clo
 	res = 0;
 	if (**fmt == '0')
 		return (ft_printf_flags(ret, fmt, x, clone)); //Starting with zero is a flag);
-
 	while (ISDIGIT(**fmt))
 	{
 		res = res * 10 + (**fmt - '0');
 		++*fmt;
 	}
 	x->width = res;
+	while (**fmt == '*')
+	{
+		x->width = va_arg(clone, int);
+		++*fmt;
+	}
 	printf("Width = %d\n", x->width);
 	return (0);
 }
@@ -102,6 +106,11 @@ int8_t	ft_printf_dot(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 		++*fmt;
 	}
 	x->prec = res;
+	while (**fmt == '*')
+	{
+		x->prec = va_arg(clone, int);
+		++*fmt;
+	}
 	printf("Precision = %d\n", x->prec);
 	return (0);
 }
@@ -140,7 +149,7 @@ int8_t	ft_printf_length(t_arr *ret, const char **fmt, t_printf *x, va_list clone
 		}
 		x->len_mod = (index > x->len_mod) ? index : x->len_mod;
 		++*fmt;
-//		printf("Len Mod = %d\n", x->len_mod);
+		printf("Len Mod = %d\n", x->len_mod);
 	}
 	return (0);
 }

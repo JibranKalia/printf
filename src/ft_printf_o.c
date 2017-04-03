@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_prinf_o.c                                       :+:      :+:    :+:   */
+/*   ft_printf_o.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/03 12:55:58 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/03 13:28:17 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/03 13:32:41 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int8_t		ft_printf_o(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	org = ft_printf_uox_len(x, clone);
 	if (x->prec == 0 && x->is_prec == 1 && org == 0 && x->alt == 0)               //if both the converted value and the precision are 0 the conversion results in no characters.
 		return (ft_printf_append(ret, fmt, x));
-	nbr = ft_itoa_base(org, 8, "012345678");
+	nbr = ft_itoa_base(org, 8, "01234567");
 	ft_arr_appendn(&x->extra, nbr, ft_strlen(nbr));
 	ft_printf_o_dot(x);
 	if (org > 0 && x->alt == 1)

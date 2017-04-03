@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:07:51 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/03 13:17:53 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/03 13:35:41 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,12 @@ int8_t				ft_printf_length(t_arr *ret, const char **fmt, t_printf *x, va_list cl
 
 uintmax_t			ft_printf_uox_len(t_printf *x, va_list clone);
 int8_t				ft_printf_init(t_printf *x);
-int8_t				ft_printf_d(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
-int8_t				ft_printf_X(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
 int8_t				ft_printf_c(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
 int8_t				ft_printf_C(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
+int8_t				ft_printf_d(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
 int8_t				ft_printf_o(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
+int8_t				ft_printf_u(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
+int8_t				ft_printf_X(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
 int8_t				ft_printf_append(t_arr *ret, const char **fmt, t_printf *x);
 int					dispatch(char **final, const char *fmt, va_list clone);
 
