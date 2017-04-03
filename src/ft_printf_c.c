@@ -6,32 +6,11 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:02:19 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/02 19:58:16 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/02 21:50:44 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
-
-int8_t		ft_handlewidth(t_printf *x)
-{
-	char	*tmp;
-	int		diff;
-	size_t	index;
-
-	if (x->is_prec == 1) //Make sure pad is space if precision exists not zero.
-		x->pad = ' ';
-	diff = x->width - x->extra.len;
-	index = (x->left == 1) ? x->extra.len : 0;
-	if (diff > 0)
-	{
-		CHK((tmp = ft_strnew(diff)) == 0, -1);
-		ft_memset((void *)tmp, (int)x->pad, (size_t)diff);
-		ft_arr_insertn(&x->extra, index, tmp, diff);
-	}
-	return (0);
-}
-
-int8_t		ft_precision(t_printf *x);
 
 int8_t		ft_printf_c(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 {
@@ -50,4 +29,10 @@ int8_t		ft_printf_c(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	free(tmp);
 	ft_handlewidth(x);
 	return (ft_printf_append(ret, fmt, x));
+}
+
+int8_t		ft_printf_C(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
+{
+	x->len_mod = 3;                  //Treated as c with the l (ell) modifier.
+	return (ft_printf_c(ret, fmt, x, clone));
 }

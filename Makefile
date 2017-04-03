@@ -6,7 +6,7 @@
 #    By: jkalia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/23 14:12:11 by jkalia            #+#    #+#              #
-#*   Updated: 2017/04/01 18:49:03 by jkalia           ###   ########.fr       *#
+#*   Updated: 2017/04/03 00:04:53 by jkalia           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,10 @@ CFLAGS			+= -I includes/
 
 TEST			:= unittest.c \
 				test_util.c \
+				00_no_conv.spec.c \
 				03_conv_d.spec.c \
+				14_conv_x.spec.c \
+				15_conv_X.spec.c \
 				16_conv_c.spec.c \
 				17_conv_C.spec.c \
 				73_precision_for_cC.spec.c \
@@ -32,6 +35,7 @@ SRC_FILES		:= ft_printf.c \
 				ft_flags.c \
 				ft_printf_c.c \
 				ft_printf_d.c \
+				ft_printf_x.c \
 				#alloc_wrap.c \
 
 LIBFT_FILES		:= ft_putchar.c \
@@ -98,6 +102,8 @@ LIBFT_FILES		:= ft_putchar.c \
 			  ft_atoi.c \
 			  ft_itoa.c \
 			  ft_nbrlen.c \
+			  ft_itoa_base.c \
+			  ft_nbrlen_base.c \
 			  ft_abs.c \
 			  ft_lstnew.c \
 			  ft_lstadd.c \

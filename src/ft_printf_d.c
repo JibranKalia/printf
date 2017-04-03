@@ -6,12 +6,11 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:00:15 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/02 21:25:36 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/02 22:34:49 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
-
 
 static intmax_t		ft_printf_d_len(t_printf *x, va_list clone)
 {
@@ -40,7 +39,7 @@ static int8_t		ft_printf_d_dot(t_printf *x)
 	if (x->is_prec == 0)
 		return (0);
 	if (x->prec == 0)                 //Not sure what to do in this case
-		return (-1);
+		return (0);
 	if (x->prec < x->extra.len)      //Nbr len is more than precession.
 		return (0);
 	diff = x->prec - x->extra.len;
@@ -60,9 +59,9 @@ int8_t				ft_printf_d(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 
 	//if (x->len_mod == 7)                                           // L doesn't work with d.
 	//	return (-1);
-	if (x->is_prec == 1)                                          // for integer numbers it is ignored if the precision is explicitly specified.
+	if (x->is_prec == 1)                                          // for integer numbers '0' it is ignored if the precision is explicitly specified.
 		x->zero = 0;
-	CHK1((ft_arr_init(&x->extra, 5)) == -1, ft_arr_del(ret), -1);
+	CHK1((ft_arr_init(&x->extra, 1)) == -1, ft_arr_del(ret), -1);
 	org = ft_printf_d_len(x, clone);
 	if (x->prec == 0 && x->is_prec == 1 && org == 0)               //if both the converted value and the precision are 0 the conversion results in no characters.
 		return (ft_printf_append(ret, fmt, x));

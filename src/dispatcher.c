@@ -6,13 +6,13 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/02 21:02:32 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/02 23:22:37 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-#define LEN1 26
+#define LEN1 35
 #define LEN2 2
 
 typedef int8_t FUNC(t_arr *, const char **, t_printf *, va_list);
@@ -24,14 +24,15 @@ static char g_tbl[LEN1][LEN2] =
 	{"6"}, {"7"}, {"8"}, {"9"}, {"."},
 	{"hh"}, {"h"}, {"ll"}, {"L"}, {"l"},
 	{"j"}, {"z"}, {"c"}, {"C"}, {"d"},
-	{"i"}};
+	{"D"}, {"i"}, {"x"}, {"X"}};
 
 FUNC  *g_func[LEN1] = {
 	ft_printf_flags, ft_printf_flags, ft_printf_flags, ft_printf_flags, ft_printf_flags,
 	ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width,
 	ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_dot,
 	ft_printf_length, ft_printf_length, ft_printf_length, ft_printf_length, ft_printf_length,
-	ft_printf_length, ft_printf_length, ft_printf_c, ft_printf_c, ft_printf_d, ft_printf_d};
+	ft_printf_length, ft_printf_length, ft_printf_c, ft_printf_C, ft_printf_d,
+	ft_printf_d, ft_printf_d, ft_printf_X, ft_printf_X};
 
 static int8_t	check(const char **fmt, int i)
 {
@@ -46,16 +47,18 @@ static int	choosetype(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	int i;
 	int r;
 
-	i = 0;
-	r = 0;
+	i = -1;
 	while (i < LEN1)
 	{
+		i++;
 		if (**fmt == g_tbl[i][0])
 		{
-			if ((r = check(fmt, i)) == 1)
-				g_func[i](ret, fmt, x, clone);
+			if ((check(fmt, i)) == 1)
+			{
+				CHK(g_func[i](ret, fmt, x, clone) == -1, -1);
+				i = -1;                            //Reset to test from beginning
+			}
 		}
-		i++;
 	}
 	return (0);
 }
@@ -106,8 +109,6 @@ static int	choosetype1(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 		ft_printf_length(ret, fmt, x, clone);
 	if (ft_strnstr(*fmt, "z", 1) != NULL)
 		ft_printf_length(ret, fmt, x, clone);
-
-
 	if (ft_strnstr(*fmt, "c", 1) != NULL)
 		return(ft_printf_c(ret, fmt, x, clone));
 	if (ft_strnstr(*fmt, "C", 1) != NULL)
@@ -115,7 +116,6 @@ static int	choosetype1(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 		x->len_mod = 3;
 		return(ft_printf_c(ret, fmt, x, clone));
 	}
-
 	if (ft_strnstr(*fmt, "d", 1) != NULL)
 		return (ft_printf_d(ret, fmt, x, clone));
 	if (ft_strnstr(*fmt, "i", 1) != NULL)
@@ -143,9 +143,9 @@ int			dispatch(char **final, const char *fmt, va_list clone)
 		{
 			if (*(++fmt) == 0) //Percentage is the last thing in the string. Also increments ahead of percentage.
 				break;
-			choosetype(&ret, &fmt, &x, clone); //Passing the address of fmt so that it can be incremented by other functions.
+			CHK1(choosetype(&ret, &fmt, &x, clone) == -1, ft_arr_del(&ret), -1); //Passing the address of fmt so that it can be incremented by other functions.
 		}
-		ft_arr_del(&x.extra);
+		ft_arr_del(&x.extra);  //Shouldn't BZERO Better?
 		CHK((ft_printf_init(&x)) == -1, -1); //Reset this array after every % is dealt with
 	}
 	//Copying the result of array onto output string.
