@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 11:19:09 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/01 18:54:51 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/03 00:01:55 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,21 @@ void	test_d(char *s1, char *s2, int ret1, int ret2, int *i)
 	suite_03_conv_d(i);
 }
 
+void	test_x(char *s1, char *s2, int ret1, int ret2, int *i)
+{
+	SUITEINFO(14);
+	suite_14_conv_x(i);
+
+	SUITEINFO(15);
+	suite_15_conv_X(i);
+}
+
+void	test_basic(char *s1, char *s2, int ret1, int ret2, int *i)
+{
+	SUITEINFO(0)
+	suite_00_no_conv(i);
+}
+
 int		main(void)
 {
 	char	*s1;
@@ -46,6 +61,8 @@ int		main(void)
 	int		ret2;
 	int		i;
 
+	test_basic(s1, s2, ret1, ret2, &i);
 //	test_c(s1, s2, ret1, ret2, &i);
-	test_d(s1, s2, ret1, ret2, &i);
+//	test_d(s1, s2, ret1, ret2, &i);
+	test_x(s1, s2, ret1, ret2, &i);
 }

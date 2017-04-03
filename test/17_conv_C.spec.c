@@ -5,23 +5,23 @@
 static void test_simple_char(PARAMS)
 {
 	++*i;
-	asprintf(&s1, "%C", 'c');
-	ft_asprintf(&s2, "%C", 'c');
+	ret1 = asprintf(&s1, "%C", 'c');
+	ret2 = ft_asprintf(&s2, "%C", 'c');
 	PRINT;
 }
 
 static void test_two_chars(PARAMS)
 {
 	++*i;
-	asprintf(&s1, "%C%C", '4', '2');
-	ft_asprintf(&s2, "%C%C", '4', '2');
+	ret1 = asprintf(&s1, "%C%C", '4', '2');
+	ret2 = ft_asprintf(&s2, "%C%C", '4', '2');
 	PRINT;
 }
 
 static void test_ascii_printable_chars(PARAMS)
 {
 	++*i;
-	asprintf(&s1, "%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C \
+	ret1 = asprintf(&s1, "%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C \
 %C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C\
 %C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C",
 ' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-',
@@ -31,7 +31,7 @@ static void test_ascii_printable_chars(PARAMS)
 'X', 'Y', 'Z', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
 't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}');
-	ft_asprintf(&s2, "%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C \
+	ret2 = ft_asprintf(&s2, "%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C \
 %C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C\
 %C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C",
 ' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-',
@@ -47,16 +47,16 @@ static void test_ascii_printable_chars(PARAMS)
 static void test_chinese(PARAMS)
 {
 	++*i;
-	asprintf(&s1, "%C", L'猫');
-	ft_asprintf(&s2, "%C", L'猫');
+	ret1 = asprintf(&s1, "%C", L'猫');
+	ret2 = ft_asprintf(&s2, "%C", L'猫');
 	PRINT;
 }
 
 static void test_greek(PARAMS)
 {
 	++*i;
-	asprintf(&s1, "%C", L'δ');
-	ft_asprintf(&s2, "%C", L'δ');
+	ret1 = asprintf(&s1, "%C", L'δ');
+	ret2 = ft_asprintf(&s2, "%C", L'δ');
 	PRINT;
 }
 
@@ -64,32 +64,32 @@ static void test_greek(PARAMS)
 static void test_korean(PARAMS)
 {
 	++*i;
-	asprintf(&s1, "%C", L'요');
-	ft_asprintf(&s2, "%C", L'요');
+	ret1 = asprintf(&s1, "%C", L'요');
+	ret2 = ft_asprintf(&s2, "%C", L'요');
 	PRINT;
 }
 
 static void test_japanese(PARAMS)
 {
 	++*i;
-	asprintf(&s1, "%C", L'莨');
-	ft_asprintf(&s2, "%C", L'莨');
+	ret1 = asprintf(&s1, "%C", L'莨');
+	ret2 = ft_asprintf(&s2, "%C", L'莨');
 	PRINT;
 }
 
 static void test_arabic(PARAMS)
 {
 	++*i;
-	asprintf(&s1, "%C", L'ي');
-	ft_asprintf(&s2, "%C", L'ي');
+	ret1 = asprintf(&s1, "%C", L'ي');
+	ret2 = ft_asprintf(&s2, "%C", L'ي');
 	PRINT;
 }
 
 static void test_nullChar(PARAMS)
 {
 	++*i;
-	asprintf(&s1, "%C", 0);
-	ft_asprintf(&s2, "%C", 0);
+	ret1 = asprintf(&s1, "%C", 0);
+	ret2 = ft_asprintf(&s2, "%C", 0);
 	PRINT;
 }
 

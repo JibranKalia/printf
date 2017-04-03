@@ -58,7 +58,7 @@ static void test_zero(PARAMS)
 	ret1 = asprintf(&s1, "%c", 0);
 	ret2 = ft_asprintf(&s2, "%c", 0);
 	PRINT;
-}	
+}
 
 static void completed_c1(PARAMS)
 {
