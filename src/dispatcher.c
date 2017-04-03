@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/01 21:22:04 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/02 18:32:11 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,39 +17,45 @@
 
 static char g_tbl[LEN1][LEN2] =
 {
-	{"-", 
-	}, {"+"}, {" "}, {"#"}, {"0"},
+	{"-"}, {"+"}, {" "}, {"#"}, {"0"},
 	{"1"}, {"2"}, {"3"}, {"4"}, {"5"},
 	{"6"}, {"7"}, {"8"}, {"9"}, {"."},
 	{"hh"}, {"h"}, {"ll"}, {"L"}, {"l"},
 	{"j"}, {"z"}, {"c"}, {"C"}, {"d"},
-	{"i"}
-};
+	{"i"}};
 
-FUNC *g_func[LEN1] =
-{
+int8_t  (*g_func[LEN1])(t_arr *ret, const char **fmt, t_printf *x, va_list clone) = {
 	ft_printf_flags, ft_printf_flags, ft_printf_flags, ft_printf_flags, ft_printf_flags,
-	ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width, 
+	ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width,
 	ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_dot,
 	ft_printf_length, ft_printf_length, ft_printf_length, ft_printf_length, ft_printf_length,
-	ft_printf_length, ft_printf_length, ft_printf_c, ft_printf_c, ft_printf_d, ft_printf_d
-};
+	ft_printf_length, ft_printf_length, ft_printf_c, ft_printf_c, ft_printf_d, ft_printf_d};
 
-//static int	choosetype(
+static int8_t	check(const char **fmt, int i)
+{
+	if (ft_strnstr(*fmt, g_tbl[i], ft_strlen(g_tbl[i])) == NULL)
+		return (0);
+	else
+		return (1);
+}
+
+
 static int	choosetype(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 {
 	int i;
 	int r;
 
 	i = 0;
+	r = 0;
 	while (i < LEN1)
 	{
-		if (ft_strnstr(*fmt, g_tbl[i], 1) != NULL)
+		if (**fmt == g_tbl[i][0])
 		{
-			printf("Here \n");
-			r = g_func[i];
-			if (r != 0)
-				return (0);
+			printf("fmt = %s\n", *fmt);
+			printf("i = %d\n", i);
+			if ((r = check(fmt, i)) == 1)
+				g_func[i];
+			printf("r = %d\n");
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/01 20:15:28 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/02 18:36:27 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,13 @@ int		ft_printf_flags(const char **fmt, t_printf *x)			//What should this be retu
 	return (0);
 }
 
-int8_t	ft_printf_width(const char **fmt, t_printf *x)			//What should this be returning?
+//int8_t	ft_printf_width(const char **fmt, t_printf *x)			//What should this be returning?
+int8_t				ft_printf_width(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 {
 	size_t	res;
 
 	res = 0;
+	printf("Hello\n");
 	if (**fmt == '0')
 		return (ft_printf_flags(fmt, x)); //Starting with zero is a flag);
 
