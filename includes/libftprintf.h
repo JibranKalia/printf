@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:07:51 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/03 13:35:41 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/03 17:24:09 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct		s_printf
 {
 	t_arr			extra;
 	unsigned int 	is_prec:1;       /* Whether precision is a factor or not. */
-	unsigned int 	prec;            /* Precision. Default is -1??? */
-	unsigned int 	width;           /* Width. Default is 0 */
+	int 			prec;            /* Precision. Default is -1??? */
+	int 			width;           /* Width. Default is 0 */
 	wchar_t 		spec;            /* Format letter.  */ //NOT SURE IF KEEPING
 	unsigned int 	left:1;          /* - flag.  */
 	unsigned int 	showsign:1;      /* + flag.  */

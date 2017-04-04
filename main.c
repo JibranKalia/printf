@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/03 13:43:04 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/03 18:02:33 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,20 @@
 int		main(void)
 {
 	int		x = 15;
-	int		p = 7;
-	int		w = 4;
+	int		p = -10;
+	int		w = 5;
 	int		ret1;
 	int		ret2;
 	char	*s1;
 	char	*s2;
 	char	*tmp;
 
-	ret1 = asprintf(&s1, "[%*d] [%*.0d] [%0.*d] [%*.*d] [%**d] [%**.**d] [%10.15d] [%.15llhhd]\n", w, x, w, x, p, x, w, p, x, w, w + 1, x, w, w + 1, p, p + 1, x, x, x );
-	ret2 = ft_asprintf(&s2, "[%*d] [%*.0d] [%0.*d] [%*.*d] [%**d] [%**.**d] [%10.15d] [%.15llhhd]\n", w, x, w, x, p, x, w, p, x, w, w + 1, x, w, w + 1, p, p + 1, x, x, x );
+	ret1 = asprintf(&s1, "[%.5d]\n", -5);
+	ret2 = ft_asprintf(&s2, "[%.5d]\n", -5);
+	//ret1 = asprintf(&s1, "[%.***d]\n", w, w + 5, w - 15, p, p + 5, p + 15,  x, x, x );
+	//ret2 = ft_asprintf(&s2, "[%.***d]\n", w, w + 5, w - 15, p, p + 5, p + 15, x, x, x );
+	//ret1 = asprintf(&s1, "[%***.**d]\n", w, w + 5, w + 10, p, p + 1, x, x, x );
+	//ret2 = ft_asprintf(&s2, "[%***.**d]\n", w, w + 5, w + 10, p, p + 1, x, x, x );
 
 //	ret1 = asprintf(&s1, "[Char: [%o] [%.0o] [%#.0o] [%#o] [%#o] [%10.15o] [%.15llhhO]\n", 0, 0, 0, 0, x, x, x);
 //	ret2 = ft_asprintf(&s2, "[Char: [%o] [%.0o] [%#.0o] [%#o] [%#o] [%10.15o] [%.15llhhO]\n", 0, 0, 0, 0, x, x, x);

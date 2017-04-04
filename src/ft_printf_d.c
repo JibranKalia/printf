@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:00:15 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/03 12:54:00 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/03 17:59:52 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,11 @@ static intmax_t		ft_printf_d_len(t_printf *x, va_list clone)
 	return (0);
 }
 
-static int8_t		ft_printf_d_dot(t_printf *x)
+static int8_t		ft_printf_d_dot(t_printf *x, intmax_t org)
 {
 	char	*tmp;
 	int		diff;
+	int		index;
 
 	if (x->is_prec == 0 && x->prec == 0)                 //Precision is set to zero
 		return (0);
@@ -42,12 +43,15 @@ static int8_t		ft_printf_d_dot(t_printf *x)
 		x->prec = 0;
 	if (x->prec < x->extra.len)      //Nbr len is more than precession.
 		return (0);
-	diff = x->prec - x->extra.len;
+	diff = (org > 0) ? x->prec - x->extra.len : x->prec - x->extra.len + 1;               //If the nbr is negative the minus sign shouldn't count toward precision.
+	index = (org > 0) ? 0 : 1;                 //If the nbr is negative the 0 has to be after minus sign.
+	printf("Index = %d\n", index);
+	printf("Diff = %d\n", diff);
 	if (diff > 0)
 	{
 		CHK((tmp = ft_strnew(diff)) == 0, 0);
 		ft_memset(tmp, '0', diff);
-		ft_arr_insertn(&x->extra, 0, tmp, diff);
+		ft_arr_insertn(&x->extra, index, tmp, diff);
 	}
 	return (0);
 }
@@ -67,7 +71,7 @@ int8_t				ft_printf_d(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 		return (ft_printf_append(ret, fmt, x));
 	nbr = ft_itoa(org);
 	ft_arr_appendn(&x->extra, nbr, ft_strlen(nbr));
-	ft_printf_d_dot(x);
+	ft_printf_d_dot(x, org);
 	if (org > 0 && x->showsign == 1)
 		ft_arr_insert(&x->extra, 0, "+");
 	free(nbr);

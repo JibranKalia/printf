@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/03 13:50:15 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/03 17:41:12 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,17 @@ int8_t				ft_printf_width(t_arr *ret, const char **fmt, t_printf *x, va_list clo
 		++*fmt;
 	}
 	x->width = res;
+	//Width takes the value of the last asterisk if they are in the a row.
 	while (**fmt == '*')
 	{
 		x->width = va_arg(clone, int);
 		++*fmt;
+	}
+	//If width is somehow negative. The - is treated as a flag.
+	if (x->width < 0)
+	{
+			x->width = -x->width;
+			x->left = 1;
 	}
 	printf("Width = %d\n", x->width);
 	return (0);
@@ -95,22 +102,25 @@ int8_t				ft_printf_width(t_arr *ret, const char **fmt, t_printf *x, va_list clo
 
 int8_t	ft_printf_dot(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 {
-	size_t	res;
+	int res;
 
 	res = 0;
 	++*fmt;
 	x->is_prec = 1;
-	while (ISDIGIT(**fmt))
+	if (**fmt == '*')
 	{
-		res = res * 10 + (**fmt - '0');
+		res = va_arg(clone, int);
 		++*fmt;
+	}
+	else
+	{
+		while (ISDIGIT(**fmt))
+		{
+			res = res * 10 + (**fmt - '0');
+			++*fmt;
+		}
 	}
 	x->prec = res;
-	while (**fmt == '*')
-	{
-		x->prec = va_arg(clone, int);
-		++*fmt;
-	}
 	printf("Precision = %d\n", x->prec);
 	return (0);
 }
