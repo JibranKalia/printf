@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/03 23:31:35 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/04 08:53:18 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int		main(void)
 	str[0] = 231;
 	str[1] = 140;
 	str[2] = 171;
-	printf("Char: [%C] (%x)\n", Char, Char);
+	printf("Char: [%s] [%lc] [%C] (%x) %s\n", "\033[31m", "猫", Char, Char, Char, "\033[0m");
+	ft_printf("Char: [%s] [%lc] [%C] (%x)\n", "猫", Char, Char, Char);
 	int i = 0;
 	/*
 	S3 = ft_itoa_base(1610, 2, "01");;
