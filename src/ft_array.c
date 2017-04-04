@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:01:25 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/01 20:19:24 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/04 12:40:29 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,4 +141,3 @@ int8_t		ft_printf_init(t_printf *x)
 	x->pad = ' '; //Initial value of pad is ' '
 	return (0);
 }
-

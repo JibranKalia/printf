@@ -101,6 +101,7 @@ void	suite_17_conv_C(int *i)
 	int ret1;
 	int ret2;
 
+	setlocale(LC_CTYPE, "");
 
 	test_simple_char(s1, s2, ret1, ret2, i);
 	test_two_chars(PARAMS2);

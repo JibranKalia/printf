@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/04 08:53:18 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/04 13:03:51 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,36 +30,13 @@ int		main(void)
 	wchar_t Char =  L'猫';
 
 	setlocale(LC_CTYPE, "");
+	ret1 = asprintf(&s1, "%C", L'ي');
+	ret2 = ft_asprintf(&s2, "%C", L'ي');
+	//ret1 = asprintf(&s1, "[%lc]\n", Char, Char, Char);
+	//ret2 = ft_asprintf(&s2, "[%lc]\n", Char, Char, Char);
 
-	unsigned char str[3];
-	str[0] = 231;
-	str[1] = 140;
-	str[2] = 171;
-	printf("Char: [%s] [%lc] [%C] (%x) %s\n", "\033[31m", "猫", Char, Char, Char, "\033[0m");
-	ft_printf("Char: [%s] [%lc] [%C] (%x)\n", "猫", Char, Char, Char);
-	int i = 0;
-	/*
-	S3 = ft_itoa_base(1610, 2, "01");;
-	printf("S3 %s\n", S3);
-	printf("C0 %s\n,", ft_itoa_base(192, 2, "01"));
-	str[0] = (unsigned char)((Char>>6)|0xC0);
-	S1 = ft_itoa_base(str[0], 2, "01");;
-	S2 = ft_itoa_base(str[1], 2, "01");;
-	printf("S1 %s\n", S1);
-	printf("S2 %s \n", S2);
-	str[1] = (unsigned char)((Char&0x3F)|0x80);
-	*/
-	while (i < 3)
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-
-	return (0);
-/**
-	ret1 = asprintf(&s1, "%C (%x)", Char, Char);
-	ret2 = ft_asprintf(&s2, "[%C] (%x)", Char, Char);
-	itoa_base(
+	//ret1 = asprintf(&s1, "Char: [%s] [%lc] [%C] (%x)\n", "猫", Char, Char, Char);
+	//ret2 = ft_asprintf(&s2, "Char: [%s] [%lc] [%C] (%x)\n", "猫", Char, Char, Char);
 
 	if (strcmp(s1, s2) || ret1 != ret2)
 	{
@@ -84,8 +61,29 @@ int		main(void)
 	}
 
 	return (0);
-**/
 
+	/**
+	unsigned char str[3];
+	str[0] = 231;
+	str[1] = 140;
+	str[2] = 171;
+	int i = 0;
+	S3 = ft_itoa_base(1610, 2, "01");;
+	printf("S3 %s\n", S3);
+	printf("C0 %s\n,", ft_itoa_base(192, 2, "01"));
+	str[0] = (unsigned char)((Char>>6)|0xC0);
+	S1 = ft_itoa_base(str[0], 2, "01");;
+	S2 = ft_itoa_base(str[1], 2, "01");;
+	printf("S1 %s\n", S1);
+	printf("S2 %s \n", S2);
+	str[1] = (unsigned char)((Char&0x3F)|0x80);
+	
+	while (i < 3)
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	**/
 }
 
 

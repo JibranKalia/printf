@@ -9,13 +9,13 @@ void	suite_73_precision_for_cC(int *i)
 	int ret2;
 
 	++*i;
-	asprintf(&s1, "%.c %.5c %.c %.5c", 0, 0, 42, 42);
-	ft_asprintf(&s2, "%.c %.5c %.c %.5c", 0, 0, 42, 42);
+	ret1 = asprintf(&s1, "%.c %.5c %.c %.5c", 0, 0, 42, 42);
+	ret2 = ft_asprintf(&s2, "%.c %.5c %.c %.5c", 0, 0, 42, 42);
 	PRINT;
 
 	++*i;
-	asprintf(&s1, "%.C %.5C %.C %.5C", 0, 0, 42, 42);
-	ft_asprintf(&s2, "%.C %.5C %.C %.5C", 0, 0, 42, 42);
+	ret1 = asprintf(&s1, "%.C %.5C %.C %.5C", 0, 0, 42, 42);
+	ret2 = ft_asprintf(&s2, "%.C %.5C %.C %.5C", 0, 0, 42, 42);
 	PRINT;
 
 	/*
