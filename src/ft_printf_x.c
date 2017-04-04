@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/02 21:51:12 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/03 13:08:11 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/04 13:17:02 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static int8_t		ft_printf_hex(t_arr *ret, const char **fmt, t_printf *x, va_list 
 	if (x->prec == 0 && x->is_prec == 1 && org == 0)               //if both the converted value is 0 and the precision is SET to 0 the conversion results in no characters.
 		return (ft_printf_append(ret, fmt, x));
 	nbr = ft_itoa_base(org, 16, spec);
-	ft_arr_appendn(&x->extra, nbr, ft_strlen(nbr));
+	ft_arr_appendn(&x->extra, nbr, sizeof(char) * ft_strlen(nbr));
 	ft_printf_x_dot(x);
 	if (x->alt == 1)                                                   // "#' is alternative for Hex
 		ft_arr_insertn(&x->extra, 0, "0x", 2);
