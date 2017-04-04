@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/03 18:02:33 by                  ###   ########.fr       */
+/*   Updated: 2017/04/03 23:31:35 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,43 @@ int		main(void)
 	int		ret2;
 	char	*s1;
 	char	*s2;
+//	char	*S1;
+//	char	*S2;
+//	char	*S3;
 	char	*tmp;
 
-	ret1 = asprintf(&s1, "[%.5d]\n", -5);
-	ret2 = ft_asprintf(&s2, "[%.5d]\n", -5);
-	//ret1 = asprintf(&s1, "[%.***d]\n", w, w + 5, w - 15, p, p + 5, p + 15,  x, x, x );
-	//ret2 = ft_asprintf(&s2, "[%.***d]\n", w, w + 5, w - 15, p, p + 5, p + 15, x, x, x );
-	//ret1 = asprintf(&s1, "[%***.**d]\n", w, w + 5, w + 10, p, p + 1, x, x, x );
-	//ret2 = ft_asprintf(&s2, "[%***.**d]\n", w, w + 5, w + 10, p, p + 1, x, x, x );
+	wchar_t Char =  L'猫';
 
-//	ret1 = asprintf(&s1, "[Char: [%o] [%.0o] [%#.0o] [%#o] [%#o] [%10.15o] [%.15llhhO]\n", 0, 0, 0, 0, x, x, x);
-//	ret2 = ft_asprintf(&s2, "[Char: [%o] [%.0o] [%#.0o] [%#o] [%#o] [%10.15o] [%.15llhhO]\n", 0, 0, 0, 0, x, x, x);
+	setlocale(LC_CTYPE, "");
+
+	unsigned char str[3];
+	str[0] = 231;
+	str[1] = 140;
+	str[2] = 171;
+	printf("Char: [%C] (%x)\n", Char, Char);
+	int i = 0;
+	/*
+	S3 = ft_itoa_base(1610, 2, "01");;
+	printf("S3 %s\n", S3);
+	printf("C0 %s\n,", ft_itoa_base(192, 2, "01"));
+	str[0] = (unsigned char)((Char>>6)|0xC0);
+	S1 = ft_itoa_base(str[0], 2, "01");;
+	S2 = ft_itoa_base(str[1], 2, "01");;
+	printf("S1 %s\n", S1);
+	printf("S2 %s \n", S2);
+	str[1] = (unsigned char)((Char&0x3F)|0x80);
+	*/
+	while (i < 3)
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+
+	return (0);
+/**
+	ret1 = asprintf(&s1, "%C (%x)", Char, Char);
+	ret2 = ft_asprintf(&s2, "[%C] (%x)", Char, Char);
+	itoa_base(
 
 	if (strcmp(s1, s2) || ret1 != ret2)
 	{
@@ -57,6 +83,7 @@ int		main(void)
 	}
 
 	return (0);
+**/
 
 }
 

@@ -1,5 +1,6 @@
 #include <libftprintf.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <test.h>
 
 static void test_simple_char(PARAMS)
@@ -99,6 +100,7 @@ void	suite_17_conv_C(int *i)
 	char *s2;
 	int ret1;
 	int ret2;
+
 
 	test_simple_char(s1, s2, ret1, ret2, i);
 	test_two_chars(PARAMS2);
