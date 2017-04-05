@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/03 17:41:12 by                  ###   ########.fr       */
+/*   Updated: 2017/04/04 13:53:56 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int8_t				ft_printf_width(t_arr *ret, const char **fmt, t_printf *x, va_list clo
 	while (**fmt == '*')
 	{
 		x->width = va_arg(clone, int);
+		printf("Width = %d\n", x->width);
 		++*fmt;
 	}
 	//If width is somehow negative. The - is treated as a flag.
