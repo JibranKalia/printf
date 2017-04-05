@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/04 13:53:56 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/05 15:50:00 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int8_t		ft_handlewidth(t_printf *x)
 		CHK((tmp = ft_strnew(diff)) == 0, -1);
 		ft_memset((void *)tmp, (int)x->pad, (size_t)diff);
 		ft_arr_insertn(&x->extra, index, tmp, diff);
+		free(tmp);
 	}
 	return (0);
 }
