@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 11:59:53 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/03 21:25:07 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/04 13:31:55 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,6 @@ void	suite_16_conv_c(int *i);
 void	suite_17_conv_C(int *i);
 void	suite_73_precision_for_cC(int *i);
 
+//THIS IS FOR MAIN.C
+void	printsimple(char *s1, char *s2, int ret1, int ret2);
 #endif

@@ -6,7 +6,7 @@
 #    By: jkalia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/23 14:12:11 by jkalia            #+#    #+#              #
-#*   Updated: 2017/04/03 13:34:36 by jkalia           ###   ########.fr       *#
+#*   Updated: 2017/04/04 16:36:19 by jkalia           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRC_FILES		:= ft_printf.c \
 				ft_printf_c.c \
 				ft_printf_d.c \
 				ft_printf_o.c \
+				ft_printf_s.c \
 				ft_printf_u.c \
 				ft_printf_x.c \
 				#alloc_wrap.c \
