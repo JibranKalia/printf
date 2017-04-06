@@ -6,11 +6,12 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/06 14:42:06 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/06 15:37:45 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
+# define ISSIGN(a) (a == '+' || a == '-')
 
 int8_t	ft_printf_flags(t_arr *ret, const char **fmt, t_printf *x, va_list clone)			//What should this be returning?
 {
@@ -63,8 +64,11 @@ int8_t		handle_width(t_printf *x, char c)
 	if (x->is_prec == 1)                     //Make sure pad is space if precision is set. (This doesn't include default precision);
 		x->pad = ' ';
 	diff = x->width - x->extra.len;
-	index = (c == 'd' && x->left == 1) ? x->extra.len : 0;
-	index = (c == 'x' && (ft_strstr(x->extra.ptr, "0x") != NULL)) ? 2 : 0;
+	index = (x->left == 1) ? x->extra.len : 0;
+	if (c == 'x' && x->left == 0)
+		index = (ft_strstr(x->extra.ptr, "0x") != NULL) ? 2 : 0;
+	if (x->pad == '0' && ISSIGN(x->extra.ptr[index]))
+		++index;
 	if (diff > 0)
 	{
 		CHK((tmp = ft_strnew(diff)) == 0, -1);

@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/02 21:51:12 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/06 14:43:01 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/06 15:39:15 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ int8_t		ft_printf_o(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	CHK1((ft_arr_init(&x->extra, 1)) == -1, ft_arr_del(ret), -1);
 	org = ft_printf_uox_len(x, clone);
 	if (x->prec == 0 && x->is_prec == 1 && org == 0 && x->alt == 0)               //if both the converted value and the precision are 0 the conversion results in no characters.
+	{
+		handle_width(x, 'o');
 		return (ft_printf_append(ret, fmt, x));
+	}
 	nbr = ft_itoa_base(org, 8, "01234567");
 	ft_arr_appendn(&x->extra, nbr, sizeof(char) * ft_strlen(nbr));
 	handle_prec(x, org);
@@ -58,7 +61,10 @@ int8_t		ft_printf_u(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	CHK1((ft_arr_init(&x->extra, 1)) == -1, ft_arr_del(ret), -1);
 	org = ft_printf_uox_len(x, clone);
 	if (x->prec == 0 && x->is_prec == 1 && org == 0 && x->alt == 0)               //if both the converted value and the precision are 0 the conversion results in no characters.
+	{
+		handle_width(x, 'u');
 		return (ft_printf_append(ret, fmt, x));
+	}
 	nbr = ft_itoa_base(org, 10, "0123456789");
 	ft_arr_appendn(&x->extra, nbr, sizeof(char) * ft_strlen(nbr));
 	handle_prec(x, org);
@@ -95,7 +101,10 @@ int8_t				ft_printf_x(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	CHK1((ft_arr_init(&x->extra, 1)) == -1, ft_arr_del(ret), -1);
 	org = ft_printf_uox_len(x, clone);
 	if (x->prec == 0 && x->is_prec == 1 && org == 0)               //if both the converted value is 0 and the precision is SET to 0 the conversion results in no characters.
+	{
+		handle_width(x, 'x');
 		return (ft_printf_append(ret, fmt, x));
+	}
 	nbr = ft_itoa_base(org, 16, "0123456789abcdef");
 	ft_arr_appendn(&x->extra, nbr, sizeof(char) * ft_strlen(nbr));
 	handle_prec(x, org);

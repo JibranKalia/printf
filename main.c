@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/06 14:40:14 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/06 15:40:11 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ int		main(void)
 	char	*s2 = NULL;
 	
 
-	ret1 = asprintf(&s1, "%#08x", 42);
-	ret2 = ft_asprintf(&s2, "%#08x", 42);
-	printf("%#X\n", 42);
-	ft_printf("%#X\n", 42);
+
+	ret1 = asprintf(&s1, "@moulitest: {%5.d} {%5.0p}", 0, 0, 445);
+	ret2 = ft_asprintf(&s2, "@moulitest: {%5.d} {%5.0p}", 0, 0, 445);
+	//ret2 = ft_asprintf(&s2, "% +d", 445);
+	//ret1 = asprintf(&s1, "%#08x", 42);
+	//ret2 = ft_asprintf(&s2, "%#08x", 42);
 	//printf("Here [%c]\n", 0);
 	//ft_printf("Here [%c]\n", 0);
 	printsimple(s1, s2, ret1, ret2);
