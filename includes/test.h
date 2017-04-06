@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 11:59:53 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/04 13:31:55 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/05 21:20:02 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define ANSI_B_YELLOW "\033[43m"
 
 #include <locale.h>
-# include <stdio.h>  //Don't Forget to Remove!!!!
+//# include <stdio.h>  //Don't Forget to Remove!!!!
 
 void	printout(char **src1, char **src2, int ret1, int ret2, int count);
 

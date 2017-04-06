@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/05 18:01:01 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/05 21:25:11 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ int8_t	ft_printf_flags(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	{
 		if (**fmt == '-')
 		{
-			printf("Negative Flag\n");
+//			printf("Negative Flag\n");
 			x->left = 1;
 			x->zero = 0;	//flag '0' is ignored when flag '-' is present
 		}
 		else if (**fmt == '+')
 		{
-			printf("Positive Flag\n");
+//			printf("Positive Flag\n");
 			x->showsign = 1;
 			x->space = 0; //flag ' ' is ignored when flag '+' is present
 		}
@@ -34,16 +34,16 @@ int8_t	ft_printf_flags(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 		{
 			if (x->showsign == 0)  //flag ' ' is ignored when flag '+' is present
 				x->space = 1;
-			printf("Space Flag\n");
+//			printf("Space Flag\n");
 		}
 		else if (**fmt == '#')
 		{
-			printf("Hash Flag\n");
+//			printf("Hash Flag\n");
 			x->alt = 1;
 		}
 		else if (**fmt == '0')
 		{
-			printf("Zero Flag\n");
+//			printf("Zero Flag\n");
 			if (x -> left == 0) /** flag '0' is ignored if - flag is present.**/
 				x->zero = 1;
 		}
@@ -91,7 +91,7 @@ int8_t				ft_printf_width(t_arr *ret, const char **fmt, t_printf *x, va_list clo
 	while (**fmt == '*')
 	{
 		x->width = va_arg(clone, int);
-		printf("Width = %d\n", x->width);
+//		printf("Width = %d\n", x->width);
 		++*fmt;
 	}
 	//If width is somehow negative. The - is treated as a flag.
@@ -100,7 +100,7 @@ int8_t				ft_printf_width(t_arr *ret, const char **fmt, t_printf *x, va_list clo
 			x->width = -x->width;
 			x->left = 1;
 	}
-	printf("Width = %d\n", x->width);
+//	printf("Width = %d\n", x->width);
 	return (0);
 }
 
@@ -127,7 +127,7 @@ int8_t	ft_printf_dot(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 		}
 	}
 	x->prec = res;
-	printf("Precision = %d\n", x->prec);
+//	printf("Precision = %d\n", x->prec);
 	return (0);
 }
 
@@ -167,7 +167,7 @@ int8_t	ft_printf_length(t_arr *ret, const char **fmt, t_printf *x, va_list clone
 		}
 		x->len_mod = (index > x->len_mod) ? index : x->len_mod;
 		++*fmt;
-		printf("Len Mod = %d\n", x->len_mod);
+//		printf("Len Mod = %d\n", x->len_mod);
 	}
 	return (0);
 }
