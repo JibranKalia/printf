@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/05 21:04:44 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/06 00:00:47 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,35 @@
 #define LEN2 2
 #define TYPEFIELD 22
 
-typedef int8_t FUNC(t_arr *, const char **, t_printf *, va_list);
-
-static char g_tbl[LEN1][LEN2] =
+static char		g_tbl[LEN1][LEN2] =
 {
-	{"%"}, {"-"}, {"+"}, {" "}, {"#"},
-	{"0"}, {"*"}, {"1"}, {"2"}, {"3"},
-	{"4"}, {"5"}, {"6"}, {"7"}, {"8"},
-	{"9"}, {"."}, {"hh"}, {"h"}, {"ll"},
-	{"L"}, {"l"}, {"j"}, {"z"}, {"c"},
-	{"C"}, {"d"}, {"D"}, {"i"}, {"x"},
-	{"X"}, {"o"}, {"O"}, {"u"}, {"U"},
-	{"s"}, {"S"}, {"p"}};
+	{"%"}, {"-"}, {"+"}, {" "},
+	{"#"}, {"0"}, {"*"}, {"1"},
+	{"2"}, {"3"}, {"4"}, {"5"},
+	{"6"}, {"7"}, {"8"}, {"9"},
+	{"."}, {"hh"}, {"h"}, {"ll"},
+	{"L"}, {"l"}, {"j"}, {"z"},
+	{"c"}, {"C"}, {"d"}, {"D"},
+	{"i"}, {"x"}, {"X"}, {"o"},
+	{"O"}, {"u"}, {"U"}, {"s"},
+	{"S"}, {"p"}};
 
-FUNC  *g_func[LEN1] = {
-	ft_printf_percent, ft_printf_flags, ft_printf_flags, ft_printf_flags, ft_printf_flags,
-	ft_printf_flags, ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width,
-	ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width,
-	ft_printf_width, ft_printf_dot, ft_printf_length, ft_printf_length, ft_printf_length,
-	ft_printf_length, ft_printf_length, ft_printf_length, ft_printf_length, ft_printf_c,
-	ft_printf_C, ft_printf_d, ft_printf_d, ft_printf_d, ft_printf_X,
-	ft_printf_X, ft_printf_o, ft_printf_o, ft_printf_u, ft_printf_u,
-	ft_printf_s, ft_printf_S, ft_printf_p};
+static int8_t	(*g_func[LEN1]) (t_arr *ret, const char **fmt,
+		t_printf *x, va_list clone) = {
+	ft_printf_percent, ft_printf_flags, ft_printf_flags, ft_printf_flags,
+	ft_printf_flags, ft_printf_flags, ft_printf_width, ft_printf_width,
+	ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width,
+	ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width,
+	ft_printf_dot, ft_printf_length, ft_printf_length, ft_printf_length,
+	ft_printf_length, ft_printf_length, ft_printf_length, ft_printf_length,
+	ft_printf_c, ft_printf_c1, ft_printf_d, ft_printf_d,
+	ft_printf_d, ft_printf_X, ft_printf_x1, ft_printf_o,
+	ft_printf_o, ft_printf_u, ft_printf_u, ft_printf_s,
+	ft_printf_s1, ft_printf_p};
+
+/*
+** Confirm that the match below is completely correct
+*/
 
 static int8_t	check(const char **fmt, int i)
 {
@@ -46,8 +53,13 @@ static int8_t	check(const char **fmt, int i)
 	return (0);
 }
 
+/*
+** Increment through the Jump Table to find the appropriate
+** function. Reset the counter if a type is not reached.
+*/
 
-static int	choosetype(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
+static int		choosetype(t_arr *ret, const char **fmt,
+		t_printf *x, va_list clone)
 {
 	int i;
 
@@ -61,14 +73,19 @@ static int	choosetype(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 			{
 				CHK(g_func[i](ret, fmt, x, clone) == -1, -1);
 				if (i < TYPEFIELD)
-					i = -1;                            //Reset counter to beginnning only if type field is not reached
+					i = -1;
 			}
 		}
 	}
 	return (0);
 }
 
-int			dispatch(char **final, const char *fmt, va_list clone)
+/*
+** Increment through the format string. As soon as percentage is reached
+** move to function above and look for appropriate function in Jump Table.
+*/
+
+int				dispatch(char **final, const char *fmt, va_list clone)
 {
 	size_t			i;
 	t_arr			ret;
@@ -85,14 +102,13 @@ int			dispatch(char **final, const char *fmt, va_list clone)
 		fmt += i;
 		if (*fmt == '%')
 		{
-			if (*(++fmt) == 0) //Percentage is the last thing in the string. Also increments ahead of percentage.
-				break;
-			CHK1(choosetype(&ret, &fmt, &x, clone) == -1, ft_arr_del(&ret), -1); //Passing the address of fmt so that it can be incremented by other functions.
+			if (*(++fmt) == 0)
+				break ;
+			choosetype(&ret, &fmt, &x, clone);
 		}
-		ft_arr_del(&x.extra);  //Shouldn't BZERO Better?
-		CHK((ft_printf_init(&x)) == -1, -1); //Reset this array after every % is dealt with
+		ft_arr_del(&x.extra);
+		CHK((ft_printf_init(&x)) == -1, -1);
 	}
-	//Copying the result of array onto output string.
 	*final = ft_arrtostr(&ret);
 	return (ret.len);
 }
