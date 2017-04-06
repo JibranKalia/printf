@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 16:58:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/05 15:46:07 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/05 17:28:58 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 
 # include <string.h>
-# include <limits.h>
 # include <stdint.h>
+# include <wchar.h>
 
 # include <stdio.h>
 
@@ -49,6 +49,12 @@ int					ft_isupper(int c);
 int					ft_isxdigit(int c);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
+
+/*
+** Wide Character
+*/
+
+int					ft_wctomb(char *tmp, wchar_t org);
 
 /*
 ** Putin

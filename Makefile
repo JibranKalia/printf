@@ -6,7 +6,7 @@
 #    By: jkalia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/23 14:12:11 by jkalia            #+#    #+#              #
-#*   Updated: 2017/04/04 16:36:19 by jkalia           ###   ########.fr       *#
+#*   Updated: 2017/04/05 17:30:05 by jkalia           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,6 +116,7 @@ LIBFT_FILES		:= ft_putchar.c \
 			  ft_lstmap.c \
 			  ft_tbldel.c \
 			  ft_realloc.c \
+			  ft_wctomb.c \
 
 SRC				:= $(addprefix src/, $(SRC_FILES))
 LIBFT			:= $(addprefix src/libft/, $(LIBFT_FILES))

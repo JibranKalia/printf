@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/05 16:11:32 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/05 17:19:19 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,24 @@ int		main(void)
 {
 	int		x = 15;
 	int		*y;
-	int		p = -3;
+	int		p = 5;
 	int		w = -5;
 	int		ret1;
 	int		ret2;
 	char	*s1;
 	char	*s2;
 	
-	char	str[10] = "字Hello";
+	//wchar_t *str = L"字Hello";
+	wchar_t *str = L"字字字字Hell";
 	char	*str1 = NULL;
-
+	
 	wchar_t Char =  L'字';
 	setlocale(LC_CTYPE, "");
 
 
 
-	ret1 = asprintf(&s1, "[%ls]\n", str);
-	ret2 = ft_asprintf(&s2,"[%ls]\n", str);
+	ret1 = asprintf(&s1, "[%0.*ls]\n", p, str);
+	ret2 = ft_asprintf(&s2,"[%0.*ls]\n", p, str);
 
 	//printf("Hello %n", y);
 	printsimple(s1, s2, ret1, ret2);
