@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 16:58:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/06 00:05:46 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/06 14:28:05 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@
 # define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
 # define ISSPACE(a) ((a >= 9 && a <= 13) || (a == 32))
 # define ISDIGIT(a) (a >= 48 && a <= 57)
+# define ISUPPER(a) (a >= 'A' && a <= 'Z')
+# define ISLOWER(a) (a >= 'a' && a <= 'z')
+# define ISALPHA(a) (ISUPPER(a) || ISLOWER(a))
+# define TOLOWER(a) (a >= 'A' && a <= 'Z' ? a + 32 : a)
+# define TOUPPER(a) (a >= 'a' && a <= 'z' ? a - 32 : a)
 
 /*
 ** Ctype
@@ -97,7 +102,8 @@ char				*ft_strmap(char const *src, char (*f)(char));
 char				*ft_strmapi(char const *src, char (*f)(unsigned int, char));
 char				*ft_strsub(char const *src, unsigned int start, size_t len);
 char				*ft_strjoin(char const *src1, char const *src2);
-char				*ft_strnjoinf(char *src1, size_t len1, char const *src2, size_t len2);
+char				*ft_strnjoinf(char *s1, size_t l1,
+		char const *s2, size_t l2);
 char				*ft_strtrim(char const *src);
 char				**ft_strsplit(const char *src, char c);
 

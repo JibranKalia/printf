@@ -24,10 +24,9 @@ static void empty_string(PARAMS)
 {
 
 	++*i;
-	ret1 = asprintf(&s1, "");
-	printf("Seg Here?\n");
-	ret2 = ft_asprintf(&s2, "");
-	PRINT;
+	printf(&s1, "");
+	ft_printf(&s2, "");
+	//PRINT;
 }
 
 static void simple_newline(PARAMS)

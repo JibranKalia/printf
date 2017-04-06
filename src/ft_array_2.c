@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/05 23:25:44 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/05 23:27:08 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/06 14:11:35 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int8_t	ft_printf_append(t_arr *ret, const char **fmt, t_printf *x)
 {
 	CHK2((ft_arr_append_arr(ret, &x->extra)) == -1,
 			ft_arr_del(ret), ft_arr_del(&x->extra), -1);
+	ft_arr_del(&x->extra);
 	++*fmt;
 	return (0);
 }

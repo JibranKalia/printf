@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/06 00:09:25 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/06 14:47:27 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ static int8_t	(*g_func[LEN1]) (t_arr *ret, const char **fmt,
 	ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width,
 	ft_printf_dot, ft_printf_length, ft_printf_length, ft_printf_length,
 	ft_printf_length, ft_printf_length, ft_printf_length, ft_printf_length,
-	ft_printf_c, ft_printf_c1, ft_printf_d, ft_printf_d,
-	ft_printf_d, ft_printf_x1, ft_printf_x1, ft_printf_o,
+	ft_printf_c, ft_printf_c, ft_printf_d, ft_printf_d,
+	ft_printf_d, ft_printf_x, ft_printf_x, ft_printf_o,
 	ft_printf_o, ft_printf_u, ft_printf_u, ft_printf_s,
-	ft_printf_s1, ft_printf_p};
+	ft_printf_s, ft_printf_p};
 
 /*
 ** Confirm that the match below is completely correct
@@ -64,19 +64,17 @@ static int		choosetype(t_arr *ret, const char **fmt,
 	int i;
 
 	i = -1;
-	while (i < LEN1)
+	while (i < LEN1 && **fmt)
 	{
 		i++;
-		if (**fmt == g_tbl[i][0])
+		if ((**fmt == g_tbl[i][0]) && ((check(fmt, i)) == 1))
 		{
-			if ((check(fmt, i)) == 1)
-			{
-				CHK(g_func[i](ret, fmt, x, clone) == -1, -1);
-				if (i < TYPEFIELD)
-					i = -1;
-			}
+			CHK(g_func[i](ret, fmt, x, clone) == -1, -1);
+			if (i < TYPEFIELD)
+				i = -1;
 		}
 	}
+	CHK(**fmt == 0, 0);
 	return (0);
 }
 
@@ -93,6 +91,7 @@ int				dispatch(char **final, const char *fmt, va_list clone)
 
 	CHK((ft_arr_init(&ret, ft_strlen(fmt) + 10)) == -1, -1);
 	CHK((ft_printf_init(&x)) == -1, -1);
+//	CHK(*fmt == 0, 0);
 	while (*fmt)
 	{
 		i = 0;
@@ -106,7 +105,6 @@ int				dispatch(char **final, const char *fmt, va_list clone)
 				break ;
 			choosetype(&ret, &fmt, &x, clone);
 		}
-		ft_arr_del(&x.extra);
 		CHK((ft_printf_init(&x)) == -1, -1);
 	}
 	*final = ft_arrtostr(&ret);

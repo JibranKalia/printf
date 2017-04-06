@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:02:19 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/05 23:42:06 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/06 14:45:19 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,25 @@ int8_t		ft_printf_wchar(t_arr *ret, const char **fmt, t_printf *x, va_list clone
 	org = (wchar_t)va_arg(clone, wint_t);
 	len = ft_wctomb(tmp, org);
 	ft_arr_appendn(&x->extra, tmp, sizeof(char) * len);
-	ft_handlewidth(x);
+	handle_width(x, 'c');
 	return (ft_printf_append(ret, fmt, x));
 }
+
+/*
+** 'C' is treated as c with l modifider.
+*/
 
 int8_t		ft_printf_c(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 {
 	unsigned char	tmp[1];
+	if (**fmt == 'C')
+		x->len_mod = 3;
 
-	CHK1((ft_arr_init(&x->extra, 5)) == -1, ft_arr_del(ret), -1);
+	CHK1((ft_arr_init(&x->extra, 1)) == -1, ft_arr_del(ret), -1);
 	if (x->len_mod == 3)
 		return (ft_printf_wchar(ret, fmt, x, clone));
 	tmp[0] = (unsigned char)va_arg(clone, int);
 	ft_arr_appendn(&x->extra, tmp, 1);
-	ft_handlewidth(x);
+	handle_width(x, 'c');
 	return (ft_printf_append(ret, fmt, x));
-}
-
-int8_t		ft_printf_c1(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
-{
-	x->len_mod = 3;                  //Treated as c with the l (ell) modifier.
-	return (ft_printf_c(ret, fmt, x, clone));
 }

@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 11:59:53 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/05 21:20:02 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/06 13:32:16 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # define ANSI_RESET "\033[0m"
 # define ANSI_BLUE "\033[34m"
+# define ANSI_CYAN "\033[36m"
 # define ANSI_RED "\033[31m"
 # define ANSI_GREEN "\033[32m"
 # define ANSI_B_BGREEN "\033[42;1m"

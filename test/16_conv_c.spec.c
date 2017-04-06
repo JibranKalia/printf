@@ -2,6 +2,14 @@
 #include <libftprintf.h>
 #include <test.h>
 
+static void test_zero(PARAMS)
+{
+	++*i;
+	ret1 = asprintf(&s1, "%c", 0);
+	ret2 = ft_asprintf(&s2, "%c", 0);
+	PRINT;
+}
+
 static void test_simple(PARAMS)
 {
 	++*i;
@@ -52,13 +60,6 @@ static void test_ascii_printable_chars(PARAMS)
 	PRINT;
 }
 
-static void test_zero(PARAMS)
-{
-	++*i;
-	ret1 = asprintf(&s1, "%c", 0);
-	ret2 = ft_asprintf(&s2, "%c", 0);
-	PRINT;
-}
 
 static void completed_c1(PARAMS)
 {
@@ -96,10 +97,10 @@ void	suite_16_conv_c(int *i)
 	int ret1;
 	int ret2;
 
+	test_zero(s1, s2, ret1, ret2, i);
 	test_simple_char(s1, s2, ret1, ret2, i);
 	test_two_chars(s1, s2, ret1, ret2, i);
 	test_ascii_printable_chars(s1, s2, ret1, ret2, i);
-	test_zero(s1, s2, ret1, ret2, i);
 	completed_c1(s1, s2, ret1, ret2, i);
 	completed_c2(s1, s2, ret1, ret2, i);
 }

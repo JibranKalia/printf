@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 13:53:24 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/05 23:42:27 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/06 14:48:11 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,13 @@ int8_t			ft_printf_wstr(t_arr *ret, const char **fmt, t_printf *x, va_list clone
 	}
 	ft_arr_appendn(&x->extra, final, sizeof(char) * i);
 	free(final);
-	ft_handlewidth(x);
+	handle_width(x, 's');
 	return (ft_printf_append(ret, fmt, x));
 }
+
+/*
+** 'S' is treated as s with l modifider.
+*/
 
 int8_t			ft_printf_s(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 {
@@ -56,6 +60,8 @@ int8_t			ft_printf_s(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	char	*final;
 	int		n;
 
+	if (**fmt == 'S')
+		x->len_mod = 3;
 	CHK1((ft_arr_init(&x->extra, 5)) == -1, ft_arr_del(ret), -1);
 	if (x->len_mod == 3)
 		return (ft_printf_wstr(ret, fmt, x, clone));
@@ -64,12 +70,6 @@ int8_t			ft_printf_s(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	n = (x->is_prec == 1) ? MIN(x->prec, (int)ft_strlen(final)) : ft_strlen(final);
 	ft_arr_appendn(&x->extra, final, sizeof(char) * n);
 	free(final);
-	ft_handlewidth(x);
+	handle_width(x, 's');
 	return (ft_printf_append(ret, fmt, x));
-}
-
-int8_t		ft_printf_s1(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
-{
-	x->len_mod = 3;                  //Treated as s with the l (ell) modifier.
-	return (ft_printf_s(ret, fmt, x, clone));
 }

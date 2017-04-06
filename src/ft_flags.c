@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/05 21:25:11 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/06 14:42:06 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int8_t	ft_printf_flags(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	return (0);
 }
 
-int8_t		ft_handlewidth(t_printf *x)
+int8_t		handle_width(t_printf *x, char c)
 {
 	char	*tmp;
 	int		diff;
@@ -63,7 +63,8 @@ int8_t		ft_handlewidth(t_printf *x)
 	if (x->is_prec == 1)                     //Make sure pad is space if precision is set. (This doesn't include default precision);
 		x->pad = ' ';
 	diff = x->width - x->extra.len;
-	index = (x->left == 1) ? x->extra.len : 0;
+	index = (c == 'd' && x->left == 1) ? x->extra.len : 0;
+	index = (c == 'x' && (ft_strstr(x->extra.ptr, "0x") != NULL)) ? 2 : 0;
 	if (diff > 0)
 	{
 		CHK((tmp = ft_strnew(diff)) == 0, -1);

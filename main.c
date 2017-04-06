@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/05 20:53:04 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/06 14:40:14 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,18 @@ int		main(void)
 	int		*y;
 	int		p = 15;
 	int		w = 30;
-	int		ret1;
-	int		ret2;
-	char	*s1;
-	char	*s2;
+	int		ret1 = 0;
+	int		ret2 = 0;
+	char	*s1 = NULL;
+	char	*s2 = NULL;
 	
 
-	ret1 = asprintf(&s1, "%d%d\n", x, x, x, x, x);
-	ret2 = ft_asprintf(&s2, "%d%d\n", x, x, x, x);
+	ret1 = asprintf(&s1, "%#08x", 42);
+	ret2 = ft_asprintf(&s2, "%#08x", 42);
+	printf("%#X\n", 42);
+	ft_printf("%#X\n", 42);
+	//printf("Here [%c]\n", 0);
+	//ft_printf("Here [%c]\n", 0);
 	printsimple(s1, s2, ret1, ret2);
 	
 

@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/02 21:51:12 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/05 23:42:56 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/06 14:43:01 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int8_t		ft_printf_o(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	if (org > 0 && x->alt == 1)
 		ft_arr_insertn(&x->extra, 0, "0", 1);
 	free(nbr);
-	ft_handlewidth(x);
+	handle_width(x, 'o');
 	return (ft_printf_append(ret, fmt, x));
 }
 
@@ -62,14 +62,32 @@ int8_t		ft_printf_u(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	nbr = ft_itoa_base(org, 10, "0123456789");
 	ft_arr_appendn(&x->extra, nbr, sizeof(char) * ft_strlen(nbr));
 	handle_prec(x, org);
-//	if (org > 0 && x->alt == 1)
-//		ft_arr_insert(&x->extra, 0, "0");
 	free(nbr);
-	ft_handlewidth(x);
+	handle_width(x, 'u');
 	return (ft_printf_append(ret, fmt, x));
 }
 
-static int8_t		ft_printf_hex(t_arr *ret, const char **fmt, t_printf *x, va_list clone, char *spec)
+/*
+** Converting letters to capital when X is enabled
+*/
+
+static	void		handle_upper(char *str, char c)
+{
+	if (c != 'X')
+		return ;
+	while (*str)
+	{
+		if (ISALPHA(*str))
+			*str = TOUPPER(*str);
+		++str;
+	}
+}
+
+/*
+** Dealing with hex flag. The alternative flag doesn't apply if org is 0.
+*/
+
+int8_t				ft_printf_x(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 {
 	uintmax_t	org;
 	char		*nbr;
@@ -78,19 +96,13 @@ static int8_t		ft_printf_hex(t_arr *ret, const char **fmt, t_printf *x, va_list 
 	org = ft_printf_uox_len(x, clone);
 	if (x->prec == 0 && x->is_prec == 1 && org == 0)               //if both the converted value is 0 and the precision is SET to 0 the conversion results in no characters.
 		return (ft_printf_append(ret, fmt, x));
-	nbr = ft_itoa_base(org, 16, spec);
+	nbr = ft_itoa_base(org, 16, "0123456789abcdef");
 	ft_arr_appendn(&x->extra, nbr, sizeof(char) * ft_strlen(nbr));
 	handle_prec(x, org);
-	if (x->alt == 1)                                                   // "#' is alternative for Hex
-		ft_arr_insertn(&x->extra, 0, "0x", 2);
 	free(nbr);
-	ft_handlewidth(x);
+	if (x->alt == 1 && org != 0)                                                   // "#' is alternative for Hex
+		ft_arr_insertn(&x->extra, 0, "0x", 2);
+	handle_width(x, 'x');
+	handle_upper(x->extra.ptr, **fmt);
 	return (ft_printf_append(ret, fmt, x));
-}
-
-int8_t				ft_printf_x1(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
-{
-	if (**fmt == 'X')
-		return (ft_printf_hex(ret, fmt, x, clone, "0123456789ABCDEF"));
-	return (ft_printf_hex(ret, fmt, x, clone, "0123456789abcdef"));
 }
