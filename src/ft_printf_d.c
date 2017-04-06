@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:00:15 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/05 18:01:32 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/05 21:15:27 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static intmax_t		ft_printf_d_len(t_printf *x, va_list clone)
 	return (0);
 }
 
-static int8_t		ft_printf_d_dot(t_printf *x, intmax_t org)
+int8_t		handle_prec(t_printf *x, intmax_t org)
 {
 	char	*tmp;
 	int		diff;
@@ -40,7 +40,7 @@ static int8_t		ft_printf_d_dot(t_printf *x, intmax_t org)
 	if (x->is_prec == 0 && x->prec == 0)                 //Precision is set to zero
 		return (0);
 	if (x->is_prec == 0)                                  //If no precision is set. Default is 1
-		x->prec = 0;
+		x->prec = 1;
 	if (x->prec < (int)x->extra.len)      //Nbr len is more than precession.
 		return (0);
 	diff = (org > 0) ? x->prec - x->extra.len : x->prec - x->extra.len + 1;               //If the nbr is negative the minus sign shouldn't count toward precision.
@@ -69,7 +69,7 @@ int8_t				ft_printf_d(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 		return (ft_printf_append(ret, fmt, x));
 	nbr = ft_itoa(org);
 	ft_arr_appendn(&x->extra, nbr, sizeof(char) * ft_strlen(nbr));
-	ft_printf_d_dot(x, org);
+	handle_prec(x, org);
 	if (org > 0 && x->showsign == 1)
 		ft_arr_insert(&x->extra, 0, "+");
 	free(nbr);

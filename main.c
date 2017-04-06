@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/05 17:19:19 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/05 20:53:04 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,39 @@ int		main(void)
 {
 	int		x = 15;
 	int		*y;
-	int		p = 5;
-	int		w = -5;
+	int		p = 15;
+	int		w = 30;
 	int		ret1;
 	int		ret2;
 	char	*s1;
 	char	*s2;
 	
+
+	ret1 = asprintf(&s1, "%d%d\n", x, x, x, x, x);
+	ret2 = ft_asprintf(&s2, "%d%d\n", x, x, x, x);
+	printsimple(s1, s2, ret1, ret2);
+	
+
+	/**
 	//wchar_t *str = L"字Hello";
-	wchar_t *str = L"字字字字Hell";
 	char	*str1 = NULL;
 	
 	wchar_t Char =  L'字';
 	setlocale(LC_CTYPE, "");
 
+	char	*a;
+	uintmax_t		b;
+	a = ft_strnew(2);
+	b = (uintmax_t)a;
+	ret1 = asprintf(&s1, "%*.*p\n", w, p, a);
+	ret2 = ft_asprintf(&s2, "%*.*p\n", w, p, a);
 
-
-	ret1 = asprintf(&s1, "[%0.*ls]\n", p, str);
-	ret2 = ft_asprintf(&s2,"[%0.*ls]\n", p, str);
+	//ret1 = asprintf(&s1, "[%0.*ls]\n", p, str);
+	//ret2 = ft_asprintf(&s2,"[%0.*ls]\n", p, str);
 
 	//printf("Hello %n", y);
-	printsimple(s1, s2, ret1, ret2);
 	return (0);
+	**/
 }
 
 

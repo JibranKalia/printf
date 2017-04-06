@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:07:51 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/05 17:24:04 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/05 21:15:23 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,12 +97,14 @@ int8_t				ft_printf_length(t_arr *ret, const char **fmt, t_printf *x, va_list cl
 ** Functions
 */
 
-uintmax_t			ft_printf_uox_len(t_printf *x, va_list clone);
+int8_t				handle_prec(t_printf *x, intmax_t org);
 
 int8_t				ft_printf_init(t_printf *x);
 int8_t				ft_printf_c(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
 int8_t				ft_printf_C(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
 int8_t				ft_printf_d(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
+int8_t				ft_printf_percent(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
+int8_t				ft_printf_p(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
 int8_t				ft_printf_s(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
 int8_t				ft_printf_S(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
 int8_t				ft_printf_o(t_arr *ret, const char **fmt, t_printf *x, va_list clone);

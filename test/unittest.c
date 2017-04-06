@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 11:19:09 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/05 16:24:10 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/05 21:09:23 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ int		main(void)
 //	test_basic(s1, s2, ret1, ret2, &i);
 	test_c(s1, s2, ret1, ret2, &i);
 //	test_d(s1, s2, ret1, ret2, &i);
-//	test_x(s1, s2, ret1, ret2, &i);
+	test_x(s1, s2, ret1, ret2, &i);
 
 }
