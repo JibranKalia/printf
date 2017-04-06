@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/02 21:51:12 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/05 21:13:07 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/05 23:42:56 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int8_t		ft_printf_o(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	ft_arr_appendn(&x->extra, nbr, sizeof(char) * ft_strlen(nbr));
 	handle_prec(x, org);
 	if (org > 0 && x->alt == 1)
-		ft_arr_insert(&x->extra, 0, "0");
+		ft_arr_insertn(&x->extra, 0, "0", 1);
 	free(nbr);
 	ft_handlewidth(x);
 	return (ft_printf_append(ret, fmt, x));
@@ -88,7 +88,7 @@ static int8_t		ft_printf_hex(t_arr *ret, const char **fmt, t_printf *x, va_list 
 	return (ft_printf_append(ret, fmt, x));
 }
 
-int8_t				ft_printf_X(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
+int8_t				ft_printf_x1(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 {
 	if (**fmt == 'X')
 		return (ft_printf_hex(ret, fmt, x, clone, "0123456789ABCDEF"));

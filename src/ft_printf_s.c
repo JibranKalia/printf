@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 13:53:24 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/05 18:04:01 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/05 23:42:27 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int8_t			ft_printf_s(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	return (ft_printf_append(ret, fmt, x));
 }
 
-int8_t		ft_printf_S(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
+int8_t		ft_printf_s1(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 {
 	x->len_mod = 3;                  //Treated as s with the l (ell) modifier.
 	return (ft_printf_s(ret, fmt, x, clone));

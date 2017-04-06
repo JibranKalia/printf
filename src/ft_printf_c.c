@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:02:19 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/05 17:30:16 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/05 23:42:06 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ int8_t		ft_printf_c(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	if (x->len_mod == 3)
 		return (ft_printf_wchar(ret, fmt, x, clone));
 	tmp[0] = (unsigned char)va_arg(clone, int);
-	ft_arr_append(&x->extra, tmp);
+	ft_arr_appendn(&x->extra, tmp, 1);
 	ft_handlewidth(x);
 	return (ft_printf_append(ret, fmt, x));
 }
 
-int8_t		ft_printf_C(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
+int8_t		ft_printf_c1(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 {
 	x->len_mod = 3;                  //Treated as c with the l (ell) modifier.
 	return (ft_printf_c(ret, fmt, x, clone));
