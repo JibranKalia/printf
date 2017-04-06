@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/05 17:29:07 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/05 18:01:01 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int8_t	ft_printf_flags(t_arr *ret, const char **fmt, t_printf *x, va_list clone)			//What should this be returning?
 {
+	(void)ret;
+	(void)clone;
 	while (*fmt && (**fmt == '-' || **fmt == '+' || **fmt == ' ' || **fmt == '#' || **fmt == '0'))
 	{
 		if (**fmt == '-')
@@ -104,6 +106,8 @@ int8_t				ft_printf_width(t_arr *ret, const char **fmt, t_printf *x, va_list clo
 
 int8_t	ft_printf_dot(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 {
+	(void)ret;
+	(void)clone;
 	int res;
 
 	res = 0;
@@ -143,6 +147,8 @@ char	g_length_spec[7] = {"hhlljzL"};
 
 int8_t	ft_printf_length(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 {
+	(void)ret;
+	(void)clone;
 	int		index;
 
 	while (ISLENSPEC(**fmt))

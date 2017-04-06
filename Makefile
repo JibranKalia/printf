@@ -6,15 +6,15 @@
 #    By: jkalia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/23 14:12:11 by jkalia            #+#    #+#              #
-#*   Updated: 2017/04/05 17:30:05 by jkalia           ###   ########.fr       *#
+#*   Updated: 2017/04/05 17:58:53 by jkalia           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
 NAME			:= libftprintf.a
 
 CC				:= gcc
-#CFLAGS			+= -Wall -Wextra
-#CFLAGS			+= -Werror
+CFLAGS			+= -Wall -Wextra
+CFLAGS			+= -Werror
 CFLAGS			+= -I includes/
 
 TEST			:= unittest.c \

@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:00:15 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/04 17:54:37 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/05 18:01:32 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int8_t		ft_printf_d_dot(t_printf *x, intmax_t org)
 		return (0);
 	if (x->is_prec == 0)                                  //If no precision is set. Default is 1
 		x->prec = 0;
-	if (x->prec < x->extra.len)      //Nbr len is more than precession.
+	if (x->prec < (int)x->extra.len)      //Nbr len is more than precession.
 		return (0);
 	diff = (org > 0) ? x->prec - x->extra.len : x->prec - x->extra.len + 1;               //If the nbr is negative the minus sign shouldn't count toward precision.
 	index = (org > 0) ? 0 : 1;                 //If the nbr is negative the 0 has to be after minus sign.

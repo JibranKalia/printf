@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/02 21:51:12 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/04 13:17:02 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/05 18:04:50 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int8_t		ft_printf_x_dot(t_printf *x)
 		return (0);
 	if (x->is_prec == 0)                                  //If no precision is set. Default is 1
 		x->prec = 1;
-	if (x->prec < x->extra.len)      //Nbr len is more than precession.
+	if (x->prec < (int)x->extra.len)      //Nbr len is more than precession.
 		return (0);
 	diff = x->prec - x->extra.len;
 	if (diff > 0)
