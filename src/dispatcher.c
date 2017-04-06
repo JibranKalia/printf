@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/06 00:00:47 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/06 00:09:25 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int8_t	(*g_func[LEN1]) (t_arr *ret, const char **fmt,
 	ft_printf_dot, ft_printf_length, ft_printf_length, ft_printf_length,
 	ft_printf_length, ft_printf_length, ft_printf_length, ft_printf_length,
 	ft_printf_c, ft_printf_c1, ft_printf_d, ft_printf_d,
-	ft_printf_d, ft_printf_X, ft_printf_x1, ft_printf_o,
+	ft_printf_d, ft_printf_x1, ft_printf_x1, ft_printf_o,
 	ft_printf_o, ft_printf_u, ft_printf_u, ft_printf_s,
 	ft_printf_s1, ft_printf_p};
 
