@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:00:15 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/05 21:15:27 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/05 23:20:15 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,30 @@ int8_t		handle_prec(t_printf *x, intmax_t org)
 	return (0);
 }
 
+int8_t			ft_printf_percent(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
+{
+	CHK1((ft_arr_init(&x->extra, 1)) == -1, ft_arr_del(ret), -1);
+	ft_arr_insertn(&x->extra, 0, "%", 1);
+	ft_handlewidth(x);
+	return (ft_printf_append(ret, fmt, x));
+}
+
+int8_t			ft_printf_p(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
+{
+	uintmax_t	org;
+	char		*nbr;
+
+	CHK1((ft_arr_init(&x->extra, 1)) == -1, ft_arr_del(ret), -1);
+	org = (uintmax_t)va_arg(clone, void*);
+	nbr = ft_itoa_base(org, 16, "0123456789abcdef");
+	ft_arr_appendn(&x->extra, nbr, sizeof(char) * ft_strlen(nbr));
+	handle_prec(x, org);
+	ft_arr_insertn(&x->extra, 0, "0x", 2);
+	free(nbr);
+	ft_handlewidth(x);
+	return (ft_printf_append(ret, fmt, x));
+}
+
 int8_t				ft_printf_d(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 {
 	intmax_t	org;
@@ -71,7 +95,7 @@ int8_t				ft_printf_d(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	ft_arr_appendn(&x->extra, nbr, sizeof(char) * ft_strlen(nbr));
 	handle_prec(x, org);
 	if (org > 0 && x->showsign == 1)
-		ft_arr_insert(&x->extra, 0, "+");
+		ft_arr_insertn(&x->extra, 0, "+", 1);
 	free(nbr);
 	ft_handlewidth(x);
 	return (ft_printf_append(ret, fmt, x));
