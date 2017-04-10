@@ -6,25 +6,26 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 13:53:24 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/06 14:48:11 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 12:44:18 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-static size_t	ft_wcslen(wchar_t *wstr)
+size_t	ft_wcslen(wchar_t *wstr)
 {
 	size_t	len;
 	wchar_t	*p;
 
 	p = wstr;
-	while(*p != 0)
+	while (*p != 0)
 		p++;
 	len = (char *)p - (char *)wstr;
 	return (len);
 }
 
-int8_t			ft_printf_wstr(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
+int8_t	ft_printf_wstr(t_arr *ret, const char **fmt,
+		t_printf *x, va_list clone)
 {
 	wchar_t	*tmp;
 	char	*final;
@@ -34,13 +35,14 @@ int8_t			ft_printf_wstr(t_arr *ret, const char **fmt, t_printf *x, va_list clone
 
 	i = 0;
 	tmp = va_arg(clone, wchar_t*);
-	len = (x->is_prec == 1) ? MIN(x->prec, (int)ft_wcslen(tmp)) : ft_wcslen(tmp);
+	len = (x->is_prec == 1) ? MIN(x->prec, (int)ft_wcslen(tmp))
+		: ft_wcslen(tmp);
 	final = ft_strnew(len);
 	while (*tmp != 0)
 	{
 		k = ft_wctomb(&final[i], *tmp);
 		if (k + i > len)
-			break;
+			break ;
 		i += k;
 		++tmp;
 	}
@@ -54,7 +56,8 @@ int8_t			ft_printf_wstr(t_arr *ret, const char **fmt, t_printf *x, va_list clone
 ** 'S' is treated as s with l modifider.
 */
 
-int8_t			ft_printf_s(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
+int8_t	ft_printf_s(t_arr *ret, const char **fmt,
+		t_printf *x, va_list clone)
 {
 	char	*tmp;
 	char	*final;
@@ -67,7 +70,8 @@ int8_t			ft_printf_s(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 		return (ft_printf_wstr(ret, fmt, x, clone));
 	tmp = va_arg(clone, char*);
 	final = (tmp != NULL) ? ft_strdup(tmp) : ft_strdup("(null)");
-	n = (x->is_prec == 1) ? MIN(x->prec, (int)ft_strlen(final)) : ft_strlen(final);
+	n = (x->is_prec == 1) ? MIN(x->prec, (int)ft_strlen(final))
+		: ft_strlen(final);
 	ft_arr_appendn(&x->extra, final, sizeof(char) * n);
 	free(final);
 	handle_width(x, 's');

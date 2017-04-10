@@ -6,13 +6,14 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:02:19 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/06 14:45:19 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 12:42:22 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-int8_t		ft_printf_wchar(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
+int8_t		ft_printf_wchar(t_arr *ret, const char **fmt,
+		t_printf *x, va_list clone)
 {
 	int				len;
 	char			tmp[5];
@@ -29,12 +30,13 @@ int8_t		ft_printf_wchar(t_arr *ret, const char **fmt, t_printf *x, va_list clone
 ** 'C' is treated as c with l modifider.
 */
 
-int8_t		ft_printf_c(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
+int8_t		ft_printf_c(t_arr *ret, const char **fmt,
+		t_printf *x, va_list clone)
 {
 	unsigned char	tmp[1];
+
 	if (**fmt == 'C')
 		x->len_mod = 3;
-
 	CHK1((ft_arr_init(&x->extra, 1)) == -1, ft_arr_del(ret), -1);
 	if (x->len_mod == 3)
 		return (ft_printf_wchar(ret, fmt, x, clone));
