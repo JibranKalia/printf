@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 12:59:34 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 13:07:54 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,32 +27,20 @@ int8_t	ft_printf_flags(t_arr *ret, const char **fmt,
 	while (*fmt && ISFLAG(**fmt))
 	{
 		if (**fmt == '-')
-		{
 			x->left = 1;
-			x->zero = 0;
-		}
 		else if (**fmt == '+')
-		{
 			x->showsign = 1;
-			x->space = 0;
-		}
 		else if (**fmt == ' ')
-		{
-			if (x->showsign == 0)
-				x->space = 1;
-		}
+			x->space = 1;
 		else if (**fmt == '#')
-		{
 			x->alt = 1;
-		}
 		else if (**fmt == '0')
-		{
-			if (x->left == 0)
-				x->zero = 1;
-		}
+			x->zero = 1;
 		++*fmt;
 		++x->extra.len;
 	}
+	x->zero = (x->left == 0) ? x->zero : 0;
+	x->space = (x->showsign == 0) ? x->space : 0;
 	x->pad = (x->zero) ? '0' : ' ';
 	return (0);
 }
