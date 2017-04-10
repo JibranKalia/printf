@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 13:07:54 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 13:31:05 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int8_t	handle_width(t_printf *x, char c)
 		x->pad = ' ';
 	diff = x->width - x->extra.len;
 	index = (x->left == 1) ? x->extra.len : 0;
-	if (c == 'x' && x->left == 0)
+	if (c == 'x' && x->left == 0 && x->zero == 1)
 		index = (ft_strstr(x->extra.ptr, "0x") != NULL) ? 2 : 0;
 	if (x->pad == '0' && ISSIGN(x->extra.ptr[index]))
 		++index;

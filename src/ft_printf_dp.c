@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:00:15 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 12:33:08 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 13:34:57 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int8_t		handle_prec(t_printf *x, intmax_t org)
 		return (0);
 	if (x->prec < (int)x->extra.len)
 		return (0);
-	diff = (org > 0) ? x->prec - x->extra.len : x->prec - x->extra.len + 1;
-	index = (org > 0) ? 0 : 1;
+	diff = (org >= 0) ? x->prec - x->extra.len : x->prec - x->extra.len + 1;
+	index = (org >= 0) ? 0 : 1;
 	if (diff > 0)
 	{
 		CHK((tmp = ft_strnew(diff)) == 0, 0);
