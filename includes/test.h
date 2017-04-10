@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 11:59:53 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 11:58:24 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 11:59:54 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define PARAMS char *s1, char *s2, int ret1, int ret2, int *i
 # define PRINT printout(&s1, &s2, ret1, ret2, *i)
-# define PRINT2 printout(&s1, &s2, ret1, ret2, i)
+# define PRINT2 printout(&s1, &s2, ret1, ret2, g_i)
 # define PARAMS2 s1, s2, ret1,ret2, i
 
 # define ANSI_RESET "\033[0m"

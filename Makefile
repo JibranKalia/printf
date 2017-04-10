@@ -6,7 +6,7 @@
 #    By: jkalia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/23 14:12:11 by jkalia            #+#    #+#              #
-#*   Updated: 2017/04/05 23:28:02 by jkalia           ###   ########.fr       *#
+#*   Updated: 2017/04/10 11:47:23 by jkalia           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ TEST			:= unittest.c \
 				16_conv_c.spec.c \
 				17_conv_C.spec.c \
 				73_precision_for_cC.spec.c \
+				08_conv_D.spec.c \
 
 LIBFTPRINTF		:= -L. -lftprintf
 	

@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:00:15 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/06 15:43:17 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 12:30:09 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ static intmax_t		ft_printf_d_len(t_printf *x, va_list clone)
 		return (va_arg(clone, ssize_t));
 	return (0);
 }
+/*
+** If precision is not set function returns.
+** If nbr is negative the minus sign doesn't count towards precision.
+** If both value and precision are 0 no characters printed.
+** If the number is negative the extra zero padding has to be after sign.
+*/
 
 int8_t		handle_prec(t_printf *x, intmax_t org)
 {
@@ -37,14 +43,12 @@ int8_t		handle_prec(t_printf *x, intmax_t org)
 	int		diff;
 	int		index;
 
-	if (x->is_prec == 0 && x->prec == 0)                 //Precision is set to zero
+	if (x->is_prec == 0 && x->prec == 0)
 		return (0);
-	if (x->is_prec == 0)                                  //If no precision is set. Default is 1
-		x->prec = 1;
-	if (x->prec < (int)x->extra.len)      //Nbr len is more than precession.
+	if (x->prec < (int)x->extra.len)
 		return (0);
-	diff = (org > 0) ? x->prec - x->extra.len : x->prec - x->extra.len + 1;               //If the nbr is negative the minus sign shouldn't count toward precision.
-	index = (org > 0) ? 0 : 1;                 //If the nbr is negative the 0 has to be after minus sign.
+	diff = (org > 0) ? x->prec - x->extra.len : x->prec - x->extra.len + 1;
+	index = (org > 0) ? 0 : 1;
 	if (diff > 0)
 	{
 		CHK((tmp = ft_strnew(diff)) == 0, 0);
@@ -83,16 +87,25 @@ int8_t			ft_printf_p(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	return (ft_printf_append(ret, fmt, x));
 }
 
+/*
+** This function handles 'D' 'd' 'i'. 'D' equates to 'ld'.
+** For integer numbers '0' flag is ignored if precision is defined.
+** If both value and precision are 0 no characters printed.
+*/
+
+
 int8_t				ft_printf_d(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 {
 	intmax_t	org;
 	char		*nbr;
 
-	if (x->is_prec == 1)                                          // for integer numbers '0' it is ignored if the precision is explicitly specified.
+	if (**fmt == 'D' && x->len_mod <= 3)
+		x->len_mod = 3;
+	if (x->is_prec == 1)
 		x->zero = 0;
 	CHK1((ft_arr_init(&x->extra, 5)) == -1, ft_arr_del(ret), -1);
 	org = ft_printf_d_len(x, clone);
-	if (x->prec == 0 && x->is_prec == 1 && org == 0)               //if both the converted value and the precision are 0 the conversion results in no characters.
+	if (x->prec == 0 && x->is_prec == 1 && org == 0)
 	{
 		handle_width(x, 'd');
 		return (ft_printf_append(ret, fmt, x));
