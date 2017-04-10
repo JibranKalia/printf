@@ -6,7 +6,7 @@
 #    By: jkalia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/23 14:12:11 by jkalia            #+#    #+#              #
-#*   Updated: 2017/04/10 11:47:23 by jkalia           ###   ########.fr       *#
+#*   Updated: 2017/04/10 13:11:11 by jkalia           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,6 @@ SRC_FILES		:= ft_printf.c \
 				ft_printf_dp.c \
 				ft_printf_s.c \
 				ft_printf_uox.c \
-				#alloc_wrap.c \
 
 LIBFT_FILES		:= ft_putchar.c \
 			  ft_putchar_fd.c \
@@ -119,7 +118,7 @@ LIBFT_FILES		:= ft_putchar.c \
 			  ft_wctomb.c \
 
 SRC				:= $(addprefix src/, $(SRC_FILES))
-LIBFT			:= $(addprefix src/libft/, $(LIBFT_FILES))
+LIBFT			:= $(addprefix libft/, $(LIBFT_FILES))
 TEST			:= $(addprefix test/, $(TEST))
 
 OBJ				:= $(SRC:.c=.o)
