@@ -6,13 +6,13 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:00:15 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 12:30:09 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 12:33:08 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-static intmax_t		ft_printf_d_len(t_printf *x, va_list clone)
+intmax_t	ft_printf_d_len(t_printf *x, va_list clone)
 {
 	if (x->len_mod == 0 || x->len_mod == 7)
 		return (va_arg(clone, int));
@@ -30,6 +30,7 @@ static intmax_t		ft_printf_d_len(t_printf *x, va_list clone)
 		return (va_arg(clone, ssize_t));
 	return (0);
 }
+
 /*
 ** If precision is not set function returns.
 ** If nbr is negative the minus sign doesn't count towards precision.
@@ -58,7 +59,8 @@ int8_t		handle_prec(t_printf *x, intmax_t org)
 	return (0);
 }
 
-int8_t			ft_printf_percent(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
+int8_t		ft_printf_percent(t_arr *ret, const char **fmt,
+		t_printf *x, va_list clone)
 {
 	CHK1((ft_arr_init(&x->extra, 1)) == -1, ft_arr_del(ret), -1);
 	ft_arr_insertn(&x->extra, 0, "%", 1);
@@ -66,7 +68,8 @@ int8_t			ft_printf_percent(t_arr *ret, const char **fmt, t_printf *x, va_list cl
 	return (ft_printf_append(ret, fmt, x));
 }
 
-int8_t			ft_printf_p(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
+int8_t		ft_printf_p(t_arr *ret, const char **fmt,
+		t_printf *x, va_list clone)
 {
 	uintmax_t	org;
 	char		*nbr;
@@ -93,8 +96,8 @@ int8_t			ft_printf_p(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 ** If both value and precision are 0 no characters printed.
 */
 
-
-int8_t				ft_printf_d(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
+int8_t		ft_printf_d(t_arr *ret, const char **fmt,
+		t_printf *x, va_list clone)
 {
 	intmax_t	org;
 	char		*nbr;
