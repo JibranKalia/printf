@@ -6,13 +6,13 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/02 21:51:12 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/06 15:39:15 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 12:40:55 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-static uintmax_t	ft_printf_uox_len(t_printf *x, va_list clone)
+uintmax_t	ft_printf_uox_len(t_printf *x, va_list clone)
 {
 	if (x->len_mod == 0 || x->len_mod == 7)
 		return (va_arg(clone, unsigned int));
@@ -31,14 +31,20 @@ static uintmax_t	ft_printf_uox_len(t_printf *x, va_list clone)
 	return (0);
 }
 
-int8_t		ft_printf_o(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
+/*
+** Dealing with 'o' 'O'
+** If both converted value and precision is 0 nothing is printed
+*/
+
+int8_t		ft_printf_o(t_arr *ret, const char **fmt,
+		t_printf *x, va_list clone)
 {
 	uintmax_t	org;
 	char		*nbr;
 
 	CHK1((ft_arr_init(&x->extra, 1)) == -1, ft_arr_del(ret), -1);
 	org = ft_printf_uox_len(x, clone);
-	if (x->prec == 0 && x->is_prec == 1 && org == 0 && x->alt == 0)               //if both the converted value and the precision are 0 the conversion results in no characters.
+	if (x->prec == 0 && x->is_prec == 1 && org == 0 && x->alt == 0)
 	{
 		handle_width(x, 'o');
 		return (ft_printf_append(ret, fmt, x));
@@ -53,14 +59,20 @@ int8_t		ft_printf_o(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	return (ft_printf_append(ret, fmt, x));
 }
 
-int8_t		ft_printf_u(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
+/*
+** Dealing with 'u'.
+** If both converted value and precision is 0 nothing is printed
+*/
+
+int8_t		ft_printf_u(t_arr *ret, const char **fmt,
+		t_printf *x, va_list clone)
 {
 	uintmax_t	org;
 	char		*nbr;
 
 	CHK1((ft_arr_init(&x->extra, 1)) == -1, ft_arr_del(ret), -1);
 	org = ft_printf_uox_len(x, clone);
-	if (x->prec == 0 && x->is_prec == 1 && org == 0 && x->alt == 0)               //if both the converted value and the precision are 0 the conversion results in no characters.
+	if (x->prec == 0 && x->is_prec == 1 && org == 0 && x->alt == 0)
 	{
 		handle_width(x, 'u');
 		return (ft_printf_append(ret, fmt, x));
@@ -77,7 +89,7 @@ int8_t		ft_printf_u(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 ** Converting letters to capital when X is enabled
 */
 
-static	void		handle_upper(char *str, char c)
+static void	handle_upper(char *str, char c)
 {
 	if (c != 'X')
 		return ;
@@ -90,17 +102,20 @@ static	void		handle_upper(char *str, char c)
 }
 
 /*
-** Dealing with hex flag. The alternative flag doesn't apply if org is 0.
+** Dealing with 'x' and 'X'.
+** The alternative flag doesn't apply if org is 0.
+** If both converted value and precision is 0 nothing is printed
 */
 
-int8_t				ft_printf_x(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
+int8_t		ft_printf_x(t_arr *ret, const char **fmt,
+		t_printf *x, va_list clone)
 {
 	uintmax_t	org;
 	char		*nbr;
 
 	CHK1((ft_arr_init(&x->extra, 1)) == -1, ft_arr_del(ret), -1);
 	org = ft_printf_uox_len(x, clone);
-	if (x->prec == 0 && x->is_prec == 1 && org == 0)               //if both the converted value is 0 and the precision is SET to 0 the conversion results in no characters.
+	if (x->prec == 0 && x->is_prec == 1 && org == 0)
 	{
 		handle_width(x, 'x');
 		return (ft_printf_append(ret, fmt, x));
@@ -109,7 +124,7 @@ int8_t				ft_printf_x(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 	ft_arr_appendn(&x->extra, nbr, sizeof(char) * ft_strlen(nbr));
 	handle_prec(x, org);
 	free(nbr);
-	if (x->alt == 1 && org != 0)                                                   // "#' is alternative for Hex
+	if (x->alt == 1 && org != 0)
 		ft_arr_insertn(&x->extra, 0, "0x", 2);
 	handle_width(x, 'x');
 	handle_upper(x->extra.ptr, **fmt);

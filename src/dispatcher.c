@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/06 14:47:27 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 12:34:17 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int				dispatch(char **final, const char *fmt, va_list clone)
 
 	CHK((ft_arr_init(&ret, ft_strlen(fmt) + 10)) == -1, -1);
 	CHK((ft_printf_init(&x)) == -1, -1);
-//	CHK(*fmt == 0, 0);
+	CHK(*fmt == 0, 0);
 	while (*fmt)
 	{
 		i = 0;
