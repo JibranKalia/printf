@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/02 21:51:12 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 13:27:36 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 19:20:19 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int8_t		ft_printf_o(t_arr *ret, const char **fmt,
 	uintmax_t	org;
 	char		*nbr;
 
+	if (**fmt == 'O' && x->len_mod <= 3)
+		x->len_mod = 3;
 	CHK1((ft_arr_init(&x->extra, 1)) == -1, ft_arr_del(ret), -1);
 	org = ft_printf_uox_len(x, clone);
 	if (x->prec == 0 && x->is_prec == 1 && org == 0 && x->alt == 0)

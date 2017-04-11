@@ -6,13 +6,13 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 18:17:33 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 19:21:54 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-#define LEN1 38
+#define LEN1 39
 #define LEN2 2
 #define TYPEFIELD 22
 
@@ -62,6 +62,7 @@ static int		choosetype(t_arr *ret, const char **fmt,
 		t_printf *x, va_list clone)
 {
 	int i;
+	int	len;
 
 	i = -1;
 	while (i < LEN1 && **fmt)
@@ -69,12 +70,19 @@ static int		choosetype(t_arr *ret, const char **fmt,
 		i++;
 		if ((**fmt == g_tbl[i][0]) && ((check(fmt, i)) == 1))
 		{
-			CHK(g_func[i](ret, fmt, x, clone) == -1, -1);
+			CHK((len = g_func[i](ret, fmt, x, clone)) == -1, -1);
 			if (i < TYPEFIELD)
 				i = -1;
+			if (len > 0)
+				return (len);
 		}
 	}
+	printf("Here\n");
 	CHK(**fmt == 0, 0);
+	CHK((ft_arr_init(&x->extra, 5)) == -1, -1);
+	ft_arr_appendn(&x->extra, *fmt, 1);
+	handle_width(x, 'c');
+	return (ft_printf_append(ret, fmt, x));
 	return (0);
 }
 
