@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:07:51 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 19:59:07 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 20:57:49 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include <wchar.h>
 # include "libft.h"
 # include "array.h"
-# include "test.h"
 # define ISWIDTH(a) (a > 48 && a <= 57)
 
 int		ft_printf(const char *in, ...);
@@ -38,7 +37,6 @@ int8_t	ft_printf_flags(t_arr *r, const char **f, t_printf *x, va_list clone);
 /*
 ** Width
 */
-
 
 int8_t	ft_printf_width(t_arr *r, const char **f, t_printf *x, va_list clone);
 int8_t	handle_width(t_printf *x, char c);
