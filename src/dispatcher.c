@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 17:19:33 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 17:27:25 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,15 +99,14 @@ int				dispatch(char **final, const char *fmt, va_list clone)
 			i++;
 		ft_arr_appendn(&ret, (char*)fmt, i);
 		fmt += i;
-		printf("FORMAT = %s\n", fmt);
 		if (*fmt == '%')
 		{
+			printf("Step 1 = %s\n", fmt);
 			if (*(++fmt) == 0)
-			{
-				printf("Enter?\n");
 				break ;
-			}
+			printf("Step 2 = %s\n", fmt);
 			choosetype(&ret, &fmt, &x, clone);
+			printf("Step 3 = %s\n\n", fmt);
 		}
 		CHK((ft_printf_init(&x)) == -1, -1);
 	}

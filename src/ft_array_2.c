@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/05 23:25:44 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 17:16:11 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 17:29:59 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int8_t	ft_printf_append(t_arr *ret, const char **fmt, t_printf *x)
 			ft_arr_del(ret), ft_arr_del(&x->extra), -1);
 	ft_arr_del(&x->extra);
 	++*fmt;
-	printf("FMT = %s\n", *fmt);
 	return (0);
 }
 
@@ -54,4 +53,3 @@ int8_t	ft_printf_init(t_printf *x)
 	x->pad = ' ';
 	return (0);
 }
-

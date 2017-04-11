@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:02:19 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 17:15:20 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 17:22:59 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int8_t		ft_printf_percent(t_arr *ret, const char **fmt,
 	CHK1((ft_arr_init(&x->extra, 1)) == -1, ft_arr_del(ret), -1);
 	ft_arr_insertn(&x->extra, 0, "%", 1);
 	handle_width(x, '%');
-	printf("Format String: %s\n", *fmt);
 	return (ft_printf_append(ret, fmt, x));
 }
 
