@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 16:58:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/06 14:28:05 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 18:33:56 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define CHK4(a, b, c, d, e, f) if(1){if(a){b; c; d; e; return(f);}}
 
 # define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
+# define MAX(X, Y) (((X) > (Y)) ? (X) : (Y))
 # define ISSPACE(a) ((a >= 9 && a <= 13) || (a == 32))
 # define ISDIGIT(a) (a >= 48 && a <= 57)
 # define ISUPPER(a) (a >= 'A' && a <= 'Z')

@@ -6,17 +6,23 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 13:53:24 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 12:44:18 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 18:36:11 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
+
+/*
+** 6 is the length of (null) string.
+*/
 
 size_t	ft_wcslen(wchar_t *wstr)
 {
 	size_t	len;
 	wchar_t	*p;
 
+	if (wstr == NULL)
+		return (6);
 	p = wstr;
 	while (*p != 0)
 		p++;
@@ -33,12 +39,12 @@ int8_t	ft_printf_wstr(t_arr *ret, const char **fmt,
 	int		i;
 	int		k;
 
-	i = 0;
 	tmp = va_arg(clone, wchar_t*);
 	len = (x->is_prec == 1) ? MIN(x->prec, (int)ft_wcslen(tmp))
 		: ft_wcslen(tmp);
-	final = ft_strnew(len);
-	while (*tmp != 0)
+	final = (tmp != NULL) ? ft_strnew(len) : ft_strdup("(null)");
+	i = (tmp != NULL) ? 0 : len;
+	while (tmp && *tmp != 0)
 	{
 		k = ft_wctomb(&final[i], *tmp);
 		if (k + i > len)
