@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 12:34:17 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 17:19:33 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 static char		g_tbl[LEN1][LEN2] =
 {
-	{"%"}, {"-"}, {"+"}, {" "},
+	{"-"}, {"+"}, {" "},
 	{"#"}, {"0"}, {"*"}, {"1"},
 	{"2"}, {"3"}, {"4"}, {"5"},
 	{"6"}, {"7"}, {"8"}, {"9"},
@@ -27,11 +27,11 @@ static char		g_tbl[LEN1][LEN2] =
 	{"c"}, {"C"}, {"d"}, {"D"},
 	{"i"}, {"x"}, {"X"}, {"o"},
 	{"O"}, {"u"}, {"U"}, {"s"},
-	{"S"}, {"p"}};
+	{"S"}, {"p"}, {"%"}};
 
 static int8_t	(*g_func[LEN1]) (t_arr *ret, const char **fmt,
 		t_printf *x, va_list clone) = {
-	ft_printf_percent, ft_printf_flags, ft_printf_flags, ft_printf_flags,
+	ft_printf_flags, ft_printf_flags, ft_printf_flags,
 	ft_printf_flags, ft_printf_flags, ft_printf_width, ft_printf_width,
 	ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width,
 	ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width,
@@ -40,7 +40,7 @@ static int8_t	(*g_func[LEN1]) (t_arr *ret, const char **fmt,
 	ft_printf_c, ft_printf_c, ft_printf_d, ft_printf_d,
 	ft_printf_d, ft_printf_x, ft_printf_x, ft_printf_o,
 	ft_printf_o, ft_printf_u, ft_printf_u, ft_printf_s,
-	ft_printf_s, ft_printf_p};
+	ft_printf_s, ft_printf_p, ft_printf_percent};
 
 /*
 ** Confirm that the match below is completely correct
@@ -99,10 +99,14 @@ int				dispatch(char **final, const char *fmt, va_list clone)
 			i++;
 		ft_arr_appendn(&ret, (char*)fmt, i);
 		fmt += i;
+		printf("FORMAT = %s\n", fmt);
 		if (*fmt == '%')
 		{
 			if (*(++fmt) == 0)
+			{
+				printf("Enter?\n");
 				break ;
+			}
 			choosetype(&ret, &fmt, &x, clone);
 		}
 		CHK((ft_printf_init(&x)) == -1, -1);

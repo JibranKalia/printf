@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:00:15 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 13:34:57 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 17:14:28 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,6 @@ int8_t		handle_prec(t_printf *x, intmax_t org)
 		ft_arr_insertn(&x->extra, index, tmp, diff);
 	}
 	return (0);
-}
-
-int8_t		ft_printf_percent(t_arr *ret, const char **fmt,
-		t_printf *x, va_list clone)
-{
-	CHK1((ft_arr_init(&x->extra, 1)) == -1, ft_arr_del(ret), -1);
-	ft_arr_insertn(&x->extra, 0, "%", 1);
-	handle_width(x, '%');
-	return (ft_printf_append(ret, fmt, x));
 }
 
 int8_t		ft_printf_p(t_arr *ret, const char **fmt,
