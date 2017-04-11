@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 13:53:24 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 12:44:18 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 17:54:21 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ int8_t	ft_printf_s(t_arr *ret, const char **fmt,
 	char	*final;
 	int		n;
 
+	tmp = va_arg(clone, char*);
 	if (**fmt == 'S')
 		x->len_mod = 3;
 	CHK1((ft_arr_init(&x->extra, 5)) == -1, ft_arr_del(ret), -1);
-	if (x->len_mod == 3)
+	if (x->len_mod == 3 && tmp != NULL)
 		return (ft_printf_wstr(ret, fmt, x, clone));
-	tmp = va_arg(clone, char*);
 	final = (tmp != NULL) ? ft_strdup(tmp) : ft_strdup("(null)");
 	n = (x->is_prec == 1) ? MIN(x->prec, (int)ft_strlen(final))
 		: ft_strlen(final);
