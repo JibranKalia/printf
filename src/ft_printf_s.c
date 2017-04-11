@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 13:53:24 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 17:54:21 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 18:19:22 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,22 @@ size_t	ft_wcslen(wchar_t *wstr)
 	return (len);
 }
 
+int8_t	put_str(t_arr *ret, const char fmt, t_printf *x, char *tmp)
+{
+	char	*final;
+	int		n;
+
+	final = (tmp != NULL) ? ft_strdup(tmp) : ft_strdup("(null)");
+	n = (x->is_prec == 1) ? MIN(x->prec, (int)ft_strlen(final))
+		: ft_strlen(final);
+	ft_arr_appendn(&x->extra, final, sizeof(char) * n);
+	printf("Here: %s\n", x->extra.ptr);
+	free(final);
+	handle_width(x, 's');
+	return (ft_printf_append(ret, fmt, x));
+}
+
+
 int8_t	ft_printf_wstr(t_arr *ret, const char **fmt,
 		t_printf *x, va_list clone)
 {
@@ -35,10 +51,12 @@ int8_t	ft_printf_wstr(t_arr *ret, const char **fmt,
 
 	i = 0;
 	tmp = va_arg(clone, wchar_t*);
+	if (tmp == NULL)
+		return (put_str(ret, fmt, x, ft_strdup("(null)")));
 	len = (x->is_prec == 1) ? MIN(x->prec, (int)ft_wcslen(tmp))
 		: ft_wcslen(tmp);
 	final = ft_strnew(len);
-	while (*tmp != 0)
+	while (*tmp != 0 )
 	{
 		k = ft_wctomb(&final[i], *tmp);
 		if (k + i > len)
@@ -60,20 +78,10 @@ int8_t	ft_printf_s(t_arr *ret, const char **fmt,
 		t_printf *x, va_list clone)
 {
 	char	*tmp;
-	char	*final;
-	int		n;
 
-	tmp = va_arg(clone, char*);
-	if (**fmt == 'S')
-		x->len_mod = 3;
 	CHK1((ft_arr_init(&x->extra, 5)) == -1, ft_arr_del(ret), -1);
-	if (x->len_mod == 3 && tmp != NULL)
+	if (**fmt == 'S')
 		return (ft_printf_wstr(ret, fmt, x, clone));
-	final = (tmp != NULL) ? ft_strdup(tmp) : ft_strdup("(null)");
-	n = (x->is_prec == 1) ? MIN(x->prec, (int)ft_strlen(final))
-		: ft_strlen(final);
-	ft_arr_appendn(&x->extra, final, sizeof(char) * n);
-	free(final);
-	handle_width(x, 's');
-	return (ft_printf_append(ret, fmt, x));
+	tmp = va_arg(clone, char*);
+	return (put_str(ret, fmt, x, tmp));
 }
