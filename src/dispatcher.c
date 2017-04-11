@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 17:27:25 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 17:47:10 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ static char		g_tbl[LEN1][LEN2] =
 	{"6"}, {"7"}, {"8"}, {"9"},
 	{"."}, {"hh"}, {"h"}, {"ll"},
 	{"L"}, {"l"}, {"j"}, {"z"},
-	{"c"}, {"C"}, {"d"}, {"D"},
+	{"%"}, {"c"}, {"C"}, {"d"}, {"D"},
 	{"i"}, {"x"}, {"X"}, {"o"},
 	{"O"}, {"u"}, {"U"}, {"s"},
-	{"S"}, {"p"}, {"%"}};
+	{"S"}, {"p"}};
 
 static int8_t	(*g_func[LEN1]) (t_arr *ret, const char **fmt,
 		t_printf *x, va_list clone) = {
@@ -37,10 +37,10 @@ static int8_t	(*g_func[LEN1]) (t_arr *ret, const char **fmt,
 	ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width,
 	ft_printf_dot, ft_printf_length, ft_printf_length, ft_printf_length,
 	ft_printf_length, ft_printf_length, ft_printf_length, ft_printf_length,
-	ft_printf_c, ft_printf_c, ft_printf_d, ft_printf_d,
+	ft_printf_percent, ft_printf_c, ft_printf_c, ft_printf_d, ft_printf_d,
 	ft_printf_d, ft_printf_x, ft_printf_x, ft_printf_o,
 	ft_printf_o, ft_printf_u, ft_printf_u, ft_printf_s,
-	ft_printf_s, ft_printf_p, ft_printf_percent};
+	ft_printf_s, ft_printf_p};
 
 /*
 ** Confirm that the match below is completely correct
@@ -101,12 +101,9 @@ int				dispatch(char **final, const char *fmt, va_list clone)
 		fmt += i;
 		if (*fmt == '%')
 		{
-			printf("Step 1 = %s\n", fmt);
 			if (*(++fmt) == 0)
 				break ;
-			printf("Step 2 = %s\n", fmt);
 			choosetype(&ret, &fmt, &x, clone);
-			printf("Step 3 = %s\n\n", fmt);
 		}
 		CHK((ft_printf_init(&x)) == -1, -1);
 	}
