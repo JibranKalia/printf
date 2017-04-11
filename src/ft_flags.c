@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 17:08:58 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 19:29:55 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,11 @@ int8_t	ft_printf_dot(t_arr *ret, const char **fmt, t_printf *x, va_list clone)
 		}
 	}
 	x->prec = res;
+	if (x->prec < 0)
+	{
+		x->is_prec = 0;
+		x->prec = 0;
+	}
 	return (0);
 }
 

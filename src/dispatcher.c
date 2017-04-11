@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 19:21:54 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 19:24:49 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,11 @@ static int		choosetype(t_arr *ret, const char **fmt,
 				return (len);
 		}
 	}
-	printf("Here\n");
 	CHK(**fmt == 0, 0);
 	CHK((ft_arr_init(&x->extra, 5)) == -1, -1);
 	ft_arr_appendn(&x->extra, *fmt, 1);
 	handle_width(x, 'c');
 	return (ft_printf_append(ret, fmt, x));
-	return (0);
 }
 
 /*
