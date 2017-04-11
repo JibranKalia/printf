@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:38:22 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 12:47:26 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 20:02:22 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,23 @@ int		ft_printf(const char *fmt, ...)
 	CHK((len = ft_vasprintf(&ret, fmt, ap)) == -1, -1);
 	write(1, ret, len);
 	free(ret);
+	va_end(ap);
+	return (len);
+}
+
+int		ft_sprintf(char *ret, const char *fmt, ...)
+{
+	va_list		ap;
+	char		*tmp;
+	int			len;
+
+	va_start(ap, fmt);
+	if (fmt == 0 || *fmt == 0)
+		return (0);
+	if (ret == 0)
+		return (0);
+	CHK((len = ft_vasprintf(&tmp, fmt, ap)) == -1, -1);
+	ft_strncpy(ret, tmp, len);
 	va_end(ap);
 	return (len);
 }

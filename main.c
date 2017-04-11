@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 19:17:59 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 20:15:34 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,15 @@ int		main(void)
 	int		w = 30;
 	int		ret1 = 0;
 	int		ret2 = 0;
-	char	*s1 = NULL;
-	char	*s2 = NULL;
+	char	*s1;
+	char	*s2;
 
-	ret1 = asprintf(&s1, "%O", LONG_MIN);
-	ret2 = ft_asprintf(&s2, "%O", LONG_MIN);
-//	ret1 = asprintf(&s1, "{%s}", "hello");
-//	ret2 = ft_asprintf(&s2, "{%s}", "hello");
+	ret1 = asprintf(&s1, "%0 10d", 1, 0, 0, 0, 0);
+	ret2 = ft_asprintf(&s2, "%0 10d", 1, 0, 0, 0, 0);
+	
+	//ret1 = sprintf(s1, "%s\n", "HI");
+	//ret2 = ft_sprintf(s2, "%s\n", "HI");
+	
 	//ret1 = asprintf(&s1, "%d%d%d%d%d%d%d", x, x, x, x, x, x, x, x, x);
 	//ret2 = ft_asprintf(&s2, "%d%d%d%d%d%d%d", x, x, x, x, x, x, x, x, x);
 	printsimple(s1, s2, ret1, ret2);

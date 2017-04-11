@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:02:19 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 17:22:59 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 20:31:28 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int8_t		ft_printf_percent(t_arr *ret, const char **fmt,
 		t_printf *x, va_list clone)
 {
+	(void)clone;
 	CHK1((ft_arr_init(&x->extra, 1)) == -1, ft_arr_del(ret), -1);
 	ft_arr_insertn(&x->extra, 0, "%", 1);
 	handle_width(x, '%');
@@ -46,7 +47,7 @@ int8_t		ft_printf_c(t_arr *ret, const char **fmt,
 
 	if (**fmt == 'C')
 		x->len_mod = 3;
-	CHK1((ft_arr_init(&x->extra, 1)) == -1, ft_arr_del(ret), -1);
+	CHK1((ft_arr_init(&x->extra, 5)) == -1, ft_arr_del(ret), -1);
 	if (x->len_mod == 3)
 		return (ft_printf_wchar(ret, fmt, x, clone));
 	tmp[0] = (unsigned char)va_arg(clone, int);

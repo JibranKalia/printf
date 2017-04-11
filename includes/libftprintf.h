@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:07:51 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/06 14:47:35 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 19:59:07 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@
 # define ISWIDTH(a) (a > 48 && a <= 57)
 
 int		ft_printf(const char *in, ...);
-int		ft_vasprintf(char **ret, const char *fmt, va_list ap);
+int		ft_sprintf(char *ret, const char *fmt, ...);
 int		ft_asprintf(char **ret, const char *fmt, ...);
+int		ft_vasprintf(char **ret, const char *fmt, va_list ap);
 
 /*
 ** Flags
