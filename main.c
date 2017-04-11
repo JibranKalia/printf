@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 18:22:01 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 18:37:12 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ int		main(void)
 	int		ret2 = 0;
 	char	*s1 = NULL;
 	char	*s2 = NULL;
-	
 
 	ret1 = asprintf(&s1, "{%0.3S}", NULL);
 	ret2 = ft_asprintf(&s2, "{%0.3S}", NULL);
+//	ret1 = asprintf(&s1, "{%s}", "hello");
+//	ret2 = ft_asprintf(&s2, "{%s}", "hello");
 //	ret1 = asprintf(&s1, "%d%d%d%d%d%d%d", x, x, x, x, x, x, x, x, x);
 //	ret2 = ft_asprintf(&s2, "%d%d%d%d%d%d%d", x, x, x, x, x, x, x, x, x);
 	printsimple(s1, s2, ret1, ret2);
