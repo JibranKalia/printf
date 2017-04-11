@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:00:15 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 19:58:27 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/10 20:33:00 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ int8_t		ft_printf_p(t_arr *ret, const char **fmt,
 		handle_width(x, 'p');
 		return (ft_printf_append(ret, fmt, x));
 	}
-	nbr = (org != 0) ? ft_itoa_base(org, 16, "0123456789abcdef") : ft_strdup("0");
+	nbr = (org != 0) ? ft_itoa_base(org, 16, "0123456789abcdef")
+		: ft_strdup("0");
 	ft_arr_appendn(&x->extra, nbr, sizeof(char) * ft_strlen(nbr));
 	handle_prec(x, org);
 	ft_arr_insertn(&x->extra, 0, "0x", 2);
