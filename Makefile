@@ -6,7 +6,7 @@
 #    By: jkalia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/23 14:12:11 by jkalia            #+#    #+#              #
-#*   Updated: 2017/04/11 19:12:19 by jkalia           ###   ########.fr       *#
+#*   Updated: 2017/04/11 20:07:50 by jkalia           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ CFLAGS			+= -I includes/
 
 LIBFTPRINTF		:= -L. -lftprintf
 	
-SRC_FILES		:= ft_printf.c \
+SRC_FILES		:= ft_printf_1.c \
+				ft_printf_2.c \
 				dispatcher.c \
 				handle.c \
 				ft_flags.c \
