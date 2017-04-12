@@ -6,23 +6,26 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 17:55:37 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/11 18:20:55 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/11 19:49:43 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-int8_t	handle_space(t_printf *x, char c)
-{
-	(void)c;
-	if (x->space == 1 && (x->width < x->prec))
-		ft_arr_insertn(&x->extra, 0, " ", 1);
-	return (0);
-}
-
 /*
 ** If prec is set. '0' is ignored.
 */
+
+size_t	set_index(t_printf *x, char c)
+{
+	size_t	index;
+
+	index = (x->left == 1) ? x->extra.len : 0;
+	index = (x->pad == '0' && ISSIGN(x->extra.ptr[index])) ? index + 1 : index;
+	if ((c == 'x' || c == 'p') && x->left == 0 && x->zero == 1)
+		index = (ft_strstr(x->extra.ptr, "0x") != NULL) ? 2 : 0;
+	return (index);
+}
 
 int8_t	handle_width(t_printf *x, char c)
 {
@@ -33,10 +36,7 @@ int8_t	handle_width(t_printf *x, char c)
 	if (x->is_prec == 1 && c != 'c' && c != 's' && c != '%')
 		x->pad = ' ';
 	diff = x->width - x->extra.len;
-	index = (x->left == 1) ? x->extra.len : 0;
-	index = (x->pad == '0' && ISSIGN(x->extra.ptr[index])) ? index + 1 : index;
-	if ((c == 'x' || c == 'p') && x->left == 0 && x->zero == 1)
-		index = (ft_strstr(x->extra.ptr, "0x") != NULL) ? 2 : 0;
+	index = set_index(x, c);
 	if (x->space == 1 && x->zero == 1 && diff > 0)
 	{
 		ft_arr_insertn(&x->extra, 0, " ", 1);
@@ -50,11 +50,12 @@ int8_t	handle_width(t_printf *x, char c)
 		ft_arr_insertn(&x->extra, index, tmp, diff);
 		free(tmp);
 	}
-	handle_space(x, c);
+	if (x->space == 1 && (x->width < x->prec))
+		ft_arr_insertn(&x->extra, 0, " ", 1);
 	return (0);
 }
 
-int8_t		handle_prec(t_printf *x, intmax_t org)
+int8_t	handle_prec(t_printf *x, intmax_t org)
 {
 	char	*tmp;
 	int		diff;
@@ -75,12 +76,69 @@ int8_t		handle_prec(t_printf *x, intmax_t org)
 	return (0);
 }
 
-int8_t		ft_printf_f(t_arr *ret, const char **fmt,
+int8_t	ft_printf_f(t_arr *ret, const char **fmt,
 		t_printf *x, va_list clone)
 {
 	(void)ret;
 	(void)fmt;
 	(void)x;
 	(void)clone;
+	return (0);
+}
+
+char	g_colors[34][2][15] = {
+	{"{red}", "\033[31m"},
+	{"{bred}", "\033[31;1m"},
+	{"{green}", "\033[32m"},
+	{"{bgreen}", "\033[32;1m"},
+	{"{yellow}", "\033[33m"},
+	{"{byellow}", "\033[33;1m"},
+	{"{blue}", "\033[34m"},
+	{"{bblue}", "\033[34;1m"},
+	{"{purple}", "\033[35m"},
+	{"{bpurple}", "\033[35;1m"},
+	{"{cyan}", "\033[36m"},
+	{"{bcyan}", "\033[36;1m"},
+	{"{black}", "\033[30m"},
+	{"{bblack}", "\033[30;1m"},
+	{"{white}", "\033[37m"},
+	{"{bwhite}", "\033[37;1m"},
+	{"{b_red}", "\033[41m"},
+	{"{b_bred}", "\033[41;1m"},
+	{"{b_green}", "\033[42m"},
+	{"{b_bgreen}", "\033[42;1m"},
+	{"{b_yellow}", "\033[43m"},
+	{"{b_byellow}", "\033[43;1m"},
+	{"{b_blue}", "\033[44m"},
+	{"{b_bblue}", "\033[44;1m"},
+	{"{b_purple}", "\033[45m"},
+	{"{b_bpurple}", "\033[45;1m"},
+	{"{b_cyan}", "\033[46m"},
+	{"{b_bcyan}", "\033[46;1m"},
+	{"{b_black}", "\033[40m"},
+	{"{b_bblack}", "\033[40;1m"},
+	{"{b_white}", "\033[47m"},
+	{"{b_bwhite}", "\033[47;1m"},
+	{"{eoc}", "\033[0m"},
+	{"{noc}", "\033[0m"}};
+
+int8_t	ft_printf_color(t_arr *ret, const char **fmt,
+		t_printf *x, va_list clone)
+{
+	int	i;
+
+	i = 0;
+	CHK1((ft_arr_init(&x->extra, 10)) == -1, ft_arr_del(ret), -1);
+	while (i < 34)
+	{
+		if (ft_strnstr(*fmt, g_colors[i][0], ft_strlen(g_colors[i][0])) != 0)
+		{
+			ft_arr_appendn(&x->extra, g_colors[i][1],
+					sizeof(char) * ft_strlen(g_colors[i][1]));
+			*fmt = *fmt + ft_strlen(g_colors[i][0]) - 1;
+			return (ft_printf_append(ret, fmt, x));
+		}
+		++i;
+	}
 	return (0);
 }

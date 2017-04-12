@@ -6,11 +6,12 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/11 18:03:57 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/11 19:50:06 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libftprintf.h"
+#include <stdio.h>
 # define ANSI_RESET "\033[0m"
 # define ANSI_BLUE "\033[34m"
 # define ANSI_CYAN "\033[36m"
@@ -23,7 +24,7 @@ void	printsimple(char *s1, char *s2, int ret1, int ret2);
 
 int		main(void)
 {
-	int		x = 42;
+	//int		x = 42;
 //	char	s[10] = "LYDI";
 //	int		*y;
 //	int		p = 15;
@@ -33,8 +34,9 @@ int		main(void)
 	char	*s1;
 	char	*s2;
 
-	ret1 = asprintf(&s1, "%  5.11d", x);
-	ret2 = ft_asprintf(&s2, "% 5.11d", x);
+	ft_printf("%s Hello %{byellow}NIIIC %{noc} TEST\n", "HH");
+	//ret1 = asprintf(&s1, "%  5.11d", x);
+	//ret2 = ft_asprintf(&s2, "% 5.11d", x);
 	
 	//ret1 = sprintf(s1, "%s\n", "HI");
 	//ret2 = ft_sprintf(s2, "%s\n", "HI");
@@ -48,7 +50,6 @@ int		main(void)
 	//wchar_t *str = L"字Hello";
 	char	*str1 = NULL;
 	
-	wchar_t Char =  L'字';
 	setlocale(LC_CTYPE, "");
 
 	char	*a;
@@ -94,6 +95,12 @@ int		main(void)
 
 void	printsimple(char *s1, char *s2, int ret1, int ret2)
 {
+	if (s1 == NULL || s2 == NULL)
+	{
+		printf("String is NULL\n");
+		return ;
+	}
+
 	if (strcmp(s1, s2) || ret1 != ret2)
 	{
 		printf(ANSI_RED"ERROR\n"ANSI_RESET);
