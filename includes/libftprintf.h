@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:07:51 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/11 20:14:45 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/11 20:33:43 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 int		ft_printf(const char *in, ...);
 int		ft_dprintf(int fd, const char *in, ...);
 int		ft_sprintf(char *ret, const char *fmt, ...);
+int		ft_snprintf(char *ret, size_t size, const char *fmt, ...);
 int		ft_asprintf(char **ret, const char *fmt, ...);
 int		ft_vprintf(const char *fmt, va_list ap);
 int		ft_vsprintf(char *ret, const char *fmt, va_list ap);

@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/11 19:55:33 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/11 20:28:52 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ void	printsimple(char *s1, char *s2, int ret1, int ret2);
 
 int		main(void)
 {
+	int	 	*i;
+	int		d = 10;
+
+	printf("%10d %n\n", d, i);
+	printf("Here = %d\n", *i);
+	return (0);
+	/**
 	//int		x = 42;
 //	char	s[10] = "LYDI";
 //	int		*y;
@@ -47,7 +54,6 @@ int		main(void)
 //	printsimple(s1, s2, ret1, ret2);
 	
 
-	/**
 	//wchar_t *str = L"字Hello";
 	char	*str1 = NULL;
 	

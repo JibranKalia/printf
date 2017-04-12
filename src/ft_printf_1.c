@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:38:22 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/11 19:09:04 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/11 20:33:26 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int		ft_printf(const char *fmt, ...)
 	char		*ret;
 	int			len;
 
-	va_start(ap, fmt);
 	if (fmt == 0 || *fmt == 0)
 		return (0);
+	va_start(ap, fmt);
 	CHK((len = ft_vasprintf(&ret, fmt, ap)) == -1, -1);
 	write(1, ret, len);
 	free(ret);
@@ -34,13 +34,29 @@ int		ft_sprintf(char *ret, const char *fmt, ...)
 	char		*tmp;
 	int			len;
 
-	va_start(ap, fmt);
 	if (fmt == 0 || *fmt == 0)
 		return (0);
 	if (ret == 0)
 		return (0);
+	va_start(ap, fmt);
 	CHK((len = ft_vasprintf(&tmp, fmt, ap)) == -1, -1);
 	ft_strncpy(ret, tmp, len);
+	va_end(ap);
+	return (len);
+}
+int		ft_snprintf(char *ret, size_t size, const char *fmt, ...)
+{
+	va_list		ap;
+	char		*tmp;
+	ssize_t		len;
+
+	if (fmt == 0 || *fmt == 0)
+		return (0);
+	if (ret == 0)
+		return (0);
+	va_start(ap, fmt);
+	CHK((len = ft_vasprintf(&tmp, fmt, ap)) == -1, -1);
+	ft_strncpy(ret, tmp, MIN(len, (int)size));
 	va_end(ap);
 	return (len);
 }
@@ -50,9 +66,9 @@ int		ft_asprintf(char **ret, const char *fmt, ...)
 	va_list		ap;
 	int			len;
 
-	va_start(ap, fmt);
 	if (fmt == 0 || *fmt == 0)
 		return (0);
+	va_start(ap, fmt);
 	CHK((len = ft_vasprintf(ret, fmt, ap)) == -1, -1);
 	va_end(ap);
 	return (len);
