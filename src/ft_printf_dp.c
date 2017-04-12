@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:00:15 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 20:33:00 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/11 17:57:39 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,6 @@ intmax_t	ft_printf_d_len(t_printf *x, va_list clone)
 ** If the number is negative the extra zero padding has to be after sign.
 */
 
-int8_t		handle_prec(t_printf *x, intmax_t org)
-{
-	char	*tmp;
-	int		diff;
-	int		index;
-
-	if (x->is_prec == 0 && x->prec == 0)
-		return (0);
-	if (x->prec < (int)x->extra.len)
-		return (0);
-	diff = (org >= 0) ? x->prec - x->extra.len : x->prec - x->extra.len + 1;
-	index = (org >= 0) ? 0 : 1;
-	if (diff > 0)
-	{
-		CHK((tmp = ft_strnew(diff)) == 0, 0);
-		ft_memset(tmp, '0', diff);
-		ft_arr_insertn(&x->extra, index, tmp, diff);
-	}
-	return (0);
-}
 
 int8_t		ft_printf_p(t_arr *ret, const char **fmt,
 		t_printf *x, va_list clone)

@@ -6,46 +6,11 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:42:59 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 20:39:50 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/11 17:58:53 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
-#define ISSIGN(a) (a == '+' || a == '-')
-#define ISFLAG(a) (a == '+' || a == '-' || a == ' ' || a == '#' || a == '0')
-
-/*
-** If prec is set. '0' is ignored.
-*/
-
-int8_t	handle_width(t_printf *x, char c)
-{
-	char	*tmp;
-	int		diff;
-	size_t	index;
-
-	if (x->is_prec == 1 && c != 'c' && c != 's' && c != '%')
-		x->pad = ' ';
-	diff = x->width - x->extra.len;
-	index = (x->left == 1) ? x->extra.len : 0;
-	index = (x->pad == '0' && ISSIGN(x->extra.ptr[index])) ? index + 1 : index;
-	if ((c == 'x' || c == 'p') && x->left == 0 && x->zero == 1)
-		index = (ft_strstr(x->extra.ptr, "0x") != NULL) ? 2 : 0;
-	if (x->space == 1 && x->zero == 1 && diff > 0)
-	{
-		ft_arr_insertn(&x->extra, 0, " ", 1);
-		++index;
-		--diff;
-	}
-	if (diff > 0)
-	{
-		CHK((tmp = ft_strnew(diff)) == 0, -1);
-		ft_memset((void *)tmp, (int)x->pad, (size_t)diff);
-		ft_arr_insertn(&x->extra, index, tmp, diff);
-		free(tmp);
-	}
-	return (0);
-}
 
 /*
 ** Flag '0' is ignored if flag '-' is present.

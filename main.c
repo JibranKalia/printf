@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 20:15:34 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/11 17:55:07 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,18 @@
 
 int		main(void)
 {
-	int		x = 200;
-	int		*y;
-	int		p = 15;
-	int		w = 30;
+	int		x = 42;
+//	char	s[10] = "LYDI";
+//	int		*y;
+//	int		p = 15;
+//	int		w = 30;
 	int		ret1 = 0;
 	int		ret2 = 0;
 	char	*s1;
 	char	*s2;
 
-	ret1 = asprintf(&s1, "%0 10d", 1, 0, 0, 0, 0);
-	ret2 = ft_asprintf(&s2, "%0 10d", 1, 0, 0, 0, 0);
+	ret1 = asprintf(&s1, "%  5.11d", x);
+	ret2 = ft_asprintf(&s2, "% 5.11d", x);
 	
 	//ret1 = sprintf(s1, "%s\n", "HI");
 	//ret2 = ft_sprintf(s2, "%s\n", "HI");

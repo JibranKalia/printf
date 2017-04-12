@@ -6,7 +6,7 @@
 #    By: jkalia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/23 14:12:11 by jkalia            #+#    #+#              #
-#*   Updated: 2017/04/10 20:30:48 by jkalia           ###   ########.fr       *#
+#*   Updated: 2017/04/11 17:58:04 by jkalia           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,9 +32,10 @@ LIBFTPRINTF		:= -L. -lftprintf
 	
 SRC_FILES		:= ft_printf.c \
 				dispatcher.c \
+				handle.c \
+				ft_flags.c \
 				ft_array_1.c \
 				ft_array_2.c \
-				ft_flags.c \
 				ft_printf_c.c \
 				ft_printf_dp.c \
 				ft_printf_s.c \
