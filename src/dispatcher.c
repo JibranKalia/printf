@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/11 19:56:33 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/11 20:44:38 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int8_t	(*g_func[LEN1]) (t_arr *ret, const char **fmt,
 	ft_printf_o, ft_printf_u, ft_printf_u, ft_printf_s,
 	ft_printf_s, ft_printf_p, ft_printf_f, ft_printf_f,
 	ft_printf_f,ft_printf_f, ft_printf_f, ft_printf_f,
-	ft_printf_f, ft_printf_f, ft_printf_f, ft_printf_color};
+	ft_printf_f, ft_printf_f, ft_printf_n, ft_printf_color};
 
 /*
 ** Confirm that the match below is completely correct
