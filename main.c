@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/11 20:46:41 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/11 21:12:46 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,25 @@ void	printsimple(char *s1, char *s2, int ret1, int ret2);
 
 int		main(void)
 {
-	int	 	*i;
-	int		d = 10;
+	int		d = 4444;
+	int		*xyz;
+	int		*abc;
 
-	ft_printf("%10d %n\n", d, i);
-	printf("Here = %d\n", *i);
+	ft_printf("BEFORE = %d\n", *xyz);
+	ft_printf("Address = %p\n", xyz);
+	ft_printf("%10d %n\n", d, xyz);
+	ft_printf("After = %d\n", *xyz);
+	
+//	ft_printf("%10d%n\n", d, i1);
+//	printf("OUT = %d\n", *i1);
+
+	/**
+	if (*i1 != *i2)
+		ft_printf("%{red}ERROR%{eoc}\n");
+	else
+		ft_printf("%{green}GREAT%{eoc}\n");
+	**/
+
 	return (0);
 	/**
 	//int		x = 42;

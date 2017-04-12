@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 20:35:34 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/11 20:43:00 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/11 21:14:54 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,11 @@ int8_t		ft_printf_n(t_arr *ret, const char **fmt,
 		t_printf *x, va_list clone)
 {
 	intmax_t	*i;
+	int			tmp;
 
+	tmp = ret->len;
 	i = ft_printf_n_len(x, clone);
-	*i = ret->len;
+	*i = (intmax_t)tmp;
 	++*fmt;
 	return (0);
 }
