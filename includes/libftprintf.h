@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:07:51 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/11 17:58:50 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/11 18:01:26 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include <wchar.h>
 # include "libft.h"
 # include "array.h"
-# include "test.h"
 # define ISWIDTH(a) (a > 48 && a <= 57)
 # define ISSIGN(a) (a == '+' || a == '-')
 # define ISFLAG(a) (a == '+' || a == '-' || a == ' ' || a == '#' || a == '0')

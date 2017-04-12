@@ -6,7 +6,7 @@
 #    By: jkalia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/23 14:12:11 by jkalia            #+#    #+#              #
-#*   Updated: 2017/04/11 17:58:04 by jkalia           ###   ########.fr       *#
+#*   Updated: 2017/04/11 18:01:13 by jkalia           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,17 +16,6 @@ CC				:= gcc
 CFLAGS			+= -Wall -Wextra
 CFLAGS			+= -Werror
 CFLAGS			+= -I includes/
-
-TEST			:= unittest.c \
-				test_util.c \
-				00_no_conv.spec.c \
-				03_conv_d.spec.c \
-				14_conv_x.spec.c \
-				15_conv_X.spec.c \
-				16_conv_c.spec.c \
-				17_conv_C.spec.c \
-				73_precision_for_cC.spec.c \
-				08_conv_D.spec.c \
 
 LIBFTPRINTF		:= -L. -lftprintf
 	
@@ -154,11 +143,3 @@ re: fclean all
 
 $(OBJTEST): %.o: %.c
 	@$(CC) -I includes -c $< -o $@
-
-test: $(NAME) $(OBJTEST)
-	@$(CC) $(CFLAGS) $(OBJTEST) $(LIBFTPRINTF) -o test.out
-	./test.out
-
-main: $(NAME)
-	@$(CC) $(CFLAGS) main.c $(LIBFTPRINTF) -o main.out
-	./main.out
