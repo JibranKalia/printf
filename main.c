@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/11 19:50:06 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/11 19:55:33 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,13 @@ int		main(void)
 //	int		*y;
 //	int		p = 15;
 //	int		w = 30;
+	int		*i;
 	int		ret1 = 0;
 	int		ret2 = 0;
 	char	*s1;
 	char	*s2;
 
-	ft_printf("%s Hello %{byellow}NIIIC %{noc} TEST\n", "HH");
+	printf("HELLO %n\n", i);
 	//ret1 = asprintf(&s1, "%  5.11d", x);
 	//ret2 = ft_asprintf(&s2, "% 5.11d", x);
 	
@@ -43,7 +44,7 @@ int		main(void)
 	
 	//ret1 = asprintf(&s1, "%d%d%d%d%d%d%d", x, x, x, x, x, x, x, x, x);
 	//ret2 = ft_asprintf(&s2, "%d%d%d%d%d%d%d", x, x, x, x, x, x, x, x, x);
-	printsimple(s1, s2, ret1, ret2);
+//	printsimple(s1, s2, ret1, ret2);
 	
 
 	/**
