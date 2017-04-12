@@ -6,7 +6,7 @@
 #    By: jkalia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/23 14:12:11 by jkalia            #+#    #+#              #
-#*   Updated: 2017/04/11 18:01:13 by jkalia           ###   ########.fr       *#
+#*   Updated: 2017/04/11 18:04:02 by jkalia           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -143,3 +143,7 @@ re: fclean all
 
 $(OBJTEST): %.o: %.c
 	@$(CC) -I includes -c $< -o $@
+
+main: $(NAME)
+	@$(CC) $(CFLAGS) main.c $(LIBFTPRINTF) -o main.out
+	./main.out

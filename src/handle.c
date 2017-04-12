@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 17:55:37 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/11 17:57:28 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/11 18:20:55 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,15 @@ int8_t		handle_prec(t_printf *x, intmax_t org)
 		ft_memset(tmp, '0', diff);
 		ft_arr_insertn(&x->extra, index, tmp, diff);
 	}
+	return (0);
+}
+
+int8_t		ft_printf_f(t_arr *ret, const char **fmt,
+		t_printf *x, va_list clone)
+{
+	(void)ret;
+	(void)fmt;
+	(void)x;
+	(void)clone;
 	return (0);
 }

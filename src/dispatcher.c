@@ -6,41 +6,45 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/10 20:26:45 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/11 18:15:54 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-#define LEN1 39
+#define LEN1 46
 #define LEN2 2
 #define TYPEFIELD 22
 
 static char		g_tbl[LEN1][LEN2] =
 {
-	{"-"}, {"+"}, {" "},
-	{"#"}, {"0"}, {"*"}, {"1"},
-	{"2"}, {"3"}, {"4"}, {"5"},
-	{"6"}, {"7"}, {"8"}, {"9"},
-	{"."}, {"hh"}, {"h"}, {"ll"},
-	{"L"}, {"l"}, {"j"}, {"z"},
-	{"%"}, {"c"}, {"C"}, {"d"}, {"D"},
+	{"-"}, {"+"}, {" "}, {"#"},
+	{"0"}, {"*"}, {"1"}, {"2"},
+	{"3"}, {"4"}, {"5"}, {"6"},
+	{"7"}, {"8"}, {"9"}, {"."},
+	{"hh"}, {"h"}, {"ll"}, {"L"},
+	{"l"}, {"j"}, {"z"}, {"%"},
+	{"c"}, {"C"}, {"d"}, {"D"},
 	{"i"}, {"x"}, {"X"}, {"o"},
 	{"O"}, {"u"}, {"U"}, {"s"},
-	{"S"}, {"p"}};
+	{"S"}, {"p"}, {"e"}, {"E"},
+	{"f"}, {"F"}, {"g"}, {"G"},
+	{"a"}, {"A"}};
 
 static int8_t	(*g_func[LEN1]) (t_arr *ret, const char **fmt,
 		t_printf *x, va_list clone) = {
-	ft_printf_flags, ft_printf_flags, ft_printf_flags,
-	ft_printf_flags, ft_printf_flags, ft_printf_width, ft_printf_width,
-	ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width,
-	ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width,
-	ft_printf_dot, ft_printf_length, ft_printf_length, ft_printf_length,
+	ft_printf_flags, ft_printf_flags, ft_printf_flags, ft_printf_flags,
+	ft_printf_flags, ft_printf_width, ft_printf_width, ft_printf_width,
+	ft_printf_width, ft_printf_width, ft_printf_width,ft_printf_width,
+	ft_printf_width, ft_printf_width, ft_printf_width,ft_printf_dot,
 	ft_printf_length, ft_printf_length, ft_printf_length, ft_printf_length,
-	ft_printf_percent, ft_printf_c, ft_printf_c, ft_printf_d, ft_printf_d,
+	ft_printf_length, ft_printf_length, ft_printf_length, ft_printf_percent,
+	ft_printf_c, ft_printf_c, ft_printf_d, ft_printf_d,
 	ft_printf_d, ft_printf_x, ft_printf_x, ft_printf_o,
 	ft_printf_o, ft_printf_u, ft_printf_u, ft_printf_s,
-	ft_printf_s, ft_printf_p};
+	ft_printf_s, ft_printf_p, ft_printf_f, ft_printf_f,
+	ft_printf_f,ft_printf_f, ft_printf_f, ft_printf_f,
+	ft_printf_f, ft_printf_f};
 
 /*
 ** Confirm that the match below is completely correct

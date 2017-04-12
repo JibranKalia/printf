@@ -6,12 +6,20 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/11 18:01:31 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/11 18:03:57 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libftprintf.h"
-#include "includes/test.h"
+# define ANSI_RESET "\033[0m"
+# define ANSI_BLUE "\033[34m"
+# define ANSI_CYAN "\033[36m"
+# define ANSI_RED "\033[31m"
+# define ANSI_GREEN "\033[32m"
+# define ANSI_B_BGREEN "\033[42;1m"
+# define ANSI_B_YELLOW "\033[43m"
+
+void	printsimple(char *s1, char *s2, int ret1, int ret2);
 
 int		main(void)
 {
