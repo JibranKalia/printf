@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:07:51 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/11 20:33:43 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/11 20:36:58 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int8_t	ft_printf_p(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
 int8_t	ft_printf_s(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
 int8_t	ft_printf_o(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
 int8_t	ft_printf_u(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
+int8_t	ft_printf_n(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
 int8_t	ft_printf_x(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
 int8_t	ft_printf_f(t_arr *ret, const char **fmt, t_printf *x, va_list clone);
 int8_t	ft_printf_color(t_arr *r, const char **f, t_printf *x, va_list clone);

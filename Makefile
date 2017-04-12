@@ -6,7 +6,7 @@
 #    By: jkalia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/23 14:12:11 by jkalia            #+#    #+#              #
-#*   Updated: 2017/04/11 20:07:50 by jkalia           ###   ########.fr       *#
+#*   Updated: 2017/04/11 20:41:01 by jkalia           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC_FILES		:= ft_printf_1.c \
 				ft_array_2.c \
 				ft_printf_c.c \
 				ft_printf_dp.c \
+				ft_printf_nf.c \
 				ft_printf_s.c \
 				ft_printf_uox.c \
 
