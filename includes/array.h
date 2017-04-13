@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/05 23:33:08 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/06 00:10:49 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/13 13:56:15 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ int8_t				ft_arr_resize(t_arr *src, size_t sze);
 int8_t				ft_arr_sizechk(t_arr *src, size_t sze);
 int8_t				ft_arr_insertn(t_arr *dst, size_t index,
 		const void *src, size_t src_len);
+uintmax_t			ft_printf_uox_len(t_printf *x, va_list clone);
 
 #endif
