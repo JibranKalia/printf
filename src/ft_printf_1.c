@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:38:22 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/13 13:10:37 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/13 13:49:36 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		ft_snprintf(char *ret, size_t size, const char *fmt, ...)
 	if (size - 1 == 0)
 		ret[0] = 0;
 	CHK((len = ft_vasprintf(&tmp, fmt, ap)) == -1, -1);
-	ft_strncpy(ret, tmp, MIN(len, size - 1));
+	ft_strncpy(ret, tmp, MIN(len, (int)(size - 1)));
 	va_end(ap);
 	return (len);
 }

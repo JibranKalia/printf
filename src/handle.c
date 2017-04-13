@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 17:55:37 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/13 11:56:45 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/13 13:49:57 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ int8_t	ft_printf_color(t_arr *ret, const char **fmt,
 	int	i;
 
 	i = 0;
+	(void)clone;
 	CHK1((ft_arr_init(&x->extra, 10)) == -1, ft_arr_del(ret), -1);
 	while (i < 34)
 	{
