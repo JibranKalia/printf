@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:00:15 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/13 11:07:15 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/13 11:31:34 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ int8_t		ft_printf_d(t_arr *ret, const char **fmt,
 	org = ft_printf_d_len(x, clone);
 	if (x->prec == 0 && x->is_prec == 1 && org == 0)
 	{
+		if (org >= 0 && x->showsign == 1)
+			ft_arr_insertn(&x->extra, 0, "+", 1);
 		handle_width(x, 'd');
 		return (ft_printf_append(ret, fmt, x));
 	}

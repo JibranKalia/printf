@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/13 11:26:27 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/13 11:31:06 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,12 @@ int		main(void)
 //	setlocale(LC_CTYPE, "");
 //	wchar_t *str1 = L"字Hello";
 //	char *str2 = "Hello";
+
+	ret1 = asprintf(&s1, "%+010.0d", 0);
+	ret2 = ft_asprintf(&s2, "%+010.0d", 0);
+	printsimple(s1, s2, ret1, ret2);
 	
+	/**
 	ret1 = asprintf(&s1, "%#020.3x", 44);
 	ret2 = ft_asprintf(&s2, "%#020.3x", 44);
 	printsimple(s1, s2, ret1, ret2);
@@ -49,6 +54,7 @@ int		main(void)
 	ret1 = asprintf(&s1, "{%010.0x}", 0);
 	ret2 = ft_asprintf(&s2, "{%010.0x}", 0);
 	printsimple(s1, s2, ret1, ret2);
+	**/
 	return (0);
 }
 
