@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/05 23:25:44 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/13 12:23:41 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/13 12:37:21 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,6 @@ char	*ft_arrtostr(t_arr *src)
 {
 	CHK(src == 0, 0);
 	CHK(src->cap == 0, 0);
-	if (src->len != src->cap)
-		if (src->ptr[src->len] == 0)
-			return (src->ptr);
-	CHK(ft_arr_appendn(src->ptr, "", 1) == -1, 0);
-		--src->len;
 	return (src->ptr);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/13 12:27:41 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/13 12:43:08 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,18 @@ int		main(void)
 //	wchar_t *str1 = L"字Hello";
 //	char *str2 = "Hello";
 
-
 	//ft_printf("Binary: %.5b\n", 0);
-	/**
 	ret1 = asprintf(&s1, "% .5d", 0);
 	ret2 = ft_asprintf(&s2, "% .5d", 0);
 	printsimple(s1, s2, ret1, ret2);
-	**/
 	
+	ret1 = asprintf(&s1, "{%4.15d}", -42);
+	ret2 = ft_asprintf(&s2, "{%4.15d}", -42);
+	printsimple(s1, s2, ret1, ret2);
+
 	//ft_printf("%{red}Here: %{eoc}");
-	ret1 = asprintf(&s1, "%03d\n", 0);
-	ret2 = ft_asprintf(&s2, "%03d\n", 0);
+	ret1 = asprintf(&s1, "{%4.15d}", 42);
+	ret2 = ft_asprintf(&s2, "{%4.15d}", 42);
 	printsimple(s1, s2, ret1, ret2);
 	/**
 	ret1 = asprintf(&s1, "%#020.3x", 44);
