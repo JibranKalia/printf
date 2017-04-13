@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:38:22 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/11 20:33:26 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/13 10:59:31 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ int		ft_vasprintf(char **ret, const char *fmt, va_list ap)
 	int			len;
 	va_list		clone;
 
+	if (*fmt == 0)
+		*ret = ft_strnew(0);
 	if (fmt == 0 || *fmt == 0 || ret == 0)
 		return (0);
 	*ret = 0;

@@ -6,7 +6,7 @@
 #    By: jkalia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/23 14:12:11 by jkalia            #+#    #+#              #
-#*   Updated: 2017/04/13 10:42:01 by jkalia           ###   ########.fr       *#
+#*   Updated: 2017/04/13 10:50:35 by jkalia           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -150,3 +150,7 @@ $(OBJTEST): %.o: %.c
 main: $(NAME)
 	@$(CC) $(CFLAGS) main.c $(LIBFTPRINTF) -o main.out
 	./main.out
+
+test: $(NAME)
+	@$(CC) $(CFLAGS) test.c $(LIBFTPRINTF) -o test.out
+	./test.out
