@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:02:19 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/13 12:06:29 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/13 12:29:10 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,7 @@ int8_t		ft_printf_c(t_arr *ret, const char **fmt,
 	if (x->len_mod == 3)
 		return (ft_printf_wchar(ret, fmt, x, clone));
 	tmp[0] = (unsigned char)va_arg(clone, int);
-	printf("x->length1 = %d \n", x->extra.len);
 	ft_arr_appendn(&x->extra, tmp, 1);
-	printf("x->length2 = %d \n", x->extra.len);
 	handle_width(x, 'c');
-	printf("x->length3 = %d \n", x->extra.len);
 	return (ft_printf_append(ret, fmt, x));
 }

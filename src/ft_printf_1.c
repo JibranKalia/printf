@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:38:22 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/13 12:14:35 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/13 12:29:46 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ int		ft_vasprintf(char **ret, const char *fmt, va_list ap)
 	}
 	va_copy(clone, ap);
 	len = dispatch(ret, fmt, clone);
-	printf("Len = %d\n");
 	va_end(clone);
 	return (len);
 }
