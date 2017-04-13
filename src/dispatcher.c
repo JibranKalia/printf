@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/13 12:59:30 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/13 13:26:16 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int				dispatch(char **final, const char *fmt, va_list clone)
 	t_arr			ret;
 	t_printf		x;
 
-	CHK((ft_arr_init(&ret, ft_strlen(fmt) + 10)) == -1, -1);
+	CHK((ft_arr_init(&ret, ft_strlen(fmt) + 20)) == -1, -1);
 	CHK((ft_printf_init(&x)) == -1, -1);
 	CHK(*fmt == 0, 0);
 	while (*fmt)

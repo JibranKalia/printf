@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 20:01:25 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/05 23:27:01 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/13 13:32:26 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ int8_t	ft_arr_sizechk(t_arr *src, size_t sze)
 	CHK(src == 0, -1);
 	CHK(src->cap == 0, -1);
 	if (sze + src->len > src->cap)
-	{
 		CHK(ft_arr_resize(src, sze) == -1, -1);
-	}
 	return (0);
 }
 

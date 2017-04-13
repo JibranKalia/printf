@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/13 13:08:58 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/13 13:23:03 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ int		main(void)
 	char	*s2;
 	intmax_t	n = 999;
 
+	ft_printf("%20.15d\n", 54321);
 
+
+	/**
 	char str1[100];
 	char str2[100];
 	ret1 = snprintf(str1, 14, "Hello world %s, you are number %d\n", "Giaco" ,5);
@@ -45,7 +48,6 @@ int		main(void)
 	printf("Mine: %s\n", str2);
 	printf("Ret1: %d\n", ret1);
 	printf("Ret2: %d\n", ret2);
-	/**
 	ret1 = snprintf(str1, 1, "Hello world %s, you are number %d\n", "Giaco" , 5);
 	ret2 = ft_snprintf(str2, 1, "Hello world %s, you are number %d\n", "Giaco" ,5);
 	printf("Libc: %s\n", str1);
