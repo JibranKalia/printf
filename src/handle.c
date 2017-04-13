@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 17:55:37 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/13 11:26:04 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/13 11:56:45 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ size_t	set_index(t_printf *x, char c)
 		else
 			index = (ft_strstr(x->extra.ptr, "0x") != NULL) ? 2 : 0;
 	}
+	if (c == 'b' && x->pad != ' ')
+		index = (ft_strstr(x->extra.ptr, "0b") != NULL) ? 2 : index;
 	return (index);
 }
 
@@ -56,7 +58,7 @@ int8_t	handle_width(t_printf *x, char c)
 		ft_arr_insertn(&x->extra, index, tmp, diff);
 		free(tmp);
 	}
-	if (x->space == 1 && (x->width < x->prec))
+	if (x->space == 1 && (x->width < x->prec) && !ft_strchr(x->extra.ptr, ' '))
 		ft_arr_insertn(&x->extra, 0, " ", 1);
 	return (0);
 }

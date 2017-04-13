@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 17:00:15 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/13 11:31:34 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/13 11:57:07 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ intmax_t	ft_printf_d_len(t_printf *x, va_list clone)
 ** If both value and precision are 0 no characters printed.
 ** If the number is negative the extra zero padding has to be after sign.
 */
-
 
 int8_t		ft_printf_p(t_arr *ret, const char **fmt,
 		t_printf *x, va_list clone)
@@ -75,8 +74,7 @@ int8_t		ft_printf_d(t_arr *ret, const char **fmt,
 	intmax_t	org;
 	char		*nbr;
 
-	if (**fmt == 'D' && x->len_mod <= 3)
-		x->len_mod = 3;
+	x->len_mod = (**fmt == 'D' && x->len_mod <= 3) ? 3 : x->len_mod;
 	if (x->is_prec == 1)
 		x->zero = 0;
 	CHK1((ft_arr_init(&x->extra, 5)) == -1, ft_arr_del(ret), -1);

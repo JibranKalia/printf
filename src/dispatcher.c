@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/13 10:43:26 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/13 12:17:58 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ static int		choosetype(t_arr *ret, const char **fmt,
 			CHK((len = g_func[i](ret, fmt, x, clone)) == -1, -1);
 			if (i < TYPEFIELD)
 				i = -1;
+			printf("LEN = %d\n", len);
+			printf("ret->len 2 = %d \n", ret->len);
 			if (len > 0)
 				return (len);
 		}
@@ -116,9 +118,12 @@ int				dispatch(char **final, const char *fmt, va_list clone)
 			if (*(++fmt) == 0)
 				break ;
 			choosetype(&ret, &fmt, &x, clone);
+			printf("ret->len 3 =  %d \n", ret.len);
 		}
 		CHK((ft_printf_init(&x)) == -1, -1);
 	}
+	printf("ret->len 4 =  %d \n", ret.len);
 	*final = ft_arrtostr(&ret);
+	printf("ret->len 5 =  %d \n", ret.len);
 	return (ret.len);
 }
