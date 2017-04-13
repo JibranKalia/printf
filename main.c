@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/13 12:43:08 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/13 12:56:14 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,24 @@ int		main(void)
 	char	*s2;
 	intmax_t	n = 999;
 
+
+	char str1[100];
+	char str2[100];
+	ret1 = snprintf(str1, 14, "Hello world %s, you are number %d\n", "Giaco" ,5);
+	ret2 = ft_snprintf(str2, 14, "Hello world %s, you are number %d\n", "Giaco" ,5);
+	printf("Libc: %s\n", str1);
+	printf("Mine: %s\n", str2);
+	printf("Ret1: %d\n", ret1);
+	printf("Ret2: %d\n", ret2);
+	ret1 = snprintf(str1, 1, "Hello world %s, you are number %d\n", "Giaco" , 5);
+	ret2 = ft_snprintf(str2, 1, "Hello world %s, you are number %d\n", "Giaco" ,5);
+	printf("Libc: %s\n", str1);
+	printf("Mine: %s\n", str2);
+	printf("Ret1: %d\n", ret1);
+	printf("Ret2: %d\n", ret2);
+
+/**
+
 //	setlocale(LC_CTYPE, "");
 //	wchar_t *str1 = L"字Hello";
 //	char *str2 = "Hello";
@@ -47,6 +65,7 @@ int		main(void)
 	ret1 = asprintf(&s1, "{%4.15d}", 42);
 	ret2 = ft_asprintf(&s2, "{%4.15d}", 42);
 	printsimple(s1, s2, ret1, ret2);
+**/
 	/**
 	ret1 = asprintf(&s1, "%#020.3x", 44);
 	ret2 = ft_asprintf(&s2, "%#020.3x", 44);
