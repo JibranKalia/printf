@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/11 21:12:46 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/13 10:45:39 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,68 +24,27 @@ void	printsimple(char *s1, char *s2, int ret1, int ret2);
 
 int		main(void)
 {
-	int		d = 4444;
-	int		*xyz;
-	int		*abc;
-
-	ft_printf("BEFORE = %d\n", *xyz);
-	ft_printf("Address = %p\n", xyz);
-	ft_printf("%10d %n\n", d, xyz);
-	ft_printf("After = %d\n", *xyz);
-	
-//	ft_printf("%10d%n\n", d, i1);
-//	printf("OUT = %d\n", *i1);
-
-	/**
-	if (*i1 != *i2)
-		ft_printf("%{red}ERROR%{eoc}\n");
-	else
-		ft_printf("%{green}GREAT%{eoc}\n");
-	**/
-
-	return (0);
-	/**
-	//int		x = 42;
-//	char	s[10] = "LYDI";
-//	int		*y;
-//	int		p = 15;
-//	int		w = 30;
-	int		*i;
-	int		ret1 = 0;
-	int		ret2 = 0;
+	int		ret1;
+	int		ret2;
 	char	*s1;
 	char	*s2;
+	intmax_t	n = 999;
 
-	printf("HELLO %n\n", i);
-	//ret1 = asprintf(&s1, "%  5.11d", x);
-	//ret2 = ft_asprintf(&s2, "% 5.11d", x);
+//	setlocale(LC_CTYPE, "");
+//	wchar_t *str1 = L"字Hello";
+//	char *str2 = "Hello";
 	
-	//ret1 = sprintf(s1, "%s\n", "HI");
-	//ret2 = ft_sprintf(s2, "%s\n", "HI");
-	
-	//ret1 = asprintf(&s1, "%d%d%d%d%d%d%d", x, x, x, x, x, x, x, x, x);
-	//ret2 = ft_asprintf(&s2, "%d%d%d%d%d%d%d", x, x, x, x, x, x, x, x, x);
-//	printsimple(s1, s2, ret1, ret2);
-	
+	printf("LIBC: {%d}\n", n);
+	ft_printf("MINE: {%016b}\n", n);
 
-	//wchar_t *str = L"字Hello";
-	char	*str1 = NULL;
-	
-	setlocale(LC_CTYPE, "");
+	/**
+	ret1 = asprintf(&s1, "%ls\n", str);
+	ret2 = ft_asprintf(&s2, "%ls\n", str);
 
-	char	*a;
-	uintmax_t		b;
-	a = ft_strnew(2);
-	b = (uintmax_t)a;
-	ret1 = asprintf(&s1, "%*.*p\n", w, p, a);
-	ret2 = ft_asprintf(&s2, "%*.*p\n", w, p, a);
+	printsimple(s1, s2, ret1, ret2);
 
-	//ret1 = asprintf(&s1, "[%0.*ls]\n", p, str);
-	//ret2 = ft_asprintf(&s2,"[%0.*ls]\n", p, str);
-
-	//printf("Hello %n", y);
-	return (0);
 	**/
+	return (0);
 }
 
 
@@ -116,9 +75,15 @@ int		main(void)
 
 void	printsimple(char *s1, char *s2, int ret1, int ret2)
 {
-	if (s1 == NULL || s2 == NULL)
+	if (s1 == NULL)
 	{
-		printf("String is NULL\n");
+		printf("S1 is NULL\n");
+		return ;
+	}
+
+	if (s2 == NULL)
+	{
+		printf("S2 is NULL\n");
 		return ;
 	}
 
