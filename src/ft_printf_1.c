@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 14:38:22 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/13 12:57:07 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/13 13:10:37 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,9 @@ int		ft_sprintf(char *ret, const char *fmt, ...)
 	char		*tmp;
 	int			len;
 
-	if (fmt == 0 || *fmt == 0)
-		return (0);
-	if (ret == 0)
-		return (0);
 	va_start(ap, fmt);
+	if (*fmt == 0)
+		ret[0] = 0;
 	CHK((len = ft_vasprintf(&tmp, fmt, ap)) == -1, -1);
 	ft_strncpy(ret, tmp, len);
 	va_end(ap);
@@ -51,15 +49,11 @@ int		ft_snprintf(char *ret, size_t size, const char *fmt, ...)
 	char		*tmp;
 	ssize_t		len;
 
-	if (fmt == 0 || *fmt == 0)
-		return (0);
-	if (ret == 0)
-		return (0);
 	va_start(ap, fmt);
 	if (size - 1 == 0)
 		ret[0] = 0;
 	CHK((len = ft_vasprintf(&tmp, fmt, ap)) == -1, -1);
-	ft_strncpy(ret, tmp, MIN(len, size -1));
+	ft_strncpy(ret, tmp, MIN(len, size - 1));
 	va_end(ap);
 	return (len);
 }
@@ -69,8 +63,6 @@ int		ft_asprintf(char **ret, const char *fmt, ...)
 	va_list		ap;
 	int			len;
 
-	if (fmt == 0 || *fmt == 0)
-		return (0);
 	va_start(ap, fmt);
 	CHK((len = ft_vasprintf(ret, fmt, ap)) == -1, -1);
 	va_end(ap);

@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:57:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/13 12:29:14 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/13 12:59:30 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ static int8_t	(*g_func[LEN1]) (t_arr *ret, const char **fmt,
 		t_printf *x, va_list clone) = {
 	ft_printf_flags, ft_printf_flags, ft_printf_flags, ft_printf_flags,
 	ft_printf_flags, ft_printf_width, ft_printf_width, ft_printf_width,
-	ft_printf_width, ft_printf_width, ft_printf_width,ft_printf_width,
-	ft_printf_width, ft_printf_width, ft_printf_width,ft_printf_dot,
+	ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_width,
+	ft_printf_width, ft_printf_width, ft_printf_width, ft_printf_dot,
 	ft_printf_length, ft_printf_length, ft_printf_length, ft_printf_length,
 	ft_printf_length, ft_printf_length, ft_printf_length, ft_printf_percent,
 	ft_printf_c, ft_printf_c, ft_printf_d, ft_printf_d,
 	ft_printf_d, ft_printf_x, ft_printf_x, ft_printf_o,
 	ft_printf_o, ft_printf_u, ft_printf_u, ft_printf_s,
 	ft_printf_s, ft_printf_p, ft_printf_f, ft_printf_f,
-	ft_printf_f,ft_printf_f, ft_printf_f, ft_printf_f,
+	ft_printf_f, ft_printf_f, ft_printf_f, ft_printf_f,
 	ft_printf_f, ft_printf_f, ft_printf_n, ft_printf_color,
 	ft_printf_b};
 

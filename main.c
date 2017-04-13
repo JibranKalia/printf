@@ -6,7 +6,7 @@
 /*   By: jkalia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 22:55:18 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/13 12:56:14 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/13 13:08:58 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,20 @@ int		main(void)
 	printf("Mine: %s\n", str2);
 	printf("Ret1: %d\n", ret1);
 	printf("Ret2: %d\n", ret2);
+	ret1 = sprintf(str1, "", "Giaco", 5);
+	ret2 = ft_sprintf(str2, "", "Giaco", 5);
+	printf("Libc: %s\n", str1);
+	printf("Mine: %s\n", str2);
+	printf("Ret1: %d\n", ret1);
+	printf("Ret2: %d\n", ret2);
+	/**
 	ret1 = snprintf(str1, 1, "Hello world %s, you are number %d\n", "Giaco" , 5);
 	ret2 = ft_snprintf(str2, 1, "Hello world %s, you are number %d\n", "Giaco" ,5);
 	printf("Libc: %s\n", str1);
 	printf("Mine: %s\n", str2);
 	printf("Ret1: %d\n", ret1);
 	printf("Ret2: %d\n", ret2);
+	**/
 
 /**
 
