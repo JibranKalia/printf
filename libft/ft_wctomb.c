@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/05 17:25:04 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/06 00:04:12 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/18 21:58:01 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		ft_wchar_len(wint_t org)
 {
-	if (org <= 0X7f)
+	if (org <= (MB_CUR_MAX == 1 ? 0xFF : 0x7F))
 		return (1);
 	if (org <= 0x7ff)
 		return (2);
