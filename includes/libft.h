@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 16:58:42 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/06 14:28:05 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/04/18 21:59:20 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <string.h>
 # include <stdint.h>
+# include <stdlib.h>
 # include <wchar.h>
 
 # define CHK(a, b) if(1){if(a){return(b);}}
