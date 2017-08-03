@@ -1,27 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   printftest.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 10:37:19 by jkalia            #+#    #+#             */
-/*   Updated: 2017/04/14 10:43:11 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/08/03 11:38:59 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/29 17:40:13 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/04/13 16:09:18 by gguiulfo         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "includes/libft.h"
 #include "includes/libftprintf.h"
 #include <locale.h>
@@ -105,107 +92,9 @@ int		main(int argc, char **argv)
 	(void)argc;
 	(void)argv;
 	setlocale(LC_ALL, "en_US.UTF-8");
-	  //Colors Tests
-
-	/**
-	 ft_printf("%{yellow}Color Tests:%{eoc}\n");
-	 ft_printf("%{yellow}Foreground:%{eoc}\n");
-	 printf("Red: \n");
-	 ft_printf("%{red}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Bold Red: \n");
-	 ft_printf("%{bred}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Green: \n");
-	 ft_printf("%{green}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Bold Green: \n");
-	 ft_printf("%{bgreen}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Yellow: \n");
-	 ft_printf("%{yellow}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Bold Yellow: \n");
-	 ft_printf("%{byellow}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Blue: \n");
-	 ft_printf("%{blue}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Bold blue: \n");
-	 ft_printf("%{bblue}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Purple: \n");
-	 ft_printf("%{purple}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Bold Purple: \n");
-	 ft_printf("%{bpurple}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Cyan: \n");
-	 ft_printf("%{cyan}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Bold Cyan: \n");
-	 ft_printf("%{bcyan}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Black: \n");
-	 ft_printf("%{black}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Bold Black: \n");
-	 ft_printf("%{bblack}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("White: \n");
-	 ft_printf("%{white}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Bold White: \n");
-	 ft_printf("%{bwhite}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 ft_printf("%{yellow}Background:%{eoc}\n");
-	 printf("Red: \n");
-	 ft_printf("%{b_red}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Bold Red: \n");
-	 ft_printf("%{b_bred}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Green: \n");
-	 ft_printf("%{b_green}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Bold Gree: \n");
-	 ft_printf("%{b_bgreen}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Yellow: \n");
-	 ft_printf("%{b_yellow}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Bold Yellow: \n");
-	 ft_printf("%{b_byellow}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Blue: \n");
-	 ft_printf("%{b_blue}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Bold blue: \n");
-	 ft_printf("%{b_bblue}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Purple: \n");
-	 ft_printf("%{b_purple}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Bold Purple: \n");
-	 ft_printf("%{b_bpurple}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Cyan: \n");
-	 ft_printf("%{b_cyan}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Bold Cyan: \n");
-	 ft_printf("%{b_bcyan}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Black: \n");
-	 ft_printf("%{b_black}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Bold Black: \n");
-	 ft_printf("%{b_bblack}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("White: \n");
-	 ft_printf("%{b_white}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 printf("Bold White: \n");
-	 ft_printf("%{b_bwhite}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 ft_printf("%{yellow}Multiple Colors\%{eoc}\n");
-	 ft_printf("%{b_red}%{green}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 ft_printf("%{b_bwhite}}No EOC{eocc}2\n");
-	 ft_printf("%This should be same color as the one on top%{eoc}2\n");
-	 printf("Should not work: \n");
-	 ft_printf("%{b_bbwhite}Hello %s Number %d%{eoc}2\n", "World", 4);
-	 ft_printf("%{b_bwhites}Hello %s Number %d%{eocc}2\n", "World", 4);
-	 ft_printf("%{{b_bwhite}}Hello %s Number %d%{eocc}2\n", "World", 4);
-	 **/
-	 ft_printf("%{yellow}----------------------%{eoc}\n");
 	  //%b Tests
-	 ft_printf("%{yellow}Binary Tests:%{eoc}\n");
-	 bonus("100000", "%+b", 32);
-	 bonus("100000    ", "%-10b", 32);
-	 bonus("    100000", "%+ 10b", 32);
-	 bonus("0b100100", "%#1.5b", 36);
-	 bonus("0", "%b", 0);
-	 bonus("00000", "%.5b", 0);
-	 bonus("", "%.b", 0);
-	 bonus("", "%#.0b", 0);
-	 bonus("0" ,"%#.1b", 0);
-	 bonus("", "%0.0b", 0);
-	 bonus("0b1000001", "%# 9b",65);
-	 bonus(" 0b1000001", "%# 10b",65);
-	 bonus("      0b10", "%#10b", 2);
-	 bonus("0b00000010", "%#010b", 2);
-	 bonus("1100010", "%b", 98);
-	 bonus("0b100100", "%#1.5b", 36);
-	 bonus("100101101011010000111", "%b", 1234567);
 	 ft_printf("%{yellow}----------------------%{eoc}\n");
-	 ft_printf("%{yellow}Some Tests:%{eoc}\n");
+	 ft_printf("%{yellow}Basic Tests:%{eoc}\n");
 	 test("%#x", 0);
 	 test("@moulitest: %#.o %#.0o", 0, 0);
 	 test("@moulitest: %#.x %#.0x", 0, 0);
@@ -262,7 +151,7 @@ int		main(int argc, char **argv)
 	 test("Libc 2: {%jhd}", "9223372036854775807");
 	 ft_printf("%{yellow}----------------------%{eoc}\n");
 	  //%n Tests
-	 ft_printf("%{yellow}Some bonus Tests:%{eoc}\n");
+	 ft_printf("%{yellow}Wildcard Tests:%{eoc}\n");
 	 int *ptr;
 	 int ala = 42;
 	 ptr = &ala;
@@ -286,7 +175,7 @@ int		main(int argc, char **argv)
 	 test("%.0p, %.p", 0, 0);
 	 test("{%05p}", 0);
 	 ft_printf("%{yellow}----------------------%{eoc}\n");
-	 ft_printf("%{yellow}Various Tests:%{eoc}\n");
+	 ft_printf("%{yellow}%%Z %%C Tests:%{eoc}\n");
 	  //%Z Tests
 	 test("{%-15Z}", 123);
 	  //%C Tests
@@ -483,6 +372,24 @@ int		main(int argc, char **argv)
 	 test("%.5ls", L"👩🏽‍🚒");
 	 test("% -010.5ls", L"👩🏽‍🚒");
 	 test("% -010.5S", L"👩🏽‍🚒");
+	 ft_printf("%{yellow}----------------------%{eoc}\n");
+	 ft_printf("%{yellow}Binary Tests:%{eoc}\n");
+	 bonus("100000", "%+b", 32);
+	 bonus("100000    ", "%-10b", 32);
+	 bonus("    100000", "%+ 10b", 32);
+	 bonus("0b100100", "%#1.5b", 36);
+	 bonus("0", "%b", 0);
+	 bonus("", "%.b", 0);
+	 bonus("", "%#.0b", 0);
+	 bonus("0" ,"%#.1b", 0);
+	 bonus("", "%0.0b", 0);
+	 bonus("0b1000001", "%# 9b",65);
+	 bonus(" 0b1000001", "%# 10b",65);
+	 bonus("      0b10", "%#10b", 2);
+	 bonus("0b00000010", "%#010b", 2);
+	 bonus("1100010", "%b", 98);
+	 bonus("0b100100", "%#1.5b", 36);
+	 bonus("100101101011010000111", "%b", 1234567);
 	 ft_printf("%{yellow}----------------------%{eoc}\n");
 	  if (errors > 0 || reterrors > 0)
 	  	ft_printf("%{bred}You failed on %d tests and %d rets%{eoc} 😡\n", errors , reterrors);
