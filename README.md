@@ -43,8 +43,4 @@ gcc -I include -o test printftest.c -L. -lftprintf
 
 ## Credits
 
-This README was inpspired by [Antonin Gavrel](https://github.com/agavrel)
-
-## Contact or contribute
-
-If you want to contact me, or fix / improve this project, just send me a mail at **jibran.kalia@gmail.com**
+This README was heavily inpspired by [Antonin Gavrel](https://github.com/agavrel)
