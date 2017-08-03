@@ -33,23 +33,17 @@ make
 
 ### Compile with your files
 
-If you want to create a quick prog with the static library created before :
-Add the include in your header.h or in your file ⇣
+Here is a quick prog to test static library created before :
+
+Compile included tests files like this: ⇣
 ```
-#include "ft_printf.h"
-```
-Then compile just like that ⇣
-```
-gcc -I include -o prog yourfile1.c yourfile2.c -L. -lftprintf
-```
-And execute it easily ⇣
-```
-./prog
+gcc -I include -o test printftest.c -L. -lftprintf
+./test
 ```
 
 ## Credits
 
-This README was inpspired by <strong>Agav</strong> a.k.a [Antonin Gavrel](https://github.com/agavrel)
+This README was inpspired by [Antonin Gavrel](https://github.com/agavrel)
 
 ## Contact or contribute
 
