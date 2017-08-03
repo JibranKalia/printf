@@ -3,12 +3,12 @@
 ## Project Overview
 Ft_printf is a 42 Project that aims to mimic the printf function.
 
-A) parsing for flags, field_width, precision, length_modifier.
-B) parsing for conversion specifier.
-C) displaying UTF-8 characters. (%C and %S).
-D) computing unsigned numbers in base 2 (%b), 8 (%o), 10 (%u) and 16 (%x).
-E) displaying signed numbers (%d %D %i).
-F) displaying pointer address (%p).
+1) parsing for flags, field_width, precision, length_modifier.
+2) parsing for conversion specifier.
+3) displaying UTF-8 characters. (%C and %S).
+4) computing unsigned numbers in base 2 (%b), 8 (%o), 10 (%u) and 16 (%x).
+5) displaying signed numbers (%d %D %i).
+6) displaying pointer address (%p).
 
 Bonus :
 1) Handles multiple file descriptor (use ft_dprintf(int fd, char const format, ...) instead of ft_printf).
