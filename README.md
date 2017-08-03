@@ -1,4 +1,4 @@
-# Ft_printf (Printf's refactoring)
+# ft_printf
 
 ## Project Overview
 Ft_printf is a 42 Project that aims to mimic the printf function.
