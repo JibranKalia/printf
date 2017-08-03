@@ -26,8 +26,8 @@ Bonus :
 ### Download and compile the library
 
 ```
-git clone https://github.com/BenjaminSouchet/ft_printf.git ~/Ft_printf
-cd ~/Ft_printf
+https://github.com/JibranKalia/printf.git
+cd ~/printf
 make
 ```
 
