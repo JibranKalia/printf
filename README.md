@@ -38,9 +38,6 @@ Here is a quick prog to test static library created before :
 Compile included tests files like this: ⇣
 ```
 gcc -I include -o test printftest.c -L. -lftprintf
-```
-And execute it easily ⇣
-```
 ./test
 ```
 
