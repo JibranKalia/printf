@@ -65,6 +65,10 @@ All the functions above use the helper array append or insert functions:
 
 <img width="495" alt="screen shot 2017-08-13 at 7 38 07 pm" src="https://user-images.githubusercontent.com/14208431/29256409-0c6c675c-805f-11e7-8bce-807b5f5ba68b.png">
 
+Finally, when everything is done. I return a string which is properly null-teminanted:
+
+<img width="365" alt="screen shot 2017-08-13 at 7 44 53 pm" src="https://user-images.githubusercontent.com/14208431/29256531-f5350408-805f-11e7-8668-92c69c0b19a7.png">
+
 ## Credits
 
 This README was inpspired by [Antonin Gavrel](https://github.com/agavrel)
