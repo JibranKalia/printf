@@ -140,17 +140,9 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME)
-	@rm -rf test.out main.out
+	@rm -rf test
 
 re: fclean all
 
-$(OBJTEST): %.o: %.c
-	@$(CC) -I includes -c $< -o $@
-
-main: $(NAME)
-	@$(CC) $(CFLAGS) main.c $(LIBFTPRINTF) -o main.out
-	./main.out
-
 test: $(NAME)
-	@$(CC) $(CFLAGS) test.c $(LIBFTPRINTF) -o test.out
-	./test.out
+	gcc -I include -o test printftest.c -L. -lftprintf

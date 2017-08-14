@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 10:37:19 by jkalia            #+#    #+#             */
-/*   Updated: 2017/08/03 11:38:59 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/08/13 19:49:36 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "includes/libft.h"
@@ -292,7 +292,6 @@ int		main(int argc, char **argv)
 	 test("Libc: [%lc]\n", L'字');
 	 test("Mine: [fail%10lcpass]\n", '\0');
 	 test("%lc\n", L'�');
-	 test("%lc, %lc\n", L'ÊM-^ZM-^V', L'ÿ≠');
 	 ft_printf("%{yellow}----------------------%{eoc}\n");
 	 //  Null String Tests
 	 ft_printf("%{yellow}Null String Tests:%{eoc}\n");
