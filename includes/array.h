@@ -22,7 +22,6 @@ typedef struct		s_arr
 
 typedef struct		s_printf
 {
-	t_arr			extra;
 	unsigned int	is_prec:1;	// If Precision has been set
 	int				prec;		// Precision Value
 	int				width;		// Width Value
@@ -33,6 +32,7 @@ typedef struct		s_printf
 	unsigned int	alt:1;		// If '#' flag is set
 	uint8_t			len_mod;	// Number of Lenght Modifier used
 	char			pad;		// Padding Character used. Either ' ' or '0'
+	t_arr			extra;		// Temporary Array used in helper functions
 }					t_printf;
 
 void				ft_arr_del(t_arr *src);
