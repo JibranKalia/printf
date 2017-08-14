@@ -33,7 +33,7 @@ make
 
 ### Compile with your files
 
-Here is a quick prog to test static library created before :
+Here is a quick program to test static library created before :
 
 Compile included tests files like this: ⇣
 ```
