@@ -145,4 +145,5 @@ fclean: clean
 re: fclean all
 
 test: $(NAME)
-	gcc -I include -o test printftest.c -L. -lftprintf
+	@echo "\033[32mTest Made\033[0m"
+	@gcc -I include -o test printftest.c -L. -lftprintf
