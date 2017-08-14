@@ -40,6 +40,15 @@ Compile included tests files like this: ⇣
 gcc -I include -o test printftest.c -L. -lftprintf
 ./test
 ```
+## Code Overview
+First, I define a struct to hold all the information for printf:
+
+<img width="624" alt="screen shot 2017-08-13 at 7 25 39 pm" src="https://user-images.githubusercontent.com/14208431/29256185-3a73b7ce-805d-11e7-9bfb-1b2eb5a2b804.png">
+
+Secondly, I define the sturcture of a dynamic string array:
+
+<img width="498" alt="screen shot 2017-08-13 at 7 19 47 pm" src="https://user-images.githubusercontent.com/14208431/29256216-70a227a4-805d-11e7-9f4a-21b417feaa20.png">
+
 
 ## Credits
 
