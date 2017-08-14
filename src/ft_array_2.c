@@ -31,13 +31,6 @@ void	ft_arr_del(t_arr *src)
 	ft_bzero(src, sizeof(t_arr));
 }
 
-char	*ft_arrtostr(t_arr *src)
-{
-	CHK(src == 0, 0);
-	CHK(src->cap == 0, 0);
-	return (src->ptr);
-}
-
 int8_t	ft_printf_append(t_arr *ret, const char **fmt, t_printf *x)
 {
 	CHK2((ft_arr_append_arr(ret, &x->extra)) == -1,
@@ -52,4 +45,16 @@ int8_t	ft_printf_init(t_printf *x)
 	ft_bzero(x, sizeof(t_printf));
 	x->pad = ' ';
 	return (0);
+}
+
+char	*ft_arrtostr(t_arr *src)
+{
+	CHK(src == 0, 0);
+	CHK(src->cap == 0, 0);
+	if (src->len != src->cap)
+		if (src->ptr[src->len] == 0)
+			return (src->ptr);
+	CHK(ft_arr_appendn(src, "", 1) == -1, 0);
+	--src->len;
+	return (src->ptr);
 }
