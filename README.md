@@ -69,6 +69,10 @@ Finally, when everything is done. I return a string which is properly null-temin
 
 <img width="365" alt="screen shot 2017-08-13 at 7 44 53 pm" src="https://user-images.githubusercontent.com/14208431/29256531-f5350408-805f-11e7-8668-92c69c0b19a7.png">
 
+Run `make test && ./test` to make sure everything works correctly: 
+
+<img width="548" alt="screen shot 2017-08-13 at 7 47 25 pm" src="https://user-images.githubusercontent.com/14208431/29256583-4e5f2d10-8060-11e7-8394-d8a1bb8daffe.png">
+
 ## Credits
 
 This README was inpspired by [Antonin Gavrel](https://github.com/agavrel)
