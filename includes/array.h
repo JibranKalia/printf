@@ -15,24 +15,24 @@
 
 typedef struct		s_arr
 {
-	char			*ptr;
-	size_t			len;
-	size_t			cap;
+	char			*ptr;		// Data currently held
+	size_t			len;		// Space currenlty being used
+	size_t			cap;		// Total Space Allocated
 }					t_arr;
 
 typedef struct		s_printf
 {
 	t_arr			extra;
-	unsigned int	is_prec:1;
-	int				prec;
-	int				width;
-	unsigned int	left:1;
-	unsigned int	showsign:1;
-	unsigned int	space:1;
-	unsigned int	zero:1;
-	unsigned int	alt:1;
-	uint8_t			len_mod;
-	char			pad;
+	unsigned int	is_prec:1;	// If Precision has been set
+	int				prec;		// Precision Value
+	int				width;		// Width Value
+	unsigned int	left:1;		// If '-' flag is set
+	unsigned int	showsign:1;	// If '+' flag is set
+	unsigned int	space:1;	// If ' ' flag is set
+	unsigned int	zero:1;		// If '0' flag is set
+	unsigned int	alt:1;		// If '#' flag is set
+	uint8_t			len_mod;	// Number of Lenght Modifier used
+	char			pad;		// Padding Character used. Either ' ' or '0'
 }					t_printf;
 
 void				ft_arr_del(t_arr *src);
