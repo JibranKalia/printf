@@ -49,6 +49,21 @@ Secondly, I define the sturcture of a dynamic string array:
 
 <img width="498" alt="screen shot 2017-08-13 at 7 19 47 pm" src="https://user-images.githubusercontent.com/14208431/29256216-70a227a4-805d-11e7-9f4a-21b417feaa20.png">
 
+All the different printf pass information to `vasprintf` which calls `dispatch`:
+
+<img width="495" alt="screen shot 2017-08-13 at 7 32 11 pm" src="https://user-images.githubusercontent.com/14208431/29256290-2609499c-805e-11e7-93fe-264f4b89c4f8.png">
+
+I use a jump table to handle different flags and length modifiers etc:
+
+<img width="609" alt="screen shot 2017-08-13 at 7 30 06 pm" src="https://user-images.githubusercontent.com/14208431/29256265-e0dbaf5e-805d-11e7-95d8-1501058fe7f8.png">
+
+The following function handles `%d`. Each field has a separate function: 
+
+<img width="567" alt="screen shot 2017-08-13 at 7 36 06 pm" src="https://user-images.githubusercontent.com/14208431/29256369-c5c80928-805e-11e7-9e08-4b061a43b679.png">
+
+All the functions above use the helper array append or insert functions:
+
+<img width="495" alt="screen shot 2017-08-13 at 7 38 07 pm" src="https://user-images.githubusercontent.com/14208431/29256409-0c6c675c-805f-11e7-8bce-807b5f5ba68b.png">
 
 ## Credits
 
